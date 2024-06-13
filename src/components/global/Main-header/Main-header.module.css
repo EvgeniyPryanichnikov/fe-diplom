@@ -1,0 +1,8 @@
+.main_header {
+	height: 800px;
+	background: url('../../../../public/image/header-main-page-background.png');
+  background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	border-bottom: 8px solid #FFA800;
+}

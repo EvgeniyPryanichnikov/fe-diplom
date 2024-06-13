@@ -1,0 +1,13 @@
+.travel_datepicker {
+  display: flex;
+}
+
+.travel_datepicker__title {
+	color: #fff;
+	font-size: 72px;
+	font-weight: 100;
+}
+
+.bold {
+	font-weight: 700
+}

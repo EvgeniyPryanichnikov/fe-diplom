@@ -1,0 +1,12 @@
+.navbar {
+  padding: 25px 0;
+	color: #FFFFFF;
+	background-color: #292929;
+}
+
+.navbar__item {
+	font-size: 30px;
+	font-weight: 300;
+	margin-right: 50px;
+	cursor: pointer;
+}

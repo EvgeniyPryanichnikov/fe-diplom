@@ -1,11 +1,17 @@
 import React from 'react'
 
-import Logo from './components/common/Logo/Logo'
+import s from './Header.module.css'
+import Logo from '../../common/Logo/Logo'
+import Navbar from '../../common/Navbar/Navbar'
 
-export const Header = () => {
+const Header = () => {
   return (
-    <div>
+    <div className={s.header}>
 			<Logo />
+
+      <Navbar/>
     </div>
   )
 }
+
+export default Header

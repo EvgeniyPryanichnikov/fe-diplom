@@ -1,9 +1,15 @@
 import React from 'react'
 
-export const Logo = () => {
+import s from './Logo.module.css'
+
+const Logo = () => {
   return (
-    <div>Logo</div>
+    <>
+      <span className={s.logo}>
+        Лого
+      </span>
+    </>
   )
 }
 
-export default Logo;
+export default Logo
