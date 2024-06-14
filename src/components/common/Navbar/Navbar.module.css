@@ -2,6 +2,8 @@
   padding: 25px 180px;
 	color: #FFFFFF;
 	background-color: #292929;
+	position: relative;
+	z-index: 2;
 }
 
 .navbar__item {

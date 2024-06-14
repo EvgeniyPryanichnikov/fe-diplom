@@ -1,0 +1,30 @@
+.reviewsBlock {
+  padding: 100px 180px;
+}
+
+.title {
+	margin-bottom: 60px;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.reviewsList {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 80px;
+}
+
+.reviewsItem {
+	display: flex;
+	gap: 22px;
+}
+
+.textTitle {
+	margin-bottom: 18px;
+}
+
+.textContent {
+	font-size: 18px;
+	font-style: italic;
+	color: #C4C4C4;
+}

@@ -11,9 +11,9 @@ const HowWorksBlock = () => {
     <section className={s.howWorksBlock}>
 			<div className={s.wrapper}>
 				<div className={s.head}>
-					<h2>Как это работает</h2>
+					<h2 className={s.title}>Как это работает</h2>
 
-					<button className={s['button-find']}>
+					<button className={s.moreBtn}>
 						Узнать больше
 					</button>
 				</div>
@@ -22,7 +22,7 @@ const HowWorksBlock = () => {
 					<div className={s.listItem}>
 						<img src={computer} alt="" />
 
-						<div>
+						<div className={s.listItem__text}>
 							Удобный заказ на сайте
 						</div>
 					</div>
@@ -30,7 +30,7 @@ const HowWorksBlock = () => {
 					<div className={s.listItem}>
 						<img src={city} alt="" />
 
-						<div>
+						<div className={s.listItem__text}>
 							Нет необходимости ехать в офис
 						</div>
 					</div>
@@ -38,7 +38,7 @@ const HowWorksBlock = () => {
 					<div className={s.listItem}>
 						<img src={globe} alt="" />
 
-						<div>
+						<div className={s.listItem__text}>
 							Огромный выбор направлений
 						</div>
 					</div>
