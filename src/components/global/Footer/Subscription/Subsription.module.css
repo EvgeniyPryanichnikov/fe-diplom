@@ -1,0 +1,15 @@
+.subscriptionTitle {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.icon {
+  cursor: pointer;
+  margin-right: 50px;
+}
+
+.icon:hover {
+  color: #FFA800;
+}
