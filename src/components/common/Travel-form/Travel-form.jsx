@@ -12,7 +12,7 @@ const TravelForm = () => {
 						Направление
 					</p>
 
-					<div className={s['travel-form__direction-fields']}>
+					<div className={s.directionFields}>
 						<Select />
 
 						<Select />
@@ -24,7 +24,7 @@ const TravelForm = () => {
 						Дата
 					</p>
 
-					<div className={s['travel-form__date-fields']}>
+					<div className={s.dateFields}>
 						<Select />
 
 						<Select />

@@ -1,6 +1,6 @@
 .travel_datepicker {
   display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .travel_datepicker__title {

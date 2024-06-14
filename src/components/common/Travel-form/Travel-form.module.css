@@ -15,8 +15,8 @@
 	margin-bottom: 8px;
 }
 
-.travel-form__direction-fields,
-.travel-form__date-fields{
+.directionFields,
+.dateFields {
 	display: flex;
 	gap: 30px;
 	margin-bottom: 30px;
@@ -30,7 +30,7 @@
 .button-find {
 	border-radius: 5px;
 	background-color: #ffa800;
-	width: 323px;
+	width: 325px;
 	height: 60px;
 	color: #292929;
 	font-size: 24px;
