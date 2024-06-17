@@ -8,7 +8,7 @@ import globe from '../../../../icons/globe.svg'
 
 const HowWorksBlock = () => {
   return (
-    <section className={s.howWorksBlock}>
+    <section className={s.howWorksBlock} id='how-to-work'>
 			<div className={s.wrapper}>
 				<div className={s.head}>
 					<h2 className={s.title}>Как это работает</h2>

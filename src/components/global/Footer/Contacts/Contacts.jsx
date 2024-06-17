@@ -33,7 +33,7 @@ const Contacts = () => {
 		},
 	]
   return (
-    <div className={s.contacts}>
+    <div className={s.contacts} id='contacts'>
 			<p className={s.title}>
 				Свяжитесь с нами
 			</p>

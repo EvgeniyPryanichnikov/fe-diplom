@@ -22,7 +22,7 @@ const ReviewsBlock = () => {
   ];
 
   return (
-    <section className={s.reviewsBlock}>
+    <section className={s.reviewsBlock} id='reviews'>
 			<h2 className={s.title}>
 				Отзывы
 			</h2>

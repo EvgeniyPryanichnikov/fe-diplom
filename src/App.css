@@ -17,7 +17,7 @@ p {
   font-weight: 400;
 }
 
-input, button {
+input, button, a {
   all: unset;
   box-sizing: border-box
 }

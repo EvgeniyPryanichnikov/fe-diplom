@@ -4,7 +4,7 @@ import s from './About.module.scss'
 const About = () => {
   return (
     <>
-			<section className={s.about}>
+			<section className={s.about} id='about'>
         <h2 className={s.title}>
           о нас
         </h2>
