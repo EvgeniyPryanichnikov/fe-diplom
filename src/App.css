@@ -23,6 +23,7 @@ input, button, a {
 }
 
 button {
+  cursor: pointer;
   font-size: 24px;
   height: 60px;
   border-radius: 3px;

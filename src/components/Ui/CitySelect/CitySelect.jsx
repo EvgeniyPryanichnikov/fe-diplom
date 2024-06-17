@@ -3,9 +3,9 @@ import s from "./CitySelect.module.scss";
 
 const CitySelect = ({options = [], handleCitySelect, handleCityInput, placeholder, icon, ...props }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [input, setInput] = useState("");
+	const [input, setInput] = useState('');
 
-	const showedOptions =  options.filter(el => el.name.toLowerCase().includes(input.toLowerCase()))
+	const showedOptions = options.filter(el => el.name.toLowerCase().includes(input.toLowerCase()))
 
 	function onOptionClick(opt) {
 		handleCitySelect(opt);
