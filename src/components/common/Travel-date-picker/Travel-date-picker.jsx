@@ -1,6 +1,6 @@
 import React from 'react'
 
-import s from './Travel-date-picker.module.css'
+import s from './Travel-date-picker.module.scss'
 import TravelForm from '../Travel-form/Travel-form'
 
 const TravelDatePicker = () => {

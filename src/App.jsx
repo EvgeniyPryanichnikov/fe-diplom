@@ -9,7 +9,7 @@ import Footer from './components/global/Footer/Footer'
 function App() {
   return (
     <div className="App">
-      <MainHeader />
+      <MainHeader /> 
       
       <About />
 

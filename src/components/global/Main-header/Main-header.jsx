@@ -1,12 +1,12 @@
 import React from 'react'
 
-import s from './Main-header.module.css'
+import s from './Main-header.module.scss'
 import Header from '../Header/Header'; 
 import TravelDatePicker from '../../common/Travel-date-picker/Travel-date-picker';
 
 const MainHeader = () => {
   return (
-    <div className={s.main_header}>
+    <div className={s.mainHeader}>
       <Header />
 
       <TravelDatePicker />

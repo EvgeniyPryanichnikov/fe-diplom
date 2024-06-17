@@ -1,6 +1,6 @@
 import React from 'react'
 
-import s from './How-works-block.module.css'
+import s from './How-works-block.module.scss'
 import computer from '../../../../icons/computer.svg'
 import city from '../../../../icons/city.svg'
 import globe from '../../../../icons/globe.svg'

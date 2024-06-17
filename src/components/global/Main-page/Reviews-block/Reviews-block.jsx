@@ -1,6 +1,6 @@
 import React from 'react'
 
-import s from './Reviews-block.module.css'
+import s from './Reviews-block.module.scss'
 import avatar1 from '../../../../icons/avatar1.png'
 import avatar2 from '../../../../icons/avatar2.png'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import s from './Contacts.module.css'
+import s from './Contacts.module.scss'
 import phone from '../../../../icons/phone.svg'
 import skype from '../../../../icons/skype.svg'
 import envelope from '../../../../icons/envelope.svg'
@@ -34,16 +34,16 @@ const Contacts = () => {
 	]
   return (
     <div className={s.contacts}>
-			<p className={s.contactsTitle}>
+			<p className={s.title}>
 				Свяжитесь с нами
 			</p>
 
-			<div className={s.contactsList}>
+			<div className={s.list}>
 				{contacts.map(contact => (
-					<div className={s.contactsItem}>
+					<div className={s.item}>
 						<img src={contact.icon} alt="" />
 
-						<span className={s.contactsItem__text}>{contact.text}</span>
+						<span className={s.text}>{contact.text}</span>
 					</div>
 				))}
 			</div>

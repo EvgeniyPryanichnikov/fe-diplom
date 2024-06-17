@@ -1,6 +1,6 @@
 import {React, useState} from 'react'
 
-import s from './Travel-form.module.css'
+import s from './Travel-form.module.scss'
 import calendar from '../../../icons/calendar.svg'
 import geolocation from '../../../icons/geolocation.svg'
 import { getCities } from "../../../api/cities";
@@ -19,9 +19,9 @@ const TravelForm = () => {
   }
  
   return (
-    <div className={s['travel-form']}>
-			<div className={s['travel-form__fields']}>
-				<div className={s['travel-form__direction']}>
+    <div className={s.travelForm}>
+			<div className={s.fields}>
+				<div className={s.direction}>
 					<p className={s.title}>
 						Направление
 					</p>
@@ -45,7 +45,7 @@ const TravelForm = () => {
 					</div>
 				</div>
 
-				<div className={s['travel-form__date']}>
+				<div className={s.date}>
 					<p className={s.title}>
 						Дата
 					</p>
@@ -58,7 +58,7 @@ const TravelForm = () => {
 				</div>
 			</div>
 
-			<div className={s['button-container']}>
+			<div className={s.buttonContainer}>
 				<button className={s['button-find']}>
 					Найти билеты
 				</button>

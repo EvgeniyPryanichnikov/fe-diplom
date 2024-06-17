@@ -1,6 +1,6 @@
 import React from 'react'
 
-import s from './Footer.module.css'
+import s from './Footer.module.scss'
 import Contacts from './Contacts/Contacts'
 import Subscription from './Subscription/Subscription'
 
