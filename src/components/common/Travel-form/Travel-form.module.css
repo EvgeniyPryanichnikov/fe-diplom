@@ -1,10 +1,6 @@
 .travel-form {
   background-color: rgba(41, 41, 41, 0.8);
-	padding: 50px 20px 30px 20px;
-}
-
-.travel-form__direction {
-	
+	padding: 50px 20px;
 }
 
 .title {
@@ -19,7 +15,7 @@
 .dateFields {
 	display: flex;
 	gap: 30px;
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 }
 
 .button-container {

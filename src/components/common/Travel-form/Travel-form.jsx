@@ -1,9 +1,23 @@
-import React from 'react'
+import {React, useState} from 'react'
 
 import s from './Travel-form.module.css'
-import Select from '../../Ui/Select/Select'
+import calendar from '../../../icons/calendar.svg'
+import geolocation from '../../../icons/geolocation.svg'
+import { getCities } from "../../../api/cities";
+import CitySelect from '../../Ui/CitySelect/CitySelect'
+import DateSelect from '../../Ui/DateSelect/DateSelect'
 
 const TravelForm = () => {
+	const [cities, setCities] = useState([]);
+
+	function handleCityInput(value) {
+    getCities(value).then(res => setCities(res));
+  }
+
+	function handleCitySelect(value) {
+    console.log(value);
+  }
+ 
   return (
     <div className={s['travel-form']}>
 			<div className={s['travel-form__fields']}>
@@ -13,9 +27,21 @@ const TravelForm = () => {
 					</p>
 
 					<div className={s.directionFields}>
-						<Select />
+						<CitySelect 
+							options={cities} 
+							handleCityInput={handleCityInput} 
+							handleCitySelect={handleCitySelect} 
+							icon={geolocation} 
+							placeholder={"Откуда"} 
+						/>
 
-						<Select />
+						<CitySelect 
+							options={cities} 
+							handleCityInput={handleCityInput} 
+							handleCitySelect={handleCitySelect} 
+							icon={geolocation} 
+							placeholder={"Куда"}
+						/>
 					</div>
 				</div>
 
@@ -25,9 +51,9 @@ const TravelForm = () => {
 					</p>
 
 					<div className={s.dateFields}>
-						<Select />
+						<DateSelect icon={calendar} />
 
-						<Select />
+						<DateSelect icon={calendar} />
 					</div>
 				</div>
 			</div>

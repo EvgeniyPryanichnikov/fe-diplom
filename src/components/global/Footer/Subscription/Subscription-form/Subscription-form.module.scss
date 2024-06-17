@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  gap: 20px;
+  align-items: end;
+  margin-bottom: 30px;
+
+  .button {
+    color: #E5E5E5;
+    width: 170px;
+    border: 1px solid #E5E5E5;
+  }
+}
