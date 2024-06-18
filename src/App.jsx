@@ -1,13 +1,15 @@
 import './App.css';
 
-import Main from './pages/Main/Main'
+// import Main from './pages/Main/Main'
+import Tickets from './pages/Tickets/Tickets'
 import Footer from './components/global/Footer/Footer'
 
 function App() {
   return (
     <div className="App">
-      <Main />
-      
+      {/* <Main /> */}
+      <Tickets />
+
       <Footer />
     </div>
   );
