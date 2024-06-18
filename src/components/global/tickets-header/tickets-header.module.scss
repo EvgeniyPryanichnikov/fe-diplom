@@ -1,0 +1,45 @@
+.ticketsHeader {
+  height: 596px;
+  background: url('../../../../public/image/header-tickets-page-background.png'), linear-gradient(to top, rgba(89, 55, 3, 0.8), rgba(69, 40, 1, 0.9));
+
+  .stepsContainer {
+    display: grid;
+    grid-template-columns: 1fr 400px 400px 1fr;
+
+    .step {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      padding-right: 20px;
+      background-color: #3E3C41;
+
+      &.active {
+        background-color: #FFA800; // изменения для активного шага
+      }
+
+      &:first-child {
+        padding-left: 160px;
+      }
+
+      .title {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+
+        .number {
+          font-size: 30px;
+          font-weight: 700;
+        }
+  
+        .text {
+          font-size: 30px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+
+

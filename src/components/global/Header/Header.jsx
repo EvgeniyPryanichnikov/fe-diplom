@@ -1,6 +1,6 @@
 import React from 'react'
 
-import s from './header.module.scss'
+import s from './Header.module.scss'
 import Logo from '../../common/Logo/Logo'
 import Navbar from '../../common/Navbar/Navbar'
 

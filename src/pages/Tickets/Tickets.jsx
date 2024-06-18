@@ -1,7 +1,7 @@
 import React from 'react'
 
 import s from './Tickets.module.scss'
-import TicketsHeader from '../../components/global/tickets-header/tickets-header'
+import TicketsHeader from '../../components/global/Tickets-header/Tickets-header'
 
 
 const Tickets = () => {
