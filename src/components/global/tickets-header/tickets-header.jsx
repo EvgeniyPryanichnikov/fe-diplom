@@ -3,6 +3,7 @@ import React from 'react'
 import s from './Tickets-header.module.scss'
 import Header from '../Header/Header'
 import vector from '../../../icons/vector.png'
+import ellipse from '../../../icons/ellipse.png'
 // import TravelForm from '../../common/Travel-form/Travel-form'
 
 const TicketsHeader = () => {
@@ -34,6 +35,7 @@ const TicketsHeader = () => {
 
             {step.needArrow &&
               <img
+                className={s.vector}
                 src={vector} alt="" 
               />
             }
