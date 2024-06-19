@@ -4,6 +4,10 @@ import s from './Train-item.module.scss'
 import trainIcon from '../../../../../icons/train.svg'
 import leftArrowIcon from '../../../../../icons/left-arrow-yellow.svg'
 import rightArrowIcon from '../../../../../icons/right-arrow-yellow.svg'
+import rubIcon from '../../../../../icons/rub.svg'
+import wifiIcon from '../../../../../icons/wifi.svg'
+import cupIcon from '../../../../../icons/cup.svg'
+import expressIcon from '../../../../../icons/express.svg'
 
 const TrainItem = () => {
   return (
@@ -42,7 +46,6 @@ const TrainItem = () => {
               alt="" 
               className={s.arrow}
             />
-            
           </div>
 
           <div className={s.wrapper}>
@@ -50,7 +53,6 @@ const TrainItem = () => {
             <div className={s.cityName}>Москва</div>
             <div className={s.stationName}>Курский вокзал</div>
           </div>
-
         </div>
 
         <div className={s.row}>
@@ -68,7 +70,6 @@ const TrainItem = () => {
               alt="" 
               className={s.arrow}
             />
-            
           </div>
 
           <div className={s.wrapper}>
@@ -76,21 +77,29 @@ const TrainItem = () => {
             <div className={s.cityName}>Москва</div>
             <div className={s.stationName}>Курский вокзал</div>
           </div>
-
         </div>
       </div>
 
       <div className={s.seatInfo}>
-        <div className={s.seatRow}>
+        <div className={s.row}>
           <span className={s.classSeat}>Плацкарт</span>
 
           <span className={s.count}>19</span>
 
           <div className={s.minPrice}>
-            {/* <span></span> остановился на последнем разделе билета, продолжать от сюда */}
+            <span className={s.label}>От</span>
+            <span className={s.value}>1500</span>
+            <img src={rubIcon} alt="" />
           </div>
-
         </div>
+
+        <div className={s.advantages}>
+          <img src={wifiIcon} alt="" />
+          <img src={cupIcon} alt="" />
+          <img src={expressIcon} alt="" />
+        </div>
+
+        <button className={s.changeSeatBtn}>Выбрать места</button>
       </div>
     </div>
   )
