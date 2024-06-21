@@ -2,7 +2,7 @@ import React from 'react'
 
 import s from './Tickets.module.scss'
 import TicketsHeader from '../../components/global/Tickets-header/Tickets-header'
-import TicketsContent from '../../components/global/Tickets-content/Train-selection/Trains-list/Trains-list'
+import TicketsContent from '../../components/global/Tickets-content/Tickets-content'
 
 
 const Tickets = () => {

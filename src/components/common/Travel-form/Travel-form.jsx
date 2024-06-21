@@ -7,7 +7,7 @@ import { getCities } from "../../../api/cities";
 import CitySelect from '../../Ui/CitySelect/CitySelect'
 import DateSelect from '../../Ui/DateSelect/DateSelect'
 
-const TravelForm = () => {
+const TravelForm = ({isRow}) => {
 	const [cities, setCities] = useState([]);
 
 	function handleCityInput(value) {
@@ -19,7 +19,7 @@ const TravelForm = () => {
   }
  
   return (
-    <div className={s.travelForm}>
+    <div className={isRow ? s.isRow : s.travelForm}>
 			<div className={s.fields}>
 				<div className={s.direction}>
 					<p className={s.title}>

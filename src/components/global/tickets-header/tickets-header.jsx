@@ -4,7 +4,7 @@ import s from './Tickets-header.module.scss'
 import Header from '../Header/Header'
 import vector from '../../../icons/vector.png'
 import ellipse from '../../../icons/ellipse.png'
-// import TravelForm from '../../common/Travel-form/Travel-form'
+import TravelForm from '../../common/Travel-form/Travel-form'
 
 const TicketsHeader = () => {
   const steps = [
@@ -17,9 +17,11 @@ const TicketsHeader = () => {
     <div className={s.ticketsHeader}>
       <Header />
 
-      {/* <div>
-        <TravelForm />
-      </div> */}
+      <div>
+        <TravelForm 
+          isRow={true}
+        />
+      </div>
 
       <div className={s.stepsContainer}>
         {steps.map(step => (
