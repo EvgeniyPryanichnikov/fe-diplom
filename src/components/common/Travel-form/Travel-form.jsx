@@ -1,7 +1,6 @@
 import {React, useState} from 'react'
 
 import s from './Travel-form.module.scss'
-import calendar from '../../../icons/calendar.svg'
 import geolocation from '../../../icons/geolocation.svg'
 import { getCities } from "../../../api/cities";
 import CitySelect from '../../Ui/CitySelect/CitySelect'
@@ -51,9 +50,9 @@ const TravelForm = ({isRow}) => {
 					</p>
 
 					<div className={s.dateFields}>
-						<DateSelect icon={calendar} />
+						<DateSelect />
 
-						<DateSelect icon={calendar} />
+						<DateSelect  />
 					</div>
 				</div>
 			</div>

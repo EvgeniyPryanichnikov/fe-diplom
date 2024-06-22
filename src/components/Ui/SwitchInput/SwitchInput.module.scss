@@ -1,0 +1,62 @@
+.switchInput {
+  cursor: pointer;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 20px 23fr 10fr;
+  align-items: center;
+  gap: 33px;
+  user-select: none;
+
+  .control {
+    display: inline-block;
+    background: #FFF;
+    border-radius: 16px;
+    width: 72px;
+    height: 24px;
+    position: relative;
+    vertical-align: middle;
+    transition: background 0.25s;
+    flex-shrink: 0;
+
+    &::before,
+    &::after {
+      content: '';
+    }
+
+    &::before {
+      width: 30px;
+      height: 30px;
+      display: block;
+      background: #C4C4C4;
+      border-radius: 50%;
+      position: absolute;
+      top: -3px;
+      left: 0px;
+      transition: left 0.25s;
+    }
+  }
+
+  input[type='checkbox'] {
+    position: absolute;
+    visibility: hidden;
+    margin: 0;
+
+    &:not(:disabled):checked + span + span {
+      background: #FCDC9D;
+    }
+
+    &:disabled:checked + span {
+      background: #FCDC9D;
+    }
+
+    &:checked + span + span::before {
+      left: 46px;
+      background:#FFA800;
+    }
+  }
+
+  .label {
+    color: #FFF;
+    font-size: 18px;
+  }
+}

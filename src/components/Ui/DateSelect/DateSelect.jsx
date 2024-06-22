@@ -1,11 +1,12 @@
 import React, { useState } from  "react";
 import Calendar from 'react-calendar';
+import calendar from '../../../icons/calendar.svg'
 import 'react-calendar/dist/Calendar.css';
 import s from "./DateSelect.module.scss";
 
 
 const DateSelect = (props) => {
-  const {icon} = props
+  const label = props.label
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState(new Date());
   const [inputDate, setInputDate] = useState("");
@@ -37,6 +38,12 @@ const DateSelect = (props) => {
 
   return (
     <div className={s.select}>
+      {label && 
+        <p className={s.label}>
+          {label}
+        </p>
+      }
+        
       <div className={s.inputContainer}>
         <input 
           className={s.input}
@@ -47,11 +54,11 @@ const DateSelect = (props) => {
         />
         
         <button onClick={toggleCalendar}>
-          <img src={icon} alt="calendar" />   
+          <img src={calendar} alt="calendar" />   
         </button>
       </div>
 
-      {isOpen && <Calendar value={date} onChange={convertDate}/>}
+      {isOpen && <Calendar className={s.calendar} value={date} onChange={convertDate}/>}
     </div>
   );
 };

@@ -1,0 +1,18 @@
+.trainForm {
+  display: flex;
+  flex-direction: column;
+  background: #3E3C41;
+
+  .dateGroup {
+    display: grid;
+    gap: 28px;
+    padding: 43px 36px 34px 28px;
+  }
+
+  .switchGroup {
+    display: grid;
+    gap: 28px;
+    border-top: 1px solid #E5E5E5;
+    padding: 43px 36px 34px 68px;
+  }
+}
