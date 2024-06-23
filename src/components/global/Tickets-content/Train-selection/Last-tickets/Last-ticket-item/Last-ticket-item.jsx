@@ -6,41 +6,47 @@ import cupIcon from '../../../../../../icons/cup.svg'
 import expressIcon from '../../../../../../icons/express.svg'
 import rubIcon from '../../../../../../icons/rub.svg'
 
-const LastTicketItem = () => {
+const LastTicketItem = ({cityFrom, cityTo, stationNameFrom, stationNameTo, wifi, express, minPrice}) => {
   return (
     <div className={s.lasTicketItem}>
       <div className={s.scheduleRow}>
         <div className={s.wrapper}>
           <span className={s.cityName}>
-            Москва
+            {cityFrom}
           </span>
 
           <span className={s.stationName}>
-            Курский вокзал
+            {stationNameFrom}
           </span>
         </div>
 
         <div className={s.wrapper}>
           <span className={s.cityName}>
-            Адлер
+            {cityTo}
           </span>
 
           <span className={s.stationName}>
-            Адлер вокзал
+          {stationNameTo}
           </span>
         </div>
       </div>
 
       <div className={s.details}>
         <div className={s.advantages}>
-          <img src={wifiIcon} alt="" />
+          {wifi && 
+            <img src={wifiIcon} alt=""
+          />}
+          
+          {express &&
+            <img src={expressIcon} alt=""
+          />}
+
           <img src={cupIcon} alt="" />
-          <img src={expressIcon} alt="" />
         </div>
 
         <div className={s.minPrice}>
           <span className={s.label}>От</span>
-          <span className={s.value}>550</span>
+          <span className={s.value}>{minPrice}</span>
           <img src={rubIcon} alt="" />
         </div>
       </div>

@@ -50,7 +50,7 @@ const TravelForm = ({isRow}) => {
 					</p>
 
 					<div className={s.dateFields}>
-						<DateSelect />
+						<DateSelect className={s.dateSelect}/>
 
 						<DateSelect  />
 					</div>

@@ -7,6 +7,11 @@
     display: grid;
     gap: 28px;
     padding: 43px 36px 34px 28px;
+
+    .dateSelect {
+      width: 100%;
+      height: 43px;
+    }
   }
 
   .switchGroup {

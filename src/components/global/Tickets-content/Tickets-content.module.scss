@@ -1,10 +1,10 @@
 .ticketsContent {
   min-height: 40vh;
   display: grid;
-  grid-template-columns: 3fr 8fr;
+  grid-template-columns: 380px 1fr;
   align-items: start;
   gap: 86px;
-  padding: 95px calc(10% + 65px) 193px calc(10% + 65px);
+  padding: 100px 174px;
 
   .sidebar {
     display: flex;

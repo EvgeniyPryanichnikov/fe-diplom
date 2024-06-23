@@ -6,8 +6,6 @@ import TicketsContent from '../../components/global/Tickets-content/Tickets-cont
 
 
 const Tickets = () => {
-
-
   return (
     <div className={s.ticketsPage}>
       <TicketsHeader />

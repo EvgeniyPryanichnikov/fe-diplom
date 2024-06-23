@@ -26,7 +26,9 @@ const TrainForm = () => {
   return (
     <div className={s.trainForm}>
       <div className={s.dateGroup}>
-        <DateSelect label={'Дата поездки'}/>
+        <DateSelect 
+        className={s.dateSelect}
+        label={'Дата поездки'}/>
 
         <DateSelect label={'Дата возвращения'}/>
       </div>
