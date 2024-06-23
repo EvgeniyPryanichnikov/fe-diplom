@@ -15,4 +15,128 @@
     border-top: 1px solid #E5E5E5;
     padding: 43px 36px 34px 68px;
   }
+
+  .price {
+    display: grid;
+    gap: 28px;
+    border-top: 1px solid #E5E5E5;
+    padding: 37px 32px 34px 32px;
+
+    .title {
+      font-size: 30px;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    .range {
+      .multi-range-slider {
+        border: none;
+        padding: 0;
+        box-shadow: none;
+      }
+  
+      .ruler {
+        display: none;
+      }
+  
+      .multi-range-slider .thumb .caption * {
+        line-height: normal;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+  
+      .multi-range-slider .bar-inner {
+        background-color: var(--color-primary);
+        border-radius: 8px;
+        border: 1px solid var(--color-text--label-disabled);
+        box-shadow: none;
+      }
+  
+      .bar-right,
+      .bar-left {
+        border: 1px solid var(--color-text--label-disabled);
+        background: transparent;
+        box-shadow: none;
+      }
+  
+      .bar-right {
+        border-radius: 0 8px 8px 0;
+      }
+  
+      .bar-left {
+        border-radius: 8px 0 0 8px;
+      }
+  
+      .thumb::before {
+        border: none;
+        box-shadow: none;
+        margin: -3px -12px;
+      }
+  
+      .multi-range-slider .labels,
+      .multi-range-slider .thumb .caption * {
+        color: #e5e5e5;
+        font-size: 16px;
+      }
+  
+      .caption {
+        top: 35px;
+        width: 2px;
+        height: 2px;
+        left: 30px;
+        display: none;
+      }
+    }    
+  }
+
+  .directionBlock {
+    display: grid;
+    padding: 33px 32px 37px 34px;
+    border-top: 1px solid #e5e5e5;
+
+    .titleBlock {
+      display: grid;
+      grid-template-columns: 32px 1fr 20px;
+
+      .arrowIcon {
+        align-self: center;
+      }
+
+      .title {
+        font-size: 30px;
+        font-weight: 700;
+        color: #fff;
+        margin-left: 20px;
+      }
+
+      .iconShow {
+        cursor: pointer;
+        width: 25px;
+      }
+    }
+
+    .transitTimeBlock {
+      display: grid;
+      gap: 46px;
+      padding: 22px 0 0 0;
+
+      .row {
+        display: grid;
+        gap: 19px;
+
+        .labelLeft,
+        .labelRight {
+          color: #e5e5e5;
+          font-size: 24px;
+        }
+
+        .labelRight {
+          text-align: right;
+        }
+      }
+    }
+  }
 }
+  

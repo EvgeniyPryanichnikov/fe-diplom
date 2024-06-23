@@ -7,6 +7,11 @@
   gap: 33px;
   user-select: none;
 
+  .icon {
+    width: 20px;
+    color: #E5E5E5;
+  }
+
   .control {
     display: inline-block;
     background: #FFF;
@@ -57,6 +62,6 @@
 
   .label {
     color: #FFF;
-    font-size: 18px;
+    font-size: 20px;
   }
 }

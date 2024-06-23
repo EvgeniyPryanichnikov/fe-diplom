@@ -1,0 +1,51 @@
+.directionBlock {
+  display: grid;
+  padding: 33px 32px 37px 34px;
+  border-top: 1px solid #e5e5e5;
+
+  .titleBlock {
+    display: grid;
+    grid-template-columns: 32px 1fr 20px;
+
+    .arrowIcon {
+      align-self: center;
+    }
+
+    .title {
+      font-size: 30px;
+      font-weight: 700;
+      color: #fff;
+      margin-left: 20px;
+    }
+
+    .iconShow {
+      cursor: pointer;
+      width: 25px;
+
+      &:hover {
+        color: #FCDC9D;
+      }
+    }
+  }
+
+  .transitTimeBlock {
+    display: grid;
+    gap: 46px;
+    padding: 22px 0 0 0;
+
+    .row {
+      display: grid;
+      gap: 19px;
+
+      .labelLeft,
+      .labelRight {
+        color: #e5e5e5;
+        font-size: 24px;
+      }
+
+      .labelRight {
+        text-align: right;
+      }
+    }
+  }
+}

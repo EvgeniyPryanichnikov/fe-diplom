@@ -5,4 +5,10 @@
   align-items: start;
   gap: 86px;
   padding: 95px calc(10% + 65px) 193px calc(10% + 65px);
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 94px;
+  }
 }
