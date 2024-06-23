@@ -11,8 +11,6 @@ const LastTickets = () => {
 		getLastTickets().then(res => setLastTickets(res))
 	}, [])
 
-  console.log(lastTickets)
-
   return (
     <div
      className={s.lastTickets}>
