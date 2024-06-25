@@ -26,7 +26,7 @@ const LastTicketItem = ({cityFrom, cityTo, stationNameFrom, stationNameTo, wifi,
           </span>
 
           <span className={s.stationName}>
-          {stationNameTo}
+            {stationNameTo}
           </span>
         </div>
       </div>

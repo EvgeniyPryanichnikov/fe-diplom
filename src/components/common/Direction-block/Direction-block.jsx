@@ -33,7 +33,7 @@ const DirectionBlock = ({icon, title,  labelLeft, labelRight}) => {
             <span className={s.labelRight}>
              {labelRight}  
             </span>
-            </div>
+          </div>
         </div>
       }
     </div>

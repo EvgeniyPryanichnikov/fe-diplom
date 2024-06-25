@@ -1,10 +1,15 @@
 .trainItem {
   display: grid;
   grid-template-columns: 180px 1fr 276px;
+  margin-bottom: 47px;
   width: 960px;
   border: 1px solid #C4C4C4;
   background-color: #fff;
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    border: 1px solid #FFA800;
+  }
 
   .generalInfo {
     background-color: #E4E0E9;
@@ -28,6 +33,7 @@
     .row {
       display: grid;
       grid-template-columns: minmax(min-content, 31fr) 57px minmax(min-content, 37fr);
+      height: max-content;
       gap: 40px;
 
       .wrapper {

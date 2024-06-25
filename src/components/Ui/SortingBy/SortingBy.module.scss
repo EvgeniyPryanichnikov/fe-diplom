@@ -1,0 +1,41 @@
+.select {
+  display: flex;
+  position: relative;
+
+  .input,
+  .title {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .title {
+    color: #928F94;
+    margin-right: 4px;
+  }
+  .options {
+    position: absolute;
+    z-index: 2;
+    right: -148px;
+    width: 139px;
+    height: 117px;
+    background: #F7F5F9;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+    .option {
+      cursor: pointer;
+      padding: 7px;
+      font-size: 18px;
+      font-weight: 400;
+      color: #000;
+      border-bottom: 1px solid #E5E5E5;
+
+      &:hover {
+        background: #e1e0e2;
+      }
+    }
+  }
+  .input {
+    color: #000;
+  }
+ 
+}

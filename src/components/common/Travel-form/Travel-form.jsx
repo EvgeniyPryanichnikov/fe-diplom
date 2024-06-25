@@ -1,13 +1,12 @@
-import {React, useState} from 'react'
+import { React, useState } from 'react'
 import s from './Travel-form.module.scss'
 import geolocation from '../../../icons/geolocation.svg'
-import { getCities } from "../../../api/cities";
+import { getCities } from "../../../api/cities"
 import CitySelect from '../../Ui/CitySelect/CitySelect'
 import DateSelect from '../../Ui/DateSelect/DateSelect'
-import {Link} from "react-router-dom";
-import {searchRoutes} from "../../../api/routes";
-import {useDispatch, useSelector} from "react-redux";
-import {setCityFrom, setCityTo, setDateFrom, setDateTo, updateTicketsInfo} from "../../../store/slices/ticketsSlice";
+import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { setCityFrom, setCityTo, setDateFrom, setDateTo } from "../../../store/slices/ticketsSlice"
 
 const TravelForm = ({isRow}) => {
 	const [cities, setCities] = useState([]);
@@ -34,20 +33,8 @@ const TravelForm = ({isRow}) => {
     dispatch(setCityTo(value));
   }
 
-
-  const handleSearch = () => {
-    // searchRoutes({
-    //   from_city_id: cityFrom._id,
-    //   to_city_id: cityTo._id,
-    //   date_start: dateFrom.split(".").reverse().join("-"),
-    //   date_end: dateTo.split(".").reverse().join("-"),
-    //   limit: 20
-    // }).then(res => dispatch(updateTicketsInfo(res)));
-  }
-
   const handleChangeDateFrom = (date) => {
     dispatch(setDateFrom(date))
-
   }
 
   const handleChangeDateTo = (date) => {
@@ -98,7 +85,7 @@ const TravelForm = ({isRow}) => {
 			</div>
 
 			<div className={s.buttonContainer}>
-				<Link to={"/tickets"} className={s['button-find']} onClick={handleSearch}>
+				<Link to={"/tickets"} className={s['button-find']}>
 					Найти билеты
 				</Link>
 			</div>
