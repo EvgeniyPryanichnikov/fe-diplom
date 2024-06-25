@@ -19,7 +19,9 @@ export const SortingBy = () => {
   }
 
   function onOptionClick(value) {
-    dispatch(setSortValue(value)) // разобраться с сортировкой
+    console.log(value)
+    dispatch(setSortValue(value))
+    setIsOpen(false)
   }
 
   return (

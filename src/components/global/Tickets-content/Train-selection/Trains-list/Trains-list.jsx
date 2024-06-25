@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 
 const TrainsList = () => {
   const tickets = useSelector(state => state.tickets.tickets)
-  console.log(tickets)
 
   return (
     <div className={s.trainsList}>

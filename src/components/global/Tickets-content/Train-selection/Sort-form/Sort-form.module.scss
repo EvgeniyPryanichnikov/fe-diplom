@@ -1,10 +1,29 @@
 .sortForm {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 260px 208px;
+  gap: 48px;
+  margin-bottom: 47px;
 
-  .count {
+  .showBy {
+    font-size: 18px;
+    font-weight: 400;
+    color: #000;
+  }
+  
+  .title,
+  .count,
+  .value {
     font-size: 18px;
     font-weight: 400;
     color: #928F94;
+  }
+  
+  .title,
+  .value {
+    margin-right: 8px;
+  }
+
+  .value {
+    cursor: pointer;
   }
 }

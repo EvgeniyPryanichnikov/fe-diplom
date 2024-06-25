@@ -8,8 +8,9 @@ const initialState = {
     to: null
   },
   filters: {
+    limit: '5',
     sort_title: 'времени',
-    sort: '',
+    sort: 'date',
     from_city_id: null,
     to_city_id: null,
     date_start: "",
@@ -39,6 +40,9 @@ export const ticketsSlice = createSlice({
       state.filters.sort_title = action.payload.title
       state.filters.sort = action.payload.value
     },
+    setLimit: (state, action) => {
+      state.filters.limit = action.payload
+    },
     updateTicketsInfo: (state, action) => {
       const {items, total_count} = action.payload
       state.tickets = items
@@ -47,7 +51,7 @@ export const ticketsSlice = createSlice({
   },
 })
 
-export const { setCityFrom, setCityTo, setDateFrom, setDateTo, updateTicketsInfo, setSortValue} = ticketsSlice.actions
+export const { setCityFrom, setCityTo, setDateFrom, setDateTo, updateTicketsInfo, setSortValue, setLimit } = ticketsSlice.actions
 
 export default ticketsSlice.reducer
 
