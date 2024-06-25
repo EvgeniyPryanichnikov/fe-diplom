@@ -6,28 +6,30 @@ import s from "./DateSelect.module.scss";
 
 
 const DateSelect = (props) => {
+  const {handleChangeDate, selectedDate} = props;
   const label = props.label
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState(new Date());
-  const [inputDate, setInputDate] = useState("");
+  const [inputDate, setInputDate] = useState(selectedDate);
 
   const toggleCalendar = () => {
     setIsOpen(!isOpen);
   }
 
-  function convertDate(date) { 
+  function convertDate(date) {
     setDate(date);
     setInputDate(date.toLocaleDateString())
+    handleChangeDate(date.toLocaleDateString())
   }
-  
+
   function handleInputDateChange(e){
     // TODO: добавить валидацию
 
     setInputDate(e.target.value);
-    
+
     const dateString = e.target.value;
 
-    const [day, month, year] = dateString.split('.').map(Number); 
+    const [day, month, year] = dateString.split('.').map(Number);
 
     const newDate = new Date(year, month - 1, day);
 
@@ -38,23 +40,23 @@ const DateSelect = (props) => {
 
   return (
     <div className={s.select}>
-      {label && 
+      {label &&
         <p className={s.label}>
           {label}
         </p>
       }
-        
+
       <div className={s.inputContainer}>
-        <input 
+        <input
           className={s.input}
-          type="text" 
-          placeholder="ДД.ММ.ГГГГ" 
+          type="text"
+          placeholder="ДД.ММ.ГГГГ"
           value={inputDate}
-          onChange={handleInputDateChange} 
+          onChange={handleInputDateChange}
         />
-        
+
         <button onClick={toggleCalendar}>
-          <img src={calendar} alt="calendar" />   
+          <img src={calendar} alt="calendar" />
         </button>
       </div>
 

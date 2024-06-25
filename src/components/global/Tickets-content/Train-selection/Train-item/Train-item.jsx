@@ -9,7 +9,22 @@ import wifiIcon from '../../../../../icons/wifi.svg'
 import cupIcon from '../../../../../icons/cup.svg'
 import expressIcon from '../../../../../icons/express.svg'
 
-const TrainItem = () => {
+const TrainItem = ({item}) => {
+  const {
+    have_first_class,
+    have_second_class,
+    have_third_class,
+    have_fourth_class,
+    have_wifi,
+    have_air_conditioning,
+    is_express,
+    min_price,
+    available_seats,
+    available_seats_info,
+    departure,
+    arrival
+  } = item;
+
   return (
     <div className={s.trainItem}>
       <div className={s.generalInfo}>
@@ -41,9 +56,9 @@ const TrainItem = () => {
           <div className={s.drivingTime}>
             <span>15 : 15</span>
 
-            <img 
-              src={rightArrowIcon} 
-              alt="" 
+            <img
+              src={rightArrowIcon}
+              alt=""
               className={s.arrow}
             />
           </div>
@@ -65,9 +80,9 @@ const TrainItem = () => {
           <div className={s.drivingTime}>
             <span>23 : 23</span>
 
-            <img 
-              src={leftArrowIcon} 
-              alt="" 
+            <img
+              src={leftArrowIcon}
+              alt=""
               className={s.arrow}
             />
           </div>

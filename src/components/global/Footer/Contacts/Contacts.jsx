@@ -40,7 +40,7 @@ const Contacts = () => {
 
 			<div className={s.list}>
 				{contacts.map(contact => (
-					<div className={s.item}>
+					<div className={s.item} key={contact.id}>
 						<img src={contact.icon} alt="" />
 
 						<span className={s.text}>{contact.text}</span>

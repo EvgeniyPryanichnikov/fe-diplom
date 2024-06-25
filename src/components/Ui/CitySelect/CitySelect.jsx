@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import s from "./CitySelect.module.scss";
 
-const CitySelect = ({options = [], handleCitySelect, handleCityInput, placeholder, icon, ...props }) => {
+const CitySelect = ({options = [], handleCitySelect, selectedCity, handleCityInput, placeholder, icon, ...props }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [input, setInput] = useState('');
+	const [input, setInput] = useState(selectedCity?.name || "");
 
 	const showedOptions = options.filter(el => el.name.toLowerCase().includes(input.toLowerCase()))
 
 	function onOptionClick(opt) {
 		handleCitySelect(opt);
-		setInput(opt);
+		setInput(opt.name);
 		setIsOpen(false);
 	}
 
@@ -36,20 +36,20 @@ const CitySelect = ({options = [], handleCitySelect, handleCityInput, placeholde
 		<>
 			<div className={s.select} {...props}>
 				<div className={s.inputContainer}>
-					<input 
+					<input
 						className={s.input}
 						value={input}
 						onChange={onInputChange}
-						type="text" 
+						type="text"
 						placeholder={placeholder}
 					/>
 
 					<img className={s.icon} src={icon} alt="" />
 				</div>
-				
+
 
 				{isOpen && <div className={s.options}>
-					{showedOptions.map(opt => <div key={opt._id} className={s.optionItem} onClick={() => onOptionClick(opt.name)}>
+					{showedOptions.map(opt => <div key={opt._id} className={s.optionItem} onClick={() => onOptionClick(opt)}>
 						{opt.name.toUpperCase()}
 					</div>)}
 				</div>}
