@@ -26,7 +26,7 @@
   .options {
     width: 100%;
     overflow-y: scroll;
-    max-height: 255px;
+    max-height: 235px;
     z-index: 2;
     top: 65px;
     border-radius: 3px;
@@ -37,7 +37,7 @@
       padding: 4px 20px;
 
       &:hover {
-        background-color: #E5E5E5;
+        background-color: #FFCA62;
         cursor: pointer;
       }
     }

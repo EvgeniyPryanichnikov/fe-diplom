@@ -8,6 +8,12 @@ const initialState = {
     to: null
   },
   filters: {
+    have_express: null,
+    have_wifi: null,
+    have_fourth_class: null,
+    have_third_class: null,
+    have_first_class: null,
+    have_second_class: null,
     limit: '5',
     sort_title: 'времени',
     sort: 'date',
@@ -24,11 +30,11 @@ export const ticketsSlice = createSlice({
   reducers: {
     setCityFrom: (state, action) => {
       state.filters.from_city_id = action.payload._id
-      state.cities.from = action.payload;
+      state.cities.from = action.payload
     },
     setCityTo: (state, action) => {
       state.filters.to_city_id = action.payload._id
-      state.cities.to = action.payload;
+      state.cities.to = action.payload
     },
     setDateFrom: (state, action) => {
       state.filters.date_start = action.payload
@@ -43,15 +49,47 @@ export const ticketsSlice = createSlice({
     setLimit: (state, action) => {
       state.filters.limit = action.payload
     },
+    setSecondClass: (state, action) => {
+      state.filters.have_second_class = action.payload
+    },
+    setFirstClass: (state, action) => {
+      state.filters.have_first_class = action.payload
+    },
+    setThirdClass: (state, action) => {
+      state.filters.have_third_class = action.payload
+    },
+    setFourthClass: (state, action) => {
+      state.filters.have_fourth_class = action.payload
+    },
+    setWiFi: (state, action) => {
+      state.filters.have_wifi = action.payload
+    },
+    setExpress: (state, action) => {
+      state.filters.have_express = action.payload
+    },
     updateTicketsInfo: (state, action) => {
       const {items, total_count} = action.payload
       state.tickets = items
       state.totalCount = total_count
     }
-  },
+  }
 })
 
-export const { setCityFrom, setCityTo, setDateFrom, setDateTo, updateTicketsInfo, setSortValue, setLimit } = ticketsSlice.actions
+export const { 
+  setCityFrom, 
+  setCityTo, 
+  setDateFrom, 
+  setDateTo, 
+  updateTicketsInfo, 
+  setSortValue, 
+  setLimit, 
+  setSecondClass, 
+  setFirstClass, 
+  setThirdClass, 
+  setFourthClass,
+  setWiFi,
+  setExpress
+} = ticketsSlice.actions
 
 export default ticketsSlice.reducer
 

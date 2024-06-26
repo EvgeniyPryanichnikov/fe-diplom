@@ -9,7 +9,7 @@ const CitySelect = ({options = [], handleCitySelect, selectedCity, handleCityInp
 
 	function onOptionClick(opt) {
 		handleCitySelect(opt);
-		setInput(opt.name);
+		setInput(opt.name.toUpperCase());
 		setIsOpen(false);
 	}
 

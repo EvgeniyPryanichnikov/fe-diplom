@@ -17,7 +17,7 @@ const TravelForm = ({isRow}) => {
   } = useSelector(state => state.tickets.filters); // получение данных
 
   const {from: cityFrom, to: cityTo} = useSelector(state => state.tickets.cities)
-  const dispatch = useDispatch(); // изменение данных
+  const dispatch = useDispatch() // изменение данных
 
 
 
@@ -26,11 +26,11 @@ const TravelForm = ({isRow}) => {
   }
 
 	function handleCityFromSelect(value) {
-    dispatch(setCityFrom(value));
+    dispatch(setCityFrom(value))
   }
 
   function handleCityToSelect(value) {
-    dispatch(setCityTo(value));
+    dispatch(setCityTo(value))
   }
 
   const handleChangeDateFrom = (date) => {
@@ -40,7 +40,6 @@ const TravelForm = ({isRow}) => {
   const handleChangeDateTo = (date) => {
     dispatch(setDateTo(date))
   }
-
 
   return (
     <div className={isRow ? s.isRow : s.travelForm}>
@@ -85,7 +84,7 @@ const TravelForm = ({isRow}) => {
 			</div>
 
 			<div className={s.buttonContainer}>
-				<Link to={"/tickets"} className={s['button-find']}>
+				<Link to={"/tickets"} className={s.buttonFind}>
 					Найти билеты
 				</Link>
 			</div>

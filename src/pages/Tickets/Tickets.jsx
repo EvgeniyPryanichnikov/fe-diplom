@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect } from 'react'
 
 import s from './Tickets.module.scss'
 import TicketsHeader from '../../components/global/Tickets-header/Tickets-header'
@@ -10,13 +10,20 @@ import { updateTicketsInfo } from "../../store/slices/ticketsSlice"
 
 const Tickets = () => {
   const filters = useSelector(state => state.tickets.filters)
+  let actualFilters = {}
+
+  for (const filter in filters) { //TODO проверка на пустые фильтры, может есть решение деликатнее
+    if (filters[filter]) {
+      actualFilters[filter] = filters[filter]
+    }
+  }
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!filters.from_city_id || !filters.to_city_id) return // сделать предупреждение, что не выбрано направление
+    if (!filters.from_city_id || !filters.to_city_id) return //TODO сделать предупреждение, что не выбрано направление
     
-    searchRoutes(filters).then(res => dispatch(updateTicketsInfo(res)))
+    searchRoutes(actualFilters).then(res => dispatch(updateTicketsInfo(res)))
   }, [filters])
 
   return (

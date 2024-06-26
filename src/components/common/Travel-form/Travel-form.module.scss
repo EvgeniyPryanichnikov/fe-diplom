@@ -39,7 +39,10 @@
 	display: flex;
 	justify-content: end;
 
-	.button-find {
+	.buttonFind {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		border-radius: 5px;
 		background-color: #ffa800;
 		width: 325px;
