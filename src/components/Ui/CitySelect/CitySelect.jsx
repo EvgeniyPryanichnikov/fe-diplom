@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import s from "./CitySelect.module.scss";
+import React, { useEffect, useState } from "react"
+import s from "./CitySelect.module.scss"
+import { ReactComponent as IconGeo } from '../../../icons/geolocation.svg'
 
-const CitySelect = ({options = [], handleCitySelect, selectedCity, handleCityInput, placeholder, icon, ...props }) => {
+const CitySelect = ({options = [], handleCitySelect, selectedCity, handleCityInput, placeholder, ...props }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [input, setInput] = useState(selectedCity?.name || "");
 
@@ -44,7 +45,7 @@ const CitySelect = ({options = [], handleCitySelect, selectedCity, handleCityInp
 						placeholder={placeholder}
 					/>
 
-					<img className={s.icon} src={icon} alt="" />
+					<IconGeo className={s.icon}/>
 				</div>
 
 

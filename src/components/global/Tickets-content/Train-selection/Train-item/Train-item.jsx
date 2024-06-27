@@ -8,6 +8,13 @@ import rubIcon from '../../../../../icons/rub.svg'
 import wifiIcon from '../../../../../icons/wifi.svg'
 import cupIcon from '../../../../../icons/cup.svg'
 import expressIcon from '../../../../../icons/express.svg'
+import { ReactComponent as IconTrain } from '../../../../../icons/train.svg'
+import { ReactComponent as IconLeft } from '../../../../../icons/left-arrow-yellow.svg'
+import { ReactComponent as IconRight } from '../../../../../icons/right-arrow-yellow.svg'
+import { ReactComponent as IconRub } from '../../../../../icons/rub.svg'
+import { ReactComponent as IconWifi } from '../../../../../icons/wifi.svg'
+import { ReactComponent as IconCup } from '../../../../../icons/cup.svg'
+import { ReactComponent as IconExpress } from '../../../../../icons/express.svg'
 
 const TrainItem = ({item}) => {
   const {
@@ -26,7 +33,7 @@ const TrainItem = ({item}) => {
   return (
     <div className={s.trainItem}>
       <div className={s.generalInfo}>
-        <img src={trainIcon} alt="" />
+        <IconTrain />
 
         <div>
           <div className={s.name}>
@@ -54,11 +61,7 @@ const TrainItem = ({item}) => {
           <div className={s.drivingTime}>
             <span>15 : 15</span>
 
-            <img
-              src={leftArrowIcon}
-              alt=""
-              className={s.arrow}
-            />
+            <IconLeft className={s.arrow} />
           </div>
 
           <div className={s.wrapper}>
@@ -79,11 +82,7 @@ const TrainItem = ({item}) => {
             <div className={s.drivingTime}>
               <span>15 : 15</span>
 
-              <img
-                src={rightArrowIcon}
-                alt=""
-                className={s.arrow}
-              />
+              <IconRight className={s.arrow}/>
             </div>
 
             <div className={s.wrapper}>
@@ -105,7 +104,8 @@ const TrainItem = ({item}) => {
             <div className={s.minPrice}>
               <span className={s.label}>От</span>
               <span className={s.value}>{departure.price_info.fourth.bottom_price}</span>
-              <img src={rubIcon} alt="" />
+
+              <IconRub />
             </div>
           </div>
         }
@@ -119,7 +119,8 @@ const TrainItem = ({item}) => {
             <div className={s.minPrice}>
               <span className={s.label}>От</span>
               <span className={s.value}>{departure.price_info.third.bottom_price}</span>
-              <img src={rubIcon} alt="" />
+
+              <IconRub />
             </div>
           </div>
         }
@@ -133,7 +134,8 @@ const TrainItem = ({item}) => {
             <div className={s.minPrice}>
               <span className={s.label}>От</span>
               <span className={s.value}>{departure.price_info.second.bottom_price}</span>
-              <img src={rubIcon} alt="" />
+
+              <IconRub />
             </div>
           </div>
         }
@@ -147,15 +149,17 @@ const TrainItem = ({item}) => {
             <div className={s.minPrice}>
               <span className={s.label}>От</span>
               <span className={s.value}>{departure.price_info.first.bottom_price}</span>
-              <img src={rubIcon} alt="" />
+             
+              <IconRub />
             </div>
           </div>
         }
 
         <div className={s.advantages}>
-          {departure.have_wifi && <img src={wifiIcon} alt="" />}
-          <img src={cupIcon} alt="" />
-          {departure.is_express && <img src={expressIcon} alt="" />}
+          {departure.have_wifi && <IconWifi className={s.icon}/>}
+          <IconCup className={s.icon}/>
+
+          {departure.is_express && <IconExpress className={s.icon}/>}
         </div>
 
         <button className={s.changeSeatBtn}>Выбрать места</button>

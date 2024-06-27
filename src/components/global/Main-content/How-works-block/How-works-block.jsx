@@ -1,9 +1,8 @@
 import React from 'react'
-
 import s from './How-works-block.module.scss'
-import computer from '../../../../icons/computer.svg'
-import city from '../../../../icons/city.svg'
-import globe from '../../../../icons/globe.svg'
+import { ReactComponent as IconComputer } from '../../../../icons/computer.svg'
+import { ReactComponent as IconCity } from'../../../../icons/city.svg'
+import { ReactComponent as IconGlobe } from '../../../../icons/globe.svg'
 
 
 const HowWorksBlock = () => {
@@ -20,7 +19,7 @@ const HowWorksBlock = () => {
 
 				<div className={s.benefitsList}>
 					<div className={s.listItem}>
-						<img src={computer} alt="" />
+						<IconComputer />
 
 						<div className={s.listItem__text}>
 							Удобный заказ на сайте
@@ -28,7 +27,7 @@ const HowWorksBlock = () => {
 					</div>
 
 					<div className={s.listItem}>
-						<img src={city} alt="" />
+						<IconCity />
 
 						<div className={s.listItem__text}>
 							Нет необходимости ехать в офис
@@ -36,7 +35,7 @@ const HowWorksBlock = () => {
 					</div>
 
 					<div className={s.listItem}>
-						<img src={globe} alt="" />
+						<IconGlobe />
 
 						<div className={s.listItem__text}>
 							Огромный выбор направлений

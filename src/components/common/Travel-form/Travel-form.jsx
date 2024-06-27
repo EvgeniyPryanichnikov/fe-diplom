@@ -1,6 +1,5 @@
 import { React, useState } from 'react'
 import s from './Travel-form.module.scss'
-import geolocation from '../../../icons/geolocation.svg'
 import { getCities } from "../../../api/cities"
 import CitySelect from '../../Ui/CitySelect/CitySelect'
 import DateSelect from '../../Ui/DateSelect/DateSelect'
@@ -18,8 +17,6 @@ const TravelForm = ({isRow}) => {
 
   const {from: cityFrom, to: cityTo} = useSelector(state => state.tickets.cities)
   const dispatch = useDispatch() // изменение данных
-
-
 
 	function handleCityInput(value) {
     getCities(value).then(res => setCities(res));
@@ -55,7 +52,6 @@ const TravelForm = ({isRow}) => {
 							options={cities}
 							handleCityInput={handleCityInput}
 							handleCitySelect={handleCityFromSelect}
-							icon={geolocation}
 							placeholder={"Откуда"}
 						/>
 
@@ -64,7 +60,6 @@ const TravelForm = ({isRow}) => {
 							options={cities}
 							handleCityInput={handleCityInput}
 							handleCitySelect={handleCityToSelect}
-							icon={geolocation}
 							placeholder={"Куда"}
 						/>
 					</div>

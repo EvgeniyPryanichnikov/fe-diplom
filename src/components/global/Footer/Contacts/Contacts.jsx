@@ -1,37 +1,38 @@
 import React from 'react'
 
 import s from './Contacts.module.scss'
-import phone from '../../../../icons/phone.svg'
-import skype from '../../../../icons/skype.svg'
-import envelope from '../../../../icons/envelope.svg'
-import geolocation from '../../../../icons/geolocation.svg'
+import { ReactComponent as IconPhone } from '../../../../icons/phone.svg'
+import { ReactComponent as IconSkype } from '../../../../icons/skype.svg'
+import { ReactComponent as IconEnvelop } from '../../../../icons/envelope.svg'
+import { ReactComponent as IconGeo } from '../../../../icons/geolocation.svg'
 
 
 const Contacts = () => {
 	const contacts = [
 		{ id: 1,
-			icon: phone,
+			icon: <IconPhone />,
 			text: '8 (800) 000 00 00'
 		},
 
 		{
 			id: 2,
-			icon: envelope,
+			icon: <IconEnvelop />,
 			text: 'inbox@mail.ru'
 		},
 
 		{
 			id: 3,
-			icon: skype,
+			icon: <IconSkype />,
 			text: 'tu.train.tickets'
 		},
 
 		{
 			id: 4,
-			icon: geolocation,
+			icon: <IconGeo />,
 			text: 'г. Москва ул. Московская 8-800-555-35-35'
 		},
 	]
+	
   return (
     <div className={s.contacts} id='contacts'>
 			<p className={s.title}>
@@ -41,7 +42,7 @@ const Contacts = () => {
 			<div className={s.list}>
 				{contacts.map(contact => (
 					<div className={s.item} key={contact.id}>
-						<img src={contact.icon} alt="" />
+						<div>{contact.icon}</div>
 
 						<span className={s.text}>{contact.text}</span>
 					</div>

@@ -5,6 +5,10 @@ import wifiIcon from '../../../../../../icons/wifi.svg'
 import cupIcon from '../../../../../../icons/cup.svg'
 import expressIcon from '../../../../../../icons/express.svg'
 import rubIcon from '../../../../../../icons/rub.svg'
+import { ReactComponent as IconWifi } from '../../../../../../icons/wifi.svg'
+import { ReactComponent as IconCup } from '../../../../../../icons/cup.svg'
+import { ReactComponent as IconExpress } from '../../../../../../icons/express.svg'
+import { ReactComponent as IconRub } from '../../../../../../icons/rub.svg'
 
 const LastTicketItem = ({cityFrom, cityTo, stationNameFrom, stationNameTo, wifi, express, minPrice}) => {
   return (
@@ -33,21 +37,17 @@ const LastTicketItem = ({cityFrom, cityTo, stationNameFrom, stationNameTo, wifi,
 
       <div className={s.details}>
         <div className={s.advantages}>
-          {wifi && 
-            <img src={wifiIcon} alt=""
-          />}
-          
-          {express &&
-            <img src={expressIcon} alt=""
-          />}
+          {wifi && <IconWifi className={s.icon} />}
 
-          <img src={cupIcon} alt="" />
+          {express && <IconExpress className={s.icon} />}   
+
+          <IconCup className={s.icon} />
         </div>
 
         <div className={s.minPrice}>
           <span className={s.label}>От</span>
           <span className={s.value}>{minPrice}</span>
-          <img src={rubIcon} alt="" />
+          <IconRub />
         </div>
       </div>
     </div>

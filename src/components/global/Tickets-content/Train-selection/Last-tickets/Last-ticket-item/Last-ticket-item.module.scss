@@ -39,6 +39,12 @@
       gap: 7px;
       align-items: center;
       justify-content: flex-end;
+
+      .icon {
+        path {
+          fill: #E5E5E5;
+        }
+      }
     }
 
     .minPrice {

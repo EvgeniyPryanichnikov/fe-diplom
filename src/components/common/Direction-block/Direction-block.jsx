@@ -1,7 +1,7 @@
 import { React, useState, useCallback } from 'react'
 import s from './Direction-block.module.scss'
-import plusIcon from '../../../icons/plus.svg'
-import minusIcon from '../../../icons/minus.svg'
+import { ReactComponent as IconPlus } from '../../../icons/plus.svg'
+import { ReactComponent as IconMinus } from '../../../icons/minus.svg'
 
 const DirectionBlock = ({icon, title,  labelLeft, labelRight}) => {
   const [isShowTimeBlock, setIsShowTimeBlock] = useState(false);
@@ -16,8 +16,11 @@ const DirectionBlock = ({icon, title,  labelLeft, labelRight}) => {
 
         <p className={s.title}>{title}</p>
 
-        <div>
-          <img className={s.iconShow} src={isShowTimeBlock ? minusIcon : plusIcon} onClick={handleShowTimeBlock} alt="" />
+        <div 
+          className={s.iconShow}
+          onClick={handleShowTimeBlock}
+        >
+          {isShowTimeBlock ? <IconMinus className={s.icon}/> : <IconPlus className={s.icon} />}
         </div>
       </div>
 

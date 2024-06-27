@@ -22,8 +22,10 @@
       cursor: pointer;
       width: 25px;
 
-      &:hover {
-        color: #FCDC9D;
+      .icon:hover {
+        path {
+          fill: #FCDC9D;
+        }
       }
     }
   }

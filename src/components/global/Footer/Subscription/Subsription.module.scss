@@ -8,8 +8,11 @@
 .icon {
   cursor: pointer;
   margin-right: 50px;
+
+  &:hover {
+    path {
+      fill: #FFA800;
+    }
+  }
 }
 
-.icon:hover {
-  color: #FFA800;
-}
