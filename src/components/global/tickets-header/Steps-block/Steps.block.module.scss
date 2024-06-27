@@ -1,0 +1,62 @@
+.stepsContainer {
+  display: grid;
+  height: 98px;
+  grid-template-columns: 1fr 400px 400px 1fr;
+
+  .step {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #fff;
+    background-color: #3E3C41;
+
+    &.active {
+      background-color: #FFA800; // изменения для активного шага
+    }
+
+    &:first-child {
+      padding-left: 230px;
+    }
+
+    &:last-child {
+      padding-right: 230px;
+    }
+
+    &:not(:first-child){
+      padding-left: 35px;
+    }
+
+    .title {
+      position: relative;
+      display: flex;
+      gap: 35px;
+      align-items: center;
+
+      .number {
+        width: 56px;
+        height: 56px;
+        text-align: center;
+        padding-top: 5px;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+        font-size: 30px;
+        font-weight: 700;
+      }
+
+      .ellipse {
+        position: absolute;
+        top: -5px;
+        left: -20px
+      }
+
+      .text {
+        font-size: 30px;
+        font-weight: 700;
+      }
+    }
+  }
+}

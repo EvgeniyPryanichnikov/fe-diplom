@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #F7F5F9;
+}
+
 h2 {
   font-size: 36px;
 }
