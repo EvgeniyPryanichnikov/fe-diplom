@@ -1,13 +1,7 @@
 import React from 'react'
 
 import s from './Train-item.module.scss'
-import trainIcon from '../../../../../icons/train.svg'
-import leftArrowIcon from '../../../../../icons/left-arrow-yellow.svg'
-import rightArrowIcon from '../../../../../icons/right-arrow-yellow.svg'
-import rubIcon from '../../../../../icons/rub.svg'
-import wifiIcon from '../../../../../icons/wifi.svg'
-import cupIcon from '../../../../../icons/cup.svg'
-import expressIcon from '../../../../../icons/express.svg'
+import { Link } from "react-router-dom"
 import { ReactComponent as IconTrain } from '../../../../../icons/train.svg'
 import { ReactComponent as IconLeft } from '../../../../../icons/left-arrow-yellow.svg'
 import { ReactComponent as IconRight } from '../../../../../icons/right-arrow-yellow.svg'
@@ -162,7 +156,7 @@ const TrainItem = ({item}) => {
           {departure.is_express && <IconExpress className={s.icon}/>}
         </div>
 
-        <button className={s.changeSeatBtn}>Выбрать места</button>
+        <Link to={'/place'} className={s.changeSeatBtn}>Выбрать места</Link>
       </div>
     </div>
   )

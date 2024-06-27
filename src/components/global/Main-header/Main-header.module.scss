@@ -1,9 +1,9 @@
 .mainHeader {
-	height: 800px;
+	height: 985px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	background: url('../../../../public/image/header-main-page-background.png');
+	background: url('../../../../public/image/header-main-page-background.png'), linear-gradient(to top, rgba(89, 55, 3, 0.8), rgba(69, 40, 1, 0.9)), #292929;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
