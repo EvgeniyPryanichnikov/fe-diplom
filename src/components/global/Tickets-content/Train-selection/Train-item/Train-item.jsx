@@ -17,13 +17,6 @@ const TrainItem = ({item}) => {
     arrival
   } = item;
 
-  // function timeObj(seconds) { 
-  //   return {
-  //     hours: (seconds / 3600) | 0,        // часы
-  //     minutes: ((seconds / 60) | 0) % 60, // минуты
-  //   } 
-  // }
-
   return (
     <div className={s.trainItem}>
       <div className={s.generalInfo}>

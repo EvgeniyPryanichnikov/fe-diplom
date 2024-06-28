@@ -1,0 +1,14 @@
+.ticketsCountForm {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 40px 0 49px 0;
+
+  .title {
+    padding-left: 18px;
+  }
+
+  .fieldsBlock {
+    display: flex;
+  }
+}

@@ -73,7 +73,7 @@ const TravelForm = ({isRow}) => {
 					<div className={s.dateFields}>
 						<DateSelect selectedDate={date_start} handleChangeDate={handleChangeDateFrom} className={s.dateSelect}/>
 
-						<DateSelect selectedDate={date_end} handleChangeDate={handleChangeDateTo}  />
+						<DateSelect selectedDate={date_end} handleChangeDate={handleChangeDateTo} />
 					</div>
 				</div>
 			</div>

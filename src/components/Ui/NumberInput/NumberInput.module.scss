@@ -1,0 +1,23 @@
+.NumberInput {
+  display: grid;
+  row-gap: 8px;
+  
+  .label {
+    font-size: 24px;
+    color: #E5E5E5;
+  }
+
+  .inputContainer{
+    border: 1px solid #928F94;
+    background-color: #fff;
+    padding: 8px 20px;
+    border-radius: 5px;
+    width: 240px;
+    height: 60px;
+
+    .input {
+      width: 100%;
+      height: 100%;
+    }
+  } 
+}
