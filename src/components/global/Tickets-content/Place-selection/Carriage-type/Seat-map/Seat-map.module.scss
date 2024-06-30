@@ -1,0 +1,23 @@
+.seatMap {
+  display: flex;
+  flex-direction: column;
+
+  .carriageDetails {
+    display: flex;
+  }
+
+  .numberCarriageBlock {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 57px 30px 32px;
+    background-color: #FFD98F;
+    color: #292929;
+    text-align: center;
+    font-size: 24px;
+
+    .number {
+      font-size: 72px;
+      font-weight: 700;
+    }
+  }
+}

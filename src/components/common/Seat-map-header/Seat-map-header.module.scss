@@ -1,0 +1,26 @@
+.seatMapHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 34px 6px 34px;
+  background-color: #FFD98F;
+  font-size: 16px;
+
+  .numbers {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    color: #292929;
+    font-size: 24px;
+    font-weight: 700;
+
+    .label {
+      font-size: 18px;
+    }
+
+    .number {
+      &.active {
+        color: #fff;
+      }
+    }
+  }
+}

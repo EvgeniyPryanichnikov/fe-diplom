@@ -5,7 +5,7 @@ import { ReactComponent as ReservedSeatIcon } from '../../../../../../icons/rese
 import { ReactComponent as CoupeIcon } from '../../../../../../icons/coupe.svg'
 import { ReactComponent as StarIcon } from '../../../../../../icons/star.svg'
 
-export const SelectionButtons = () => {
+const SelectionButtons = () => {
   return (
     <div className={s.selectionButtons}>
       <button className={s.btn}>
@@ -30,3 +30,5 @@ export const SelectionButtons = () => {
     </div>
   )
 }
+
+export default SelectionButtons

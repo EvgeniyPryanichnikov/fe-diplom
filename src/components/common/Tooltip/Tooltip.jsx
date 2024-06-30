@@ -8,7 +8,7 @@ const Tooltip = ({children, text}) => {
   const onMouseEnterHandler = () => {
     refSetTimeout.current = setTimeout(() => {
       setShowToolTip(true);
-    }, 750);
+    }, 250);
   }
 
   const onMouseLeaveHandler = () => {

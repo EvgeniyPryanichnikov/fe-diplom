@@ -1,0 +1,146 @@
+.seatPriceBlock {
+  display: flex;
+  gap: 120px;
+  padding: 33px 59px 21px 85px;
+
+  .services {
+    .title {
+      margin-bottom: 12px;
+    }
+
+    .headItem {
+      font-size: 18px;
+      font-weight: 400;
+      color: #928F94;
+    }
+
+    .company {
+      font-size: 18px;
+      margin-left: 8px;
+      color: #C4C4C4;
+    }
+
+    svg {
+      box-sizing: border-box;
+      cursor: pointer;
+      width: 36px;
+      height: 34px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #212121;
+
+      &.active {
+        border-color: transparent;
+        background-color: #fcdc9d;;
+      }
+
+      &:hover {
+        background-color: #ffa800;
+      }
+    }
+
+    .iconsService {
+      display: flex;
+      gap: 12px;
+
+    }
+  }
+
+  .header {
+    display: flex;
+    gap: 163px;
+    margin-bottom: 18px;
+
+    .item {
+      font-size: 18px;
+      font-weight: 400;
+      color: #928F94;
+    }
+
+    .count {
+      margin-left: 8px;
+      font-size: 18px;
+    }
+  }
+
+  .content {
+    display: flex;
+    gap: 120px;
+    margin-bottom: 18px;
+
+    svg {
+      width: 14px;
+      height: 17px;
+    }
+
+    .name {
+      font-size: 24px;
+    }
+
+    .value, .price {
+      font-size: 24px;
+      font-weight: 500;
+      margin-left: 8px;
+    }
+
+    .price {
+      margin-right: 8px;
+    } 
+  }
+  
+  // width: 100%;
+  // display: flex;
+  // flex-direction: column;
+  // gap: 17px;
+  // padding: 33px 59px 21px 85px;
+
+  // .header {
+  //   display: flex;
+  //   gap: 120px;
+
+  //   .item {
+  //     font-size: 18px;
+  //     font-weight: 400;
+  //     color: #928F94;
+  //   }
+
+  //   .count {
+  //     margin-left: 8px;
+  //     font-size: 18px;
+  //   }
+
+  //   .company {
+  //     font-size: 18px;
+  //     margin-left: 8px;
+  //     color: #C4C4C4;
+  //   }
+  // }
+
+  // .seatsPriceServices {
+  //   display: flex;
+  // }
+
+  // .seats {
+  //   display: flex;
+  //   gap: 88px;
+
+  //   svg {
+  //     width: 14px;
+  //     height: 17px;
+  //   }
+
+  //   .name {
+  //     font-size: 24px;
+  //   }
+
+  //   .value, .price {
+  //     font-size: 24px;
+  //     font-weight: 500;
+  //     margin-left: 8px;
+  //   }
+
+  //   .price {
+  //     margin-right: 8px;
+  //   } 
+  // }
+}
