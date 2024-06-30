@@ -5,7 +5,8 @@ import { ReactComponent as IconLeftArrow } from '../../../../../icons/left-arrow
 import { ReactComponent as IconLeft } from '../../../../../icons/left-arrow-yellow.svg'
 import { ReactComponent as IconWatch} from '../../../../../icons/watch.svg'
 
-const TrainDetailsBlock = () => {
+const TrainDetailsBlock = (trainInfo) => {
+
   return (
     <div className={s.trainsDetailBlock}>
       <div className={s.generalInfo}>
@@ -13,7 +14,7 @@ const TrainDetailsBlock = () => {
 
         <div className={s.info}>
           <span className={s.name}>
-            116С-Иволга
+            {/* {trainInfo.train.name}  */}
           </span>
 
           <div>

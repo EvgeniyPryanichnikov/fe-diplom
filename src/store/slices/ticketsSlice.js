@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  tickets: [],
+  trains: [],
   totalCount: null,
   cities: {
     from: null,
     to: null
   },
+  selectedTrain: null, //Записываю сюда данные выбранного поезда, что бы вставить их после роутинга на страницу выбора вагона и мест ??
   filters: {
     have_express: null,
     have_wifi: null,
@@ -67,9 +68,12 @@ export const ticketsSlice = createSlice({
     setExpress: (state, action) => {
       state.filters.have_express = action.payload
     },
+    setSelectedTrain: (state, action) => {
+      state.selectedTrain = action.payload
+    },
     updateTicketsInfo: (state, action) => {
       const {items, total_count} = action.payload
-      state.tickets = items
+      state.trains = items
       state.totalCount = total_count
     }
   }
@@ -88,7 +92,8 @@ export const {
   setThirdClass, 
   setFourthClass,
   setWiFi,
-  setExpress
+  setExpress,
+  setSelectedTrain
 } = ticketsSlice.actions
 
 export default ticketsSlice.reducer

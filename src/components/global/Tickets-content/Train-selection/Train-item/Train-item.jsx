@@ -2,6 +2,7 @@ import React from 'react'
 
 import s from './Train-item.module.scss'
 import { Link } from "react-router-dom"
+import { useDispatch } from "react-redux"
 import { ReactComponent as IconTrain } from '../../../../../icons/train.svg'
 import { ReactComponent as IconLeft } from '../../../../../icons/left-arrow-yellow.svg'
 import { ReactComponent as IconRight } from '../../../../../icons/right-arrow-yellow.svg'
@@ -9,13 +10,22 @@ import { ReactComponent as IconRub } from '../../../../../icons/rub.svg'
 import { ReactComponent as IconWifi } from '../../../../../icons/wifi.svg'
 import { ReactComponent as IconCup } from '../../../../../icons/cup.svg'
 import { ReactComponent as IconExpress } from '../../../../../icons/express.svg'
+import { searchSeats } from '../../../../../api/seats'
+import { setSelectedTrain } from "../../../../../store/slices/ticketsSlice"
 
-const TrainItem = ({item}) => {
+const TrainItem = ({trains}) => {
   const {
     available_seats_info,
     departure,
     arrival
-  } = item;
+  } = trains
+
+  const dispatch = useDispatch()
+
+  function showSeats(trainInfo) { // после клика просиходит роутинг, выполняется запрос на сервер и записываются данные выбранного поезда в стэйт ?? arrival ??
+    dispatch(setSelectedTrain(trainInfo))
+    searchSeats(trainInfo._id)
+  }
 
   return (
     <div className={s.trainItem}>
@@ -149,7 +159,7 @@ const TrainItem = ({item}) => {
           {departure.is_express && <IconExpress className={s.icon}/>}
         </div>
 
-        <Link to={'/place'} className={s.changeSeatBtn}>Выбрать места</Link>
+        <Link to={'place'} className={s.changeSeatBtn} onClick={() => showSeats(departure)}>Выбрать места</Link>
       </div>
     </div>
   )

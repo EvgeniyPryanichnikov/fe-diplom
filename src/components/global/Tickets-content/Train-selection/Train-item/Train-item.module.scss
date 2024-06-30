@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: 180px 1fr 276px;
   margin-bottom: 47px;
-  // width: 960px;
   border: 1px solid #C4C4C4;
   background-color: #fff;
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.3);
@@ -121,8 +120,14 @@
     }
 
     .changeSeatBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      padding: 6px 20px 9px 20px;
       color: #fff;
       background-color: #FFA800;
+      font-size: 24px;
       font-weight: 700;
       cursor: pointer;
 

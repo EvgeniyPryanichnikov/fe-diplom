@@ -79,7 +79,7 @@ const TravelForm = ({isRow}) => {
 			</div>
 
 			<div className={s.buttonContainer}>
-				<Link to={"/trains"} className={s.buttonFind}>
+				<Link to={"/trains/*"} className={s.buttonFind}>
 					Найти билеты
 				</Link>
 			</div>

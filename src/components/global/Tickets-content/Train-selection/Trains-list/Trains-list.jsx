@@ -6,24 +6,24 @@ import SortForm from '../Sort-form/Sort-form'
 import Paginate from '../../../../common/Paginate/Paginate'
 
 const TrainsList = () => {
-  const tickets = useSelector(state => state.tickets.tickets)
+  const trains = useSelector(state => state.tickets.trains)
   const totalCount = useSelector(state => state.tickets.totalCount)
   const [page, setPage] = useState(1)
-  const isShowTools = tickets && tickets.length > 0;
+  const isShowTools = trains && trains.length > 0;
 
   const lastPage = useMemo(() => {
-    if (tickets.length === 0) return 0
+    if (trains.length === 0) return 0
 
-    return Math.ceil(totalCount / tickets.length)
-  }, [totalCount, tickets.length])
+    return Math.ceil(totalCount / trains.length)
+  }, [totalCount, trains.length])
 
   return (
     <div className={s.trainsList}>
       {isShowTools && <SortForm />}
 
       <div className={s.trainItems}>
-        {tickets.map((el, index) => 
-          <TrainItem key={index} item={el}
+        {trains.map((el, index) => 
+          <TrainItem key={index} trains={el}
         />)
         }
       </div>
