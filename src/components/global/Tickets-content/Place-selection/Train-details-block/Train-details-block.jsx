@@ -4,8 +4,17 @@ import { ReactComponent as IconTrain } from '../../../../../icons/train-yellow.s
 import { ReactComponent as IconLeftArrow } from '../../../../../icons/left-arrow.svg'
 import { ReactComponent as IconLeft } from '../../../../../icons/left-arrow-yellow.svg'
 import { ReactComponent as IconWatch} from '../../../../../icons/watch.svg'
+import { Timestamp } from '../../../../common/Timestamp/Timestamp'
 
-const TrainDetailsBlock = (trainInfo) => {
+const TrainDetailsBlock = ({trainInfo}) => {
+  const name = trainInfo.train.name
+  const from = trainInfo.from.city.name
+  const to = trainInfo.to.city.name
+  const dateTimeFrom = trainInfo.from.datetime
+  const dateTimeTo = trainInfo.to.datetime
+  const stationNameFrom = trainInfo.from.railway_station_name
+  const stationNameTo = trainInfo.to.railway_station_name
+  const duration = trainInfo.duration
 
   return (
     <div className={s.trainsDetailBlock}>
@@ -14,28 +23,28 @@ const TrainDetailsBlock = (trainInfo) => {
 
         <div className={s.info}>
           <span className={s.name}>
-            {/* {trainInfo.train.name}  */}
+            {name} 
           </span>
 
           <div>
             <span className={s.from}>
-              Москва
+              {from.charAt(0).toUpperCase() + from.slice(1)}
             </span>
 
             <IconLeftArrow />
           </div>
         
           <span className={s.to}>
-            Санкт-петербург
+            {to.charAt(0).toUpperCase() + to.slice(1)}
           </span>
         </div>
       </div>
 
       <div className={s.scheduleInfo}>
         <div className={s.wrapper}>
-          <div className={s.dateTime}>11 : 06</div>
-          <div className={s.cityName}>Москва</div>
-          <div className={s.stationName}>Курский вокзал</div>
+          <div className={s.dateTimeFrom}><Timestamp timestamp={dateTimeFrom}/></div>
+          <div className={s.cityNameFrom}>{from.charAt(0).toUpperCase() + from.slice(1)}</div>
+          <div className={s.stationNameFrom}>{stationNameFrom}</div>
         </div>
 
         <div className={s.drivingTime}>
@@ -43,17 +52,16 @@ const TrainDetailsBlock = (trainInfo) => {
         </div>
 
         <div className={s.wrapper}>
-          <div className={s.dateTime}>11 : 06</div>
-          <div className={s.cityName}>Санкт-петербург</div>
-          <div className={s.stationName}>Ладожский возал</div>
+          <div className={s.dateTimeTo}><Timestamp timestamp={dateTimeTo}/></div>
+          <div className={s.cityNameTo}>{to.charAt(0).toUpperCase() + to.slice(1)}</div>
+          <div className={s.stationNameTo}>{stationNameTo}</div>
         </div>
       </div>
 
       <div className={s.timestamp}>
         <IconWatch /> 
 
-        3 часа<br /> 
-        {/* 23 минуты Вынести в отдельный компонент scheduleInfo и сделать компонент для timestamp */}
+        <Timestamp duration={true} timestamp={duration}/>
       </div>
 
       {/* {arrival &&

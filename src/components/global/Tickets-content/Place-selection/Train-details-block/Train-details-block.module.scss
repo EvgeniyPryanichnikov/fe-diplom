@@ -1,6 +1,7 @@
 .trainsDetailBlock {
   background-color: #F7F6F6;
-  display: flex;
+  display: grid;
+  grid-template-columns: 240px 1fr 240px;
 
   .generalInfo {
     display: flex;
@@ -44,7 +45,7 @@
   .scheduleInfo {
     display: flex;
     gap: 50px;
-    width: max-content;
+    justify-content: center;
     padding: 16px 25px;
     align-items: center;
     border-right: 2px solid #fff;
@@ -54,22 +55,27 @@
       height: 20px;
     }
 
-    .dateTime {
+    .dateTimeFrom,
+    .dateTimeTo {
       font-size: 24px;
       font-weight: 500;
     }
 
-    .cityName {
+    .cityNameFrom,
+    .cityNameTo {
       font-size: 18px;
     }
 
-    .stationName {
+    .stationNameFrom,
+    .stationNameTo {
       font-size: 18px;
       color: #928F94;
     }
   }
 
   .timestamp {
+    font-size: 18px;
+    font-weight: 500;
     display: flex;
     gap: 27px;
     padding: 16px 45px;

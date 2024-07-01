@@ -1,18 +1,30 @@
 import React from 'react'
 
-export const Timestamp = ({timestamp}) => {
+export const Timestamp = ({timestamp, duration, withoutMeasurement}) => {
   const hours = Math.floor(timestamp / 3600)
   const minutes = Math.floor((timestamp % 3600) / 60)
 
-  // let date = new Intl.DateTimeFormat("en-US", {
-  //   hour: "2-digit",
-  //   minute: "2-digit",
-  // }).format(timestamp);
+  const date = new Date(timestamp * 1000);
+  console.log(date)
+  let h = date.getHours()
+  let m = date.getMinutes()
+
+  if (h.length === 1)
+    h = "0" + h;
+
+  if (m.length === 1)
+    m = "0" + m;
+
+  const time = h + ':' + m;
+  console.log(date)
 
   return (
     <>
-     {hours} : {minutes}
-     {/* {date} */}
+      {!duration && !withoutMeasurement && time}
+
+      {withoutMeasurement && <div>{`${hours}`}:{`${minutes}`}</div>}
+
+      {duration && <div>{`${hours} ч.`}<br/>{`${minutes} мин.`}</div>}
     </>
   )
 }

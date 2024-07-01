@@ -4,14 +4,13 @@ import s from './Train-item.module.scss'
 import { Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { ReactComponent as IconTrain } from '../../../../../icons/train.svg'
-import { ReactComponent as IconLeft } from '../../../../../icons/left-arrow-yellow.svg'
-import { ReactComponent as IconRight } from '../../../../../icons/right-arrow-yellow.svg'
 import { ReactComponent as IconRub } from '../../../../../icons/rub.svg'
 import { ReactComponent as IconWifi } from '../../../../../icons/wifi.svg'
 import { ReactComponent as IconCup } from '../../../../../icons/cup.svg'
 import { ReactComponent as IconExpress } from '../../../../../icons/express.svg'
 import { searchSeats } from '../../../../../api/seats'
 import { setSelectedTrain } from "../../../../../store/slices/ticketsSlice"
+import ScheduleInfo from '../../../../common/Schedule-info/Schedule-info'
 
 const TrainItem = ({trains}) => {
   const {
@@ -47,49 +46,7 @@ const TrainItem = ({trains}) => {
         </div>
       </div>
 
-      <div className={s.scheduleInfo}>
-        <div className={s.row}>
-          <div className={s.wrapper}>
-            <div className={s.dateTime}>11 : 06</div>
-            <div className={s.cityName}>{departure.from.city.name}</div>
-            <div className={s.stationName}>{departure.from.railway_station_name}</div>
-          </div>
-
-          <div className={s.drivingTime}>
-            <span>15 : 15</span>
-
-            <IconLeft className={s.arrow} />
-          </div>
-
-          <div className={s.wrapper}>
-            <div className={s.dateTime}>11 : 06</div>
-            <div className={s.cityName}>{departure.to.city.name}</div>
-            <div className={s.stationName}>{departure.to.railway_station_name}</div>
-          </div>
-        </div>
-
-        {arrival &&
-         <div className={s.row}>
-            <div className={s.wrapper}>
-              <div className={s.dateTime}>11 : 06</div>
-              <div className={s.cityName}>{arrival.from.city.name}</div>
-              <div className={s.stationName}>{arrival.from.railway_station_name}</div>
-            </div>
-
-            <div className={s.drivingTime}>
-              <span>15 : 15</span>
-
-              <IconRight className={s.arrow}/>
-            </div>
-
-            <div className={s.wrapper}>
-              <div className={s.dateTime}>11 : 06</div>
-              <div className={s.cityName}>{arrival.to.city.name}</div>
-              <div className={s.stationName}>{arrival.to.railway_station_name}</div>
-            </div>
-          </div>
-        }
-      </div>
+      <ScheduleInfo departure={departure} arrival={arrival}/>
 
       <div className={s.seatInfo}>
         {departure.have_fourth_class && 

@@ -5,6 +5,7 @@ import TrainDetailsBlock from '../Train-details-block/Train-details-block'
 import TicketsCountForm from '../Tickets-count-form/Tickets-count-form'
 import CarriageType from '../Carriage-type/Carriage-type'
 import { ReactComponent as ToArrowIcon } from '../../../../../icons/to-arrow.svg'
+import { Link } from 'react-router-dom'
 // import { ReactComponent as BackArrowIcon } from '../../../../../icons/back-arrow.svg'
 
 const TrainSeatSelector = () => {
@@ -16,7 +17,7 @@ const TrainSeatSelector = () => {
         {/* {isDeparture ? <ToArrowIcon /> : <BackArrowIcon />} */}
         <ToArrowIcon />
 
-        <button className={s.btnChange}>Выбрать другой поезд</button>
+        <Link to='/trains' className={s.btnChange}>Выбрать другой поезд</Link>
       </div>
 
       <TrainDetailsBlock trainInfo={trainInfo}/>
