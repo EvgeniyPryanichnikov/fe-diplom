@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 
 import s from './Tickets.module.scss'
 import TicketsHeader from '../../components/global/Tickets-header/Tickets-header'
-import TicketsContent from '../../components/global/Tickets-content/Tickets-content'
+// import TicketsContent from '../../components/global/Tickets-content/Tickets-content'
+import PassengerContent from '../../components/global/Passenger-content/Passenger-content'
 import { useDispatch, useSelector } from "react-redux"
 import { searchRoutes } from "../../api/routes"
 import { updateTicketsInfo } from "../../store/slices/ticketsSlice"
@@ -21,7 +22,7 @@ const Tickets = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!filters.from_city_id || !filters.to_city_id) return //TODO сделать предупреждение, что не выбрано направление
+    if (!filters.from_city_id || !filters.to_city_id) return
     
     searchRoutes(actualFilters).then(res => dispatch(updateTicketsInfo(res)))
   }, [filters])
@@ -29,7 +30,8 @@ const Tickets = () => {
   return (
     <div className={s.ticketsPage}>
       <TicketsHeader />
-      <TicketsContent />
+      {/* <TicketsContent /> */}
+      <PassengerContent />
     </div>
   )
 }

@@ -9,7 +9,7 @@ import { ReactComponent as IconWifi } from '../../../../../icons/wifi.svg'
 import { ReactComponent as IconCup } from '../../../../../icons/cup.svg'
 import { ReactComponent as IconExpress } from '../../../../../icons/express.svg'
 import { searchSeats } from '../../../../../api/seats'
-import { setSelectedTrain } from "../../../../../store/slices/ticketsSlice"
+import { setSelectedTrain, setSeatInfo } from "../../../../../store/slices/ticketsSlice"
 import ScheduleInfo from '../../../../common/Schedule-info/Schedule-info'
 
 const TrainItem = ({trains}) => {
@@ -23,7 +23,7 @@ const TrainItem = ({trains}) => {
 
   function showSeats(trainInfo) { // после клика просиходит роутинг, выполняется запрос на сервер и записываются данные выбранного поезда в стэйт ?? arrival ??
     dispatch(setSelectedTrain(trainInfo))
-    searchSeats(trainInfo._id)
+    searchSeats(trainInfo._id).then(res => dispatch(setSeatInfo(res)))
   }
 
   return (

@@ -1,0 +1,15 @@
+.tripDetails {
+  display: flex;
+  flex-direction: column;
+  background: #3E3C41;
+
+  .title {
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 35px 44px;
+  }
+}

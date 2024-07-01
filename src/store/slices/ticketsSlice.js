@@ -8,6 +8,7 @@ const initialState = {
     to: null
   },
   selectedTrain: null, //Записываю сюда данные выбранного поезда, что бы вставить их после роутинга на страницу выбора вагона и мест ??
+  seatsInfo: null,
   filters: {
     have_express: null,
     have_wifi: null,
@@ -71,6 +72,9 @@ export const ticketsSlice = createSlice({
     setSelectedTrain: (state, action) => {
       state.selectedTrain = action.payload
     },
+    setSeatInfo: (state, action) => {
+      state.seatsInfo = action.payload
+    },
     updateTicketsInfo: (state, action) => {
       const {items, total_count} = action.payload
       state.trains = items
@@ -93,7 +97,8 @@ export const {
   setFourthClass,
   setWiFi,
   setExpress,
-  setSelectedTrain
+  setSelectedTrain,
+  setSeatInfo
 } = ticketsSlice.actions
 
 export default ticketsSlice.reducer
