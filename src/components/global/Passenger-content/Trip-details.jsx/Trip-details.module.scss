@@ -12,4 +12,34 @@
     font-weight: 500;
     padding: 35px 44px;
   }
+
+  .totalBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 33px 32px 37px 34px;
+    border-top: 1px solid #e5e5e5;
+
+    svg {
+      width: 26px;
+      height: 32px;
+      path {
+        fill: #C4C4C4;                                
+      }
+    }
+
+    .total {
+      text-transform: uppercase;
+      font-size: 30px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .price {
+      font-size: 48px;
+      font-weight: 700;
+      margin-right: 6px;
+      color: #FFA800;
+    }
+  }
 }

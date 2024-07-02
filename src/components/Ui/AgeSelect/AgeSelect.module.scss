@@ -5,13 +5,15 @@
     display: flex;
     align-items: center;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 3px;
-    width: 325px;
-    height: 60px;
+    border: 1px solid #928F94;
+    padding: 8px 20px;
+    border-radius: 5px;
+    width: 280px;
+    height: 50px;
 
     .input {
       width: 100%;
+      font-size: 24px;
   
       &::placeholder {
         color: #E5E5E5;
@@ -29,13 +31,13 @@
     overflow-y: scroll;
     max-height: 235px;
     z-index: 2;
-    top: 65px;
+    top: 55px;
     border-radius: 3px;
     background-color: rgba(245, 244, 246, 1);
     position: absolute;
 
     .optionItem {
-      padding: 12px 20px;
+      padding: 15px 20px;
 
       &:hover {
         background-color: #FFCA62;
@@ -44,7 +46,5 @@
     }
 
     &.options::-webkit-scrollbar { width: 0; }
-
   }
-
 }

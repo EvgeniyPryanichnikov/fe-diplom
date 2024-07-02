@@ -2,6 +2,7 @@ import { React, useState, useCallback } from 'react'
 import s from './Details-info-block.module.scss'
 import { ReactComponent as IconPlus } from '../../../../../icons/plus.svg'
 import { ReactComponent as IconMinus } from '../../../../../icons/minus.svg'
+import DateTimeBlock from '../../../../common/Date-time-block/Date-time-block'
 
 const DetailsInfoBlock = ({icon, title,  labelLeft, labelRight}) => {
   const [isShowInfoBlock, setIsShowInfoBlock] = useState(false)
@@ -37,12 +38,8 @@ const DetailsInfoBlock = ({icon, title,  labelLeft, labelRight}) => {
             <span className={s.name}>Название</span>
             <span className={s.fromTo}>Самара</span>
           </div>
-
-          <div className={s.row}>
-            <span className={s.labelRight}>
-             {labelRight}  
-            </span>
-          </div>
+         
+          <DateTimeBlock />
         </div>
       }
     </div>

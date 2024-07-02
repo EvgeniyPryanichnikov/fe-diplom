@@ -1,0 +1,47 @@
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: max-content;
+  gap: 35px;
+
+  .wrapper {
+    display: grid;
+    row-gap: 8px;
+
+    .dateTime {
+      display: grid;
+
+      .time {
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .date {
+        font-size: 18px;
+        color: #928F94;
+      }
+    }
+    .cityName {
+      color: #fff;
+      font-size: 18px;
+    }
+    .stationName {
+      font-size: 16px;
+      color: #928F94;
+    }
+  }
+
+  .drivingTime {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    color: #C4C4C4;
+    font-size: 18px;
+
+    .arrow {
+      width: 30px;
+    }
+  }
+}

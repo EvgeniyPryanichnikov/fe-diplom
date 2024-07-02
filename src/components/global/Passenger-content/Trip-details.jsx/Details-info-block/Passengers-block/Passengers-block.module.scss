@@ -1,4 +1,4 @@
-.detailsInfoBlock {
+.passengersInfoBlock {
   display: grid;
   padding: 33px 32px 37px 34px;
   border-top: 1px solid #e5e5e5;
@@ -7,7 +7,7 @@
     display: grid;
     gap: 10px;
     align-items: end;
-    grid-template-columns: 32px 1fr 1fr 20px;
+    grid-template-columns: 32px 1fr 20px;
 
     .arrowIcon {
       align-self: center;
@@ -18,11 +18,6 @@
       font-weight: 700;
       color: #fff;
       margin-left: 20px;
-    }
-
-    .date {
-      font-size: 18px;
-      color: #FFF;
     }
 
     .iconShow {
@@ -39,31 +34,30 @@
 
   .infoBlock {
     margin-top: 32px;
-    display: grid;
-    row-gap: 22px;
+  
+    .passengers {
+      display: grid;
+      gap: 15px;
+    }
 
-    .train {
+    .item {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
 
-      .name {
+      .quantity {
         font-size: 18px;
         font-weight: 400;
         color: #E5E5E5;
       }
 
-      .number {
+      .price {
         font-size: 24px;
-        font-weight: 500;
-        color: #fff;
-      }
-
-      .fromTo {
-        font-size: 18px;
-        font-weight: 600;
+        font-weight: 700;
+        margin-right: 6px;
         color: #fff;
       }
     }
   }
-}
+} 
+ 
