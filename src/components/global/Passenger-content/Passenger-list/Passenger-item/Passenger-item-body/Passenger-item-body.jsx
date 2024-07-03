@@ -9,16 +9,33 @@ import CheckboxInput from '../../../../../Ui/CheckboxInput/CheckboxInput'
 const PassengerItemBody = () => {
   return (
     <div className={s.itemBody}>
-      <AgeSelect />
+      <div className={s.age}>
+        <AgeSelect />  
+      </div>
 
-      <NameInput label={'Фамилия'}/>
-      <NameInput label={'Имя'}/>
-      <NameInput label={'Отчество'}/>
+      <div className={s.lastName}>
+        <NameInput label={'Фамилия'}/>
+      </div>
 
-      <GenderInput label={'Пол'}/>
-      <BirthdateInput label={'Дата Рождения'}/>
+      <div className={s.firstName}>
+        <NameInput label={'Имя'}/>
+      </div>
 
-      <CheckboxInput />
+      <div className={s.patronymic}>
+        <NameInput label={'Отчество'}/>
+      </div>
+
+      <div className={s.gender}>
+        <GenderInput label={'Пол'}/>
+      </div>
+
+      <div className={s.birthday}>
+        <BirthdateInput label={'Дата Рождения'}/>
+      </div>
+
+      <div className={s.limitedMobility}>
+        <CheckboxInput/>
+      </div>
     </div>
   )
 }

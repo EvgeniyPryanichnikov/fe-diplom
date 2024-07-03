@@ -3,19 +3,19 @@ import { useSelector } from "react-redux"
 import s from './Trains-list.module.scss'
 import TrainItem from '../Train-item/Train-item'
 import SortForm from '../Sort-form/Sort-form'
-import Paginate from '../../../../common/Paginate/Paginate'
+// import Paginate from '../../../../common/Paginate/Paginate'
 
 const TrainsList = () => {
   const trains = useSelector(state => state.tickets.trains)
-  const totalCount = useSelector(state => state.tickets.totalCount)
-  const [page, setPage] = useState(1)
   const isShowTools = trains && trains.length > 0;
+  // const totalCount = useSelector(state => state.tickets.totalCount)
+  // const [page, setPage] = useState(1)
 
-  const lastPage = useMemo(() => {
-    if (trains.length === 0) return 0
+  // const lastPage = useMemo(() => {
+  //   if (trains && trains.length === 0) return 0
 
-    return Math.ceil(totalCount / trains.length)
-  }, [totalCount, trains.length])
+  //   return Math.ceil(totalCount / trains.length)
+  // }, [totalCount, trains.length])
 
   return (
     <div className={s.trainsList}>
@@ -28,7 +28,7 @@ const TrainsList = () => {
         }
       </div>
       
-      {isShowTools && <Paginate lastPage={lastPage} page={page} onChange={setPage} />}
+      {/* {isShowTools && <Paginate lastPage={lastPage} page={page} onChange={setPage} />} */}
     </div>
   )
 }

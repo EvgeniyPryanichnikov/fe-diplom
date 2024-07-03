@@ -1,7 +1,36 @@
 .itemBody {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 25px 45px;
+  grid-template-areas:
+    "age . ."
+    "lastName firstName patronymic"
+    "gender birthday ."
+    "limitedMobility limitedMobility . ";
   background-color: #fff;
   padding: 38px 36px 33px 36px;
+}
+
+.age {
+  grid-area: age;
+}
+.lastName {
+  grid-area: lastName;
+}
+.firstName {
+  grid-area: firstName;
+}
+.patronymic {
+  grid-area: patronymic;
+}
+.gender {
+  grid-area: gender;
+}
+.birthday {
+  grid-area: birthday;
+}
+.limitedMobility {
+  grid-area: limitedMobility;
 }
   

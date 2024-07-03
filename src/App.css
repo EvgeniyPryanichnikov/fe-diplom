@@ -31,6 +31,11 @@ input {
   height: 100%;
 }
 
+input:enabled {
+  outline: none;
+  height: 100%;
+}
+
 
 button {
   cursor: pointer;

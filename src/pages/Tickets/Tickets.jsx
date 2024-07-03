@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 
 import s from './Tickets.module.scss'
 import TicketsHeader from '../../components/global/Tickets-header/Tickets-header'
-// import TicketsContent from '../../components/global/Tickets-content/Tickets-content'
-import PassengerContent from '../../components/global/Passenger-content/Passenger-content'
+import TicketsContent from '../../components/global/Tickets-content/Tickets-content'
+// import PassengerContent from '../../components/global/Passenger-content/Passenger-content'
 import { useDispatch, useSelector } from "react-redux"
 import { searchRoutes } from "../../api/routes"
 import { updateTicketsInfo } from "../../store/slices/ticketsSlice"
@@ -30,8 +30,8 @@ const Tickets = () => {
   return (
     <div className={s.ticketsPage}>
       <TicketsHeader />
-      {/* <TicketsContent /> */}
-      <PassengerContent />
+      <TicketsContent />
+      {/* <PassengerContent /> */}
     </div>
   )
 }
