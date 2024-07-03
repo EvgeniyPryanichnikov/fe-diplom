@@ -21,9 +21,14 @@ p {
   font-weight: 400;
 }
 
-input, button, a {
+button, a {
   all: unset;
   box-sizing: border-box
+}
+
+input {
+  border: none;
+  height: 100%;
 }
 
 

@@ -49,9 +49,7 @@ const PassengersBlock = () => {
                 </div>
               </div>
             </div>
-          </div>
-
-          
+          </div>   
         }
       </div>
     </div>
