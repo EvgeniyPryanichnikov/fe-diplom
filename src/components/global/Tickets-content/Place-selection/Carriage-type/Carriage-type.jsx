@@ -5,7 +5,8 @@ import SeatMap from './Seat-map/Seat-map'
 import { useSelector } from 'react-redux'
 
 const CarriageType = () => {
-  const seats = useSelector(state => state.tickets.seatsInfo)
+
+  const className = useSelector(state => state.tickets.class_type);
 
   return (
     <div className={s.carriageType}>
@@ -13,7 +14,7 @@ const CarriageType = () => {
 
       <SelectionButtons />
 
-      <SeatMap />
+      {className && <SeatMap  />}
     </div>
   )
 }

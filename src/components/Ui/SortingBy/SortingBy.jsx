@@ -6,11 +6,12 @@ import s from './SortingBy.module.scss'
 export const SortingBy = () => {
   const options = [
     {value: 'date', title: 'времени'},
-    {value: 'price', title: 'стоимости'},
+    {value: 'price_from', title: 'стоимости'},
     {value: 'duration', title: 'длительности'}
   ]
 
-  const activeSort = useSelector(state => state.tickets.filters.sort_title)
+  const activeSortValue = useSelector(state => state.tickets.filters.sort)
+  const activeSort = options.find(opt => opt.value === activeSortValue).title;
   const [isOpen, setIsOpen] = useState(false)
   const dispatch = useDispatch()
 
@@ -20,7 +21,7 @@ export const SortingBy = () => {
 
   function onOptionClick(value) {
     console.log(value)
-    dispatch(setSortValue(value))
+    dispatch(setSortValue(value.value))
     setIsOpen(false)
   }
 
@@ -31,7 +32,7 @@ export const SortingBy = () => {
 
         <div className={s.input} onClick={() => onInputClick()}>
           {activeSort}
-        </div> 
+        </div>
 
 				{isOpen && <div className={s.options}>
 					{options.map(opt => <div key={opt.value} className={s.option} onClick={() => onOptionClick(opt)}>

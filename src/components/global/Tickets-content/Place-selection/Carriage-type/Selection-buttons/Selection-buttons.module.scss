@@ -12,6 +12,18 @@
       font-size: 24px;
       color: #928F94;
     }
+
+
+    &.active {
+      svg {
+        path {
+          fill: #FFA800;
+        }
+      }
+
+      .label {
+        color: #FFA800;
+      }
+    }
   }
 }
-    

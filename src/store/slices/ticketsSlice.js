@@ -7,7 +7,11 @@ const initialState = {
     from: null,
     to: null
   },
-  selectedTrain: null, //Записываю сюда данные выбранного поезда, что бы вставить их после роутинга на страницу выбора вагона и мест ??
+  // selectedTrain: null,
+  selectedTrain: {
+    departure: null,
+    arrival: null
+  },
   seatsInfo: null,
   filters: {
     have_express: null,
@@ -17,12 +21,22 @@ const initialState = {
     have_first_class: null,
     have_second_class: null,
     limit: '5',
-    sort_title: 'времени',
     sort: 'date',
     from_city_id: null,
     to_city_id: null,
     date_start: "",
     date_end: "",
+  },
+  persons__count: {
+    adult: 0,
+    child: 0,
+    withoutPlace: 0
+  },
+  class_type: "",
+  availableCoachNames: [],
+  selectedCoachInfo: {
+    allSeats: [],
+    coach__name: "",
   }
 }
 
@@ -45,8 +59,8 @@ export const ticketsSlice = createSlice({
       state.filters.date_end = action.payload
     },
     setSortValue: (state, action) => {
-      state.filters.sort_title = action.payload.title
-      state.filters.sort = action.payload.value
+      // state.filters.sort_title = action.payload.title
+      state.filters.sort = action.payload;
     },
     setLimit: (state, action) => {
       state.filters.limit = action.payload
@@ -69,8 +83,14 @@ export const ticketsSlice = createSlice({
     setExpress: (state, action) => {
       state.filters.have_express = action.payload
     },
-    setSelectedTrain: (state, action) => {
-      state.selectedTrain = action.payload
+    // setSelectedTrain: (state, action) => {
+    //   state.selectedTrain = action.payload
+    // },
+    setSelectedTrainFrom: (state, action) => {
+      state.selectedTrain.departure = action.payload
+    },
+    setSelectedTrainTo: (state, action) => {
+      state.selectedTrain.arrival = action.payload
     },
     setSeatInfo: (state, action) => {
       state.seatsInfo = action.payload
@@ -79,26 +99,49 @@ export const ticketsSlice = createSlice({
       const {items, total_count} = action.payload
       state.trains = items
       state.totalCount = total_count
+    },
+    setPersonsCount: (state, action) => {
+      const {type, count} = action.payload
+      state.persons__count[type] = count;
+    },
+    setClassType: (state, action) => {
+      state.class_type = action.payload;
+      const aviableInSelectedClass = state.seatsInfo.filter(el => el.coach.class_type === action.payload);
+      const firstCoach = aviableInSelectedClass?.[0];
+      state.availableCoachNames = aviableInSelectedClass?.map(el => el.coach.name);
+      if (firstCoach) {
+        state.selectedCoachInfo.coach__name = firstCoach.coach.name;
+        state.selectedCoachInfo.allSeats = aviableInSelectedClass.filter(el => el.coach.name === firstCoach.coach.name);
+      }
+    },
+    setCoachName: (state, action) => {
+      state.selectedCoachInfo.coach__name = action.payload;
+      state.selectedCoachInfo.allSeats = state.seatsInfo.filter(el => el.coach.name === action.payload);
     }
   }
 })
 
-export const { 
-  setCityFrom, 
-  setCityTo, 
-  setDateFrom, 
-  setDateTo, 
-  updateTicketsInfo, 
-  setSortValue, 
-  setLimit, 
-  setSecondClass, 
-  setFirstClass, 
-  setThirdClass, 
+export const {
+  setCityFrom,
+  setCityTo,
+  setDateFrom,
+  setDateTo,
+  updateTicketsInfo,
+  setSortValue,
+  setLimit,
+  setSecondClass,
+  setFirstClass,
+  setThirdClass,
   setFourthClass,
   setWiFi,
   setExpress,
-  setSelectedTrain,
-  setSeatInfo
+  // setSelectedTrain,
+  setSelectedTrainFrom,
+  setSelectedTrainTo,
+  setSeatInfo,
+  setPersonsCount,
+  setClassType,
+  setCoachName
 } = ticketsSlice.actions
 
 export default ticketsSlice.reducer

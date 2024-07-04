@@ -1,7 +1,7 @@
 import React from 'react'
 
 import s from './Train-item.module.scss'
-import { Link } from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { ReactComponent as IconTrain } from '../../../../../icons/train.svg'
 import { ReactComponent as IconRub } from '../../../../../icons/rub.svg'
@@ -9,7 +9,7 @@ import { ReactComponent as IconWifi } from '../../../../../icons/wifi.svg'
 import { ReactComponent as IconCup } from '../../../../../icons/cup.svg'
 import { ReactComponent as IconExpress } from '../../../../../icons/express.svg'
 import { searchSeats } from '../../../../../api/seats'
-import { setSelectedTrain, setSeatInfo } from "../../../../../store/slices/ticketsSlice"
+import { setSelectedTrainFrom, setSelectedTrainTo, setSeatInfo } from "../../../../../store/slices/ticketsSlice"
 import ScheduleInfo from '../../../../common/Schedule-info/Schedule-info'
 
 const TrainItem = ({trains}) => {
@@ -21,9 +21,15 @@ const TrainItem = ({trains}) => {
 
   const dispatch = useDispatch()
 
-  function showSeats(trainInfo) { // после клика просиходит роутинг, выполняется запрос на сервер и записываются данные выбранного поезда в стэйт ?? arrival ??
-    dispatch(setSelectedTrain(trainInfo))
-    searchSeats(trainInfo._id).then(res => dispatch(setSeatInfo(res)))
+  const navigate = useNavigate();
+
+  function showSeats() { // после клика просиходит роутинг, выполняется запрос на сервер и записываются данные выбранного поезда в стэйт ?? arrival ??
+    dispatch(setSelectedTrainFrom(departure))
+    dispatch(setSelectedTrainTo(arrival))
+    navigate("/trains/place")                // нужно перенести метод с запросом по местам отсюда на страницу с кнопками вагонов и там передавать айдишники конкретного поезда
+    // searchSeats(trainInfo._id)
+    //   .then(res => dispatch(setSeatInfo(res)))
+    //   .then(() => navigate("/trains/place"))
   }
 
   return (
@@ -49,7 +55,7 @@ const TrainItem = ({trains}) => {
       <ScheduleInfo departure={departure} arrival={arrival}/>
 
       <div className={s.seatInfo}>
-        {departure.have_fourth_class && 
+        {departure.have_fourth_class &&
           <div className={s.row}>
             <span className={s.classSeat}>Сидячий</span>
 
@@ -64,7 +70,7 @@ const TrainItem = ({trains}) => {
           </div>
         }
 
-        {departure.have_third_class && 
+        {departure.have_third_class &&
           <div className={s.row}>
             <span className={s.classSeat}>Плацкарт</span>
 
@@ -79,7 +85,7 @@ const TrainItem = ({trains}) => {
           </div>
         }
 
-        {departure.have_second_class && 
+        {departure.have_second_class &&
           <div className={s.row}>
             <span className={s.classSeat}>Купе</span>
 
@@ -94,7 +100,7 @@ const TrainItem = ({trains}) => {
           </div>
         }
 
-        {departure.have_first_class && 
+        {departure.have_first_class &&
           <div className={s.row}>
             <span className={s.classSeat}>Люкс</span>
 
@@ -103,7 +109,7 @@ const TrainItem = ({trains}) => {
             <div className={s.minPrice}>
               <span className={s.label}>От</span>
               <span className={s.value}>{departure.price_info.first.bottom_price}</span>
-             
+
               <IconRub />
             </div>
           </div>
@@ -116,7 +122,7 @@ const TrainItem = ({trains}) => {
           {departure.is_express && <IconExpress className={s.icon}/>}
         </div>
 
-        <Link to={'place'} className={s.changeSeatBtn} onClick={() => showSeats(departure)}>Выбрать места</Link>
+        <button className={s.changeSeatBtn} onClick={() => showSeats(departure)}>Выбрать места</button>
       </div>
     </div>
   )

@@ -1,4 +1,5 @@
 import React from 'react'
+import {useSelector} from "react-redux";
 import s from './Seat-price-block.module.scss'
 import { ReactComponent as IconRub } from '../../../icons/rub.svg'
 import { ReactComponent as IconWifi } from '../../../icons/wifi.svg'
@@ -8,54 +9,55 @@ import { ReactComponent as IconLinens } from '../../../icons/linens.svg'
 import Tooltip from '../Tooltip/Tooltip'
 
 const SeatPriceBlock = () => {
+  const coachInfo = useSelector(state => state.tickets.selectedCoachInfo.allSeats[0].coach)
+  console.log(coachInfo)
   return (
     <div className={s.seatPriceBlock}>
       <div className={s.seats}>
         <div className={s.header}>
           <div>
             <span className={s.item}>Места</span>
-            <span className={s.count}>89</span>
+            <span className={s.count}>{coachInfo.available_seats}</span>
           </div>
           
           <span className={s.item}>Стоимость</span> 
         </div>
 
-        <div className={s.content}>
+        {coachInfo.top_price && <div className={s.content}>
           <div className={s.quantity}>
             <span className={s.name}>Верхние</span>
-            <span className={s.value}>3</span>
           </div>
 
           <div>
-            <span className={s.price}>2320</span>
+            <span className={s.price}>{coachInfo.top_price}</span>
             
             <IconRub />
           </div>  
-        </div>
-        <div className={s.content}>
+        </div>} 
+
+        {coachInfo.bottom_price && <div className={s.content}>
           <div className={s.quantity}>
-            <span className={s.name}>Верхние</span>
-            <span className={s.value}>3</span>
+            <span className={s.name}>Нижние</span>
           </div>
 
           <div>
-            <span className={s.price}>2320</span>
+            <span className={s.price}>{coachInfo.bottom_price}</span>
             
             <IconRub />
           </div>  
-        </div>
-        <div className={s.content}>
+        </div>} 
+
+        {coachInfo.side_price !== 0 && <div className={s.content}>
           <div className={s.quantity}>
-            <span className={s.name}>Верхние</span>
-            <span className={s.value}>3</span>
+            <span className={s.name}>Боковые</span>
           </div>
 
           <div>
-            <span className={s.price}>2320</span>
+            <span className={s.price}>{coachInfo.side_price}</span>
             
             <IconRub />
           </div>  
-        </div>
+        </div>} 
       </div>
 
       <div className={s.services}>

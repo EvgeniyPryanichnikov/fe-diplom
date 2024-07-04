@@ -1,4 +1,4 @@
-import React, { useState } from  "react";
+import React, {useEffect, useState} from "react";
 import Calendar from 'react-calendar';
 import calendar from '../../../icons/calendar.svg'
 import { ReactComponent as IconCalendar } from '../../../icons/calendar.svg'
@@ -16,6 +16,13 @@ const DateSelect = (props) => {
   const toggleCalendar = () => {
     setIsOpen(!isOpen);
   }
+
+  useEffect(() => {
+    if (selectedDate) {
+      setDate(date);
+      setInputDate(selectedDate)
+    }
+  }, [selectedDate]);
 
   function convertDate(date) {
     setDate(date);
