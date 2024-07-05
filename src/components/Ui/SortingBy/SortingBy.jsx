@@ -20,7 +20,6 @@ export const SortingBy = () => {
   }
 
   function onOptionClick(value) {
-    console.log(value)
     dispatch(setSortValue(value.value))
     setIsOpen(false)
   }

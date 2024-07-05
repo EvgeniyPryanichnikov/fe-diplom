@@ -5,7 +5,7 @@ export const Timestamp = ({timestamp, duration, withoutMeasurement}) => {
   const minutes = Math.floor((timestamp % 3600) / 60)
 
   const date = new Date(timestamp * 1000);
-  console.log(date)
+
   let h = date.getHours()
   let m = date.getMinutes()
 
@@ -16,7 +16,6 @@ export const Timestamp = ({timestamp, duration, withoutMeasurement}) => {
     m = "0" + m;
 
   const time = h + ':' + m;
-  console.log(date)
 
   return (
     <>

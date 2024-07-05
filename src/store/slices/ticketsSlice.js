@@ -12,7 +12,8 @@ const initialState = {
     departure: null,
     arrival: null
   },
-  seatsInfo: null,
+  seatsInfoFrom: null,
+  seatsInfoTo: null,
   filters: {
     have_express: null,
     have_wifi: null,
@@ -32,11 +33,23 @@ const initialState = {
     child: 0,
     withoutPlace: 0
   },
-  class_type: "",
-  availableCoachNames: [],
-  selectedCoachInfo: {
-    allSeats: [],
-    coach__name: "",
+
+  coachsFromInfo: {
+    class_type: "",
+    availableCoachNames: [],
+    selectedCoachInfo: {
+      allSeats: [],
+      coach__name: "",
+    }
+  },
+
+  coachsToInfo: {
+    class_type: "",
+    availableCoachNames: [],
+    selectedCoachInfo: {
+      allSeats: [],
+      coach__name: "",
+    }
   }
 }
 
@@ -83,17 +96,17 @@ export const ticketsSlice = createSlice({
     setExpress: (state, action) => {
       state.filters.have_express = action.payload
     },
-    // setSelectedTrain: (state, action) => {
-    //   state.selectedTrain = action.payload
-    // },
     setSelectedTrainFrom: (state, action) => {
       state.selectedTrain.departure = action.payload
     },
     setSelectedTrainTo: (state, action) => {
       state.selectedTrain.arrival = action.payload
     },
-    setSeatInfo: (state, action) => {
-      state.seatsInfo = action.payload
+    setSeatInfoFrom: (state, action) => {
+      state.seatsInfoFrom = action.payload
+    },
+    setSeatInfoTo: (state, action) => {
+      state.seatsInfoTo= action.payload
     },
     updateTicketsInfo: (state, action) => {
       const {items, total_count} = action.payload
@@ -104,14 +117,24 @@ export const ticketsSlice = createSlice({
       const {type, count} = action.payload
       state.persons__count[type] = count;
     },
-    setClassType: (state, action) => {
-      state.class_type = action.payload;
-      const aviableInSelectedClass = state.seatsInfo.filter(el => el.coach.class_type === action.payload);
+    setClassTypeFrom: (state, action) => {
+      state.coachsFromInfo.class_type = action.payload;
+      const aviableInSelectedClass = state.seatsInfoFrom.filter(el => el.coach.class_type === action.payload);
       const firstCoach = aviableInSelectedClass?.[0];
-      state.availableCoachNames = aviableInSelectedClass?.map(el => el.coach.name);
+      state.coachsFromInfo.availableCoachNames = aviableInSelectedClass?.map(el => el.coach.name);
       if (firstCoach) {
-        state.selectedCoachInfo.coach__name = firstCoach.coach.name;
-        state.selectedCoachInfo.allSeats = aviableInSelectedClass.filter(el => el.coach.name === firstCoach.coach.name);
+        state.coachsFromInfo.selectedCoachInfo.coach__name = firstCoach.coach.name;
+        state.coachsFromInfo.selectedCoachInfo.allSeats = aviableInSelectedClass.filter(el => el.coach.name === firstCoach.coach.name);
+      }
+    },
+    setClassTypeTo: (state, action) => {
+      state.coachsToInfo.class_type = action.payload;
+      const aviableInSelectedClass = state.seatsInfoTo.filter(el => el.coach.class_type === action.payload);
+      const firstCoach = aviableInSelectedClass?.[0];
+      state.coachsToInfo.availableCoachNames = aviableInSelectedClass?.map(el => el.coach.name);
+      if (firstCoach) {
+        state.coachsToInfo.selectedCoachInfo.coach__name = firstCoach.coach.name;
+        state.coachsToInfo.selectedCoachInfo.allSeats = aviableInSelectedClass.filter(el => el.coach.name === firstCoach.coach.name);
       }
     },
     setCoachName: (state, action) => {
@@ -135,12 +158,14 @@ export const {
   setFourthClass,
   setWiFi,
   setExpress,
-  // setSelectedTrain,
   setSelectedTrainFrom,
   setSelectedTrainTo,
-  setSeatInfo,
+  setSeatInfoFrom,
+  setSeatInfoTo,
   setPersonsCount,
-  setClassType,
+  // setClassType,
+  setClassTypeFrom,
+  setClassTypeTo,
   setCoachName
 } = ticketsSlice.actions
 

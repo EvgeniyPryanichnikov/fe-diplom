@@ -7,7 +7,7 @@ import { ReactComponent as IconWatch} from '../../../../../icons/watch.svg'
 import { Timestamp } from '../../../../common/Timestamp/Timestamp'
 
 const TrainDetailsBlock = ({trainInfo}) => {
-  console.log(trainInfo)
+
   const name = trainInfo.train.name
   const from = trainInfo.from.city.name
   const to = trainInfo.to.city.name

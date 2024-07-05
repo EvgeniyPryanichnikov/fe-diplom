@@ -9,7 +9,6 @@ const SortForm = () => {
   const total_сount = useSelector(state => state.tickets.totalCount)
 
   function onValueClick(value) {
-    console.log(value)
     dispatch(setLimit(value))
   }
   

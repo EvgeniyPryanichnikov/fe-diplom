@@ -4,17 +4,18 @@ import SelectionButtons from './Selection-buttons/Selection-buttons'
 import SeatMap from './Seat-map/Seat-map'
 import { useSelector } from 'react-redux'
 
-const CarriageType = () => {
+const CarriageType = ({trainId, direction}) => {
 
-  const className = useSelector(state => state.tickets.class_type);
+  const classNameFrom = useSelector(state => state.tickets.coachsFromInfo.class_type);
+  const classNameTo = useSelector(state => state.tickets.coachsToInfo.class_type);
 
   return (
     <div className={s.carriageType}>
       <h3 className={s.title}>Тип вагона</h3>
 
-      <SelectionButtons />
+      <SelectionButtons trainId={trainId} direction={direction} className={direction === 'departure' ? classNameFrom : classNameTo}/>
 
-      {className && <SeatMap  />}
+      {classNameFrom && <SeatMap  direction={direction}/>}
     </div>
   )
 }

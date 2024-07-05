@@ -5,24 +5,25 @@ import SeatPriceBlock from '../../../../../common/Seat-price-block/Seat-price-bl
 import InteractiveCarriageMap from '../Interactive-carriage-map/Interactive-carriage-map'
 import {useSelector} from "react-redux";
 
-const SeatMap = () => {
+const SeatMap = ({direction}) => {
 
-  const coachName = useSelector(state => state.tickets.selectedCoachInfo.coach__name.split("-")[1])
+  const coachNameFrom = useSelector(state => state.tickets.coachsFromInfo.selectedCoachInfo.coach__name.split("-")[1])
+  const coachNameTo = useSelector(state => state.tickets.coachsToInfo.selectedCoachInfo.coach__name.split("-")[1])
 
   return (
     <div className={s.seatMap}>
-      <SeatMapHeader />
+      <SeatMapHeader direction={direction}/>
 
       <div className={s.carriageDetails}>
         <div className={s.numberCarriageBlock}>
           <span className={s.number}>
-            {coachName}
+            {direction === 'departure' ? coachNameFrom : coachNameTo}
           </span>
 
           <span>вагон</span>
         </div>
 
-        <SeatPriceBlock />
+        <SeatPriceBlock direction={direction}/>
       </div>
 
       <InteractiveCarriageMap />

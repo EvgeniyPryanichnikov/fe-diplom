@@ -8,9 +8,18 @@ import { ReactComponent as IconConditioner } from '../../../icons/air-conditione
 import { ReactComponent as IconLinens } from '../../../icons/linens.svg'
 import Tooltip from '../Tooltip/Tooltip'
 
-const SeatPriceBlock = () => {
-  const coachInfo = useSelector(state => state.tickets.selectedCoachInfo.allSeats[0].coach)
-  console.log(coachInfo)
+const SeatPriceBlock = ({direction}) => {
+  const from = useSelector(state => state.tickets.coachsFromInfo.selectedCoachInfo.allSeats[0].coach)
+  const to = useSelector(state => state.tickets.coachsToInfo.selectedCoachInfo.allSeats[0].coach)
+  
+  let coachInfo 
+
+  if (direction === 'departure') {
+    coachInfo = from
+  } else {
+    coachInfo = to
+  }
+
   return (
     <div className={s.seatPriceBlock}>
       <div className={s.seats}>

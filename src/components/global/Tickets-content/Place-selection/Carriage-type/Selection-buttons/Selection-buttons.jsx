@@ -1,19 +1,23 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import s from './Selection-buttons.module.scss'
 import { ReactComponent as SedentaryIcon } from '../../../../../../icons/sedentary.svg'
 import { ReactComponent as ReservedSeatIcon } from '../../../../../../icons/reserved-seat.svg'
 import { ReactComponent as CoupeIcon } from '../../../../../../icons/coupe.svg'
 import { ReactComponent as StarIcon } from '../../../../../../icons/star.svg'
-import {useDispatch, useSelector} from "react-redux";
-import {setClassType} from "../../../../../../store/slices/ticketsSlice";
+import { useDispatch } from "react-redux"
+import { searchSeats } from '../../../../../../api/seats'
+import { setSeatInfoFrom, setSeatInfoTo } from "../../../../../../store/slices/ticketsSlice"
+import { setClassTypeFrom, setClassTypeTo } from "../../../../../../store/slices/ticketsSlice"
 
-const SelectionButtons = () => {
-  const className = useSelector(state => state.tickets.class_type)
+const SelectionButtons = ({trainId, direction, className}) => {
+  useEffect(() => {
+		searchSeats(trainId).then(res => dispatch(direction === 'departure' ? setSeatInfoFrom(res) : setSeatInfoTo(res)))
+	}, [])
 
   const dispatch = useDispatch();
 
   function onBtnClick(className) {
-    dispatch(setClassType(className));
+    dispatch(direction === 'departure' ? setClassTypeFrom(className) : setClassTypeTo(className));
   }
 
   return (

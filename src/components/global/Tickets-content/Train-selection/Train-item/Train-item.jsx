@@ -8,7 +8,6 @@ import { ReactComponent as IconRub } from '../../../../../icons/rub.svg'
 import { ReactComponent as IconWifi } from '../../../../../icons/wifi.svg'
 import { ReactComponent as IconCup } from '../../../../../icons/cup.svg'
 import { ReactComponent as IconExpress } from '../../../../../icons/express.svg'
-import { searchSeats } from '../../../../../api/seats'
 import { setSelectedTrainFrom, setSelectedTrainTo, setSeatInfo } from "../../../../../store/slices/ticketsSlice"
 import ScheduleInfo from '../../../../common/Schedule-info/Schedule-info'
 
@@ -23,7 +22,7 @@ const TrainItem = ({trains}) => {
 
   const navigate = useNavigate();
 
-  function showSeats() { // после клика просиходит роутинг, выполняется запрос на сервер и записываются данные выбранного поезда в стэйт ?? arrival ??
+  function showSeats() {
     dispatch(setSelectedTrainFrom(departure))
     dispatch(setSelectedTrainTo(arrival))
     navigate("/trains/place")                // нужно перенести метод с запросом по местам отсюда на страницу с кнопками вагонов и там передавать айдишники конкретного поезда
