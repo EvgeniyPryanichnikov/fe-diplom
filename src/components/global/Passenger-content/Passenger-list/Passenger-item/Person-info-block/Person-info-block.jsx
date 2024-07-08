@@ -1,12 +1,12 @@
 import React from 'react'
-import s from './Passenger-item-body.module.scss'
+import s from './Person-info-block.module.scss'
 import AgeSelect from '../../../../../Ui/AgeSelect/AgeSelect'
 import NameInput from '../../../../../Ui/NameInput/NameInput'
 import GenderInput from '../../../../../Ui/GenderInput/GenderInput'
 import BirthdateInput from '../../../../../Ui/BirthdateInput/BirthdateInput'
 import CheckboxInput from '../../../../../Ui/CheckboxInput/CheckboxInput'
 
-const PassengerItemBody = () => {
+const PersonInfoBlock = () => {
   return (
     <div className={s.itemBody}>
       <div className={s.age}>
@@ -40,4 +40,4 @@ const PassengerItemBody = () => {
   )
 }
 
-export default PassengerItemBody
+export default PersonInfoBlock

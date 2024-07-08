@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from "react";
-import s from './BirthdateInput.module.scss'
+import s from './DocsDataInput.module.scss'
 
-const BirthdateInput = ({label}) => {
+const DocsDataInput = ({label, placeholder}) => {
   const [input, setInput] = useState('')
 
   function onInputChange(e) {
@@ -24,7 +24,7 @@ const BirthdateInput = ({label}) => {
             value={input}
             onChange={onInputChange}
             type="text" 
-            placeholder={'ДД / ММ / ГГГГ'}
+            placeholder={placeholder}
           />
         </div>
       </div>
@@ -32,4 +32,4 @@ const BirthdateInput = ({label}) => {
   )
 }
 
-export default BirthdateInput
+export default DocsDataInput

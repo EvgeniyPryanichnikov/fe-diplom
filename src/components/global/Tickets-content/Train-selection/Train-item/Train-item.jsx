@@ -25,10 +25,7 @@ const TrainItem = ({trains}) => {
   function showSeats() {
     dispatch(setSelectedTrainFrom(departure))
     dispatch(setSelectedTrainTo(arrival))
-    navigate("/trains/place")                // нужно перенести метод с запросом по местам отсюда на страницу с кнопками вагонов и там передавать айдишники конкретного поезда
-    // searchSeats(trainInfo._id)
-    //   .then(res => dispatch(setSeatInfo(res)))
-    //   .then(() => navigate("/trains/place"))
+    navigate("/trains/place")  
   }
 
   return (

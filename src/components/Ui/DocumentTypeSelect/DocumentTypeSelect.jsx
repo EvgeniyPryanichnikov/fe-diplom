@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import s from './AgeSelect.module.scss'
+import s from './DocumentTypeSelect.module.scss'
 import { ReactComponent as IconDropDown } from '../../../icons/dropdown.svg'
 
 
-const AgeSelect = () => {
+const DocumentTypeSelect = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [input, setInput] = useState('Взрослый')
+  const [input, setInput] = useState('Паспорт РФ')
 
-  const options = [{id: 1, value: 'Взрослый'}, {id: 2, value: 'Детский'}]
+  const options = [{id: 1, value: 'Паспорт РФ'}, {id: 2, value: 'Свидетельство о рождении'}, {id: 3, value: 'Водительское удостоверение'}]
 
   const handleShowOptions = useCallback(() => {
 		setIsOpen(prev => !prev)
@@ -40,4 +40,4 @@ const AgeSelect = () => {
   )
 }
 
-export default AgeSelect
+export default DocumentTypeSelect

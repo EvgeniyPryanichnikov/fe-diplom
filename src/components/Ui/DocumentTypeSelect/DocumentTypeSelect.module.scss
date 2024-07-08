@@ -1,15 +1,15 @@
 .select {
   position: relative;
   cursor: pointer;
-
+  
   .inputContainer {
     display: flex;
     align-items: center;
+    width: 397px;
     background-color: #fff;
     border: 1px solid #928F94;
     padding: 8px 20px;
     border-radius: 5px;
-    width: 280px;
     height: 50px;
 
     .input {
@@ -38,7 +38,7 @@
     position: absolute;
 
     .optionItem {
-      padding: 15px 20px;
+      padding: 13px 20px;
 
       &:hover {
         background-color: #FFCA62;

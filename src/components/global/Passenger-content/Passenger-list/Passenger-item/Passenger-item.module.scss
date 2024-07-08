@@ -29,4 +29,35 @@
       }
     }
   }
+
+  .footer {
+    border-top: 1px dotted #928f94;
+    padding: 35px 30px 31px 24px;
+    background-color: #fff;
+    display: flex;
+    justify-content: end;
+
+    .btnNext {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      width: 325px;
+      border-radius: 5px;
+      font-weight: 700;
+      padding: 15px 25px;
+      outline: 1px solid #292929;
+
+      &:hover {
+        color: #FFA800;
+      }
+
+      &:active {
+        color: #292929;
+        background: #FFA800;
+        box-shadow: 0px 4px 4px 0px #00000040;
+        outline: none;
+      }
+    }
+  }
 }

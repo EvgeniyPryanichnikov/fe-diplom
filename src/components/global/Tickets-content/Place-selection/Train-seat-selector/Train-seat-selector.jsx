@@ -33,7 +33,7 @@ const TrainSeatSelector = ({departure, arrival}) => {
           <Link to='/trains' className={s.btnChange}>Выбрать другой поезд</Link>
         </div>
 
-        <TrainDetailsBlock trainInfo={arrival}/>
+        <TrainDetailsBlock trainInfo={arrival} direction={'arrival'}/>
 
         <TicketsCountForm />
 

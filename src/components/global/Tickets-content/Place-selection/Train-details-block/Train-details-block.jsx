@@ -3,10 +3,11 @@ import s from './Train-details-block.module.scss'
 import { ReactComponent as IconTrain } from '../../../../../icons/train-yellow.svg'
 import { ReactComponent as IconLeftArrow } from '../../../../../icons/left-arrow.svg'
 import { ReactComponent as IconLeft } from '../../../../../icons/left-arrow-yellow.svg'
+import { ReactComponent as IconRight } from '../../../../../icons/right-arrow-yellow.svg'
 import { ReactComponent as IconWatch} from '../../../../../icons/watch.svg'
 import { Timestamp } from '../../../../common/Timestamp/Timestamp'
 
-const TrainDetailsBlock = ({trainInfo}) => {
+const TrainDetailsBlock = ({trainInfo, direction}) => {
 
   const name = trainInfo.train.name
   const from = trainInfo.from.city.name
@@ -49,7 +50,7 @@ const TrainDetailsBlock = ({trainInfo}) => {
         </div>
 
         <div className={s.drivingTime}>
-          <IconLeft />
+          {direction === 'arrival' ? <IconRight /> : <IconLeft />}
         </div>
 
         <div className={s.wrapper}>
