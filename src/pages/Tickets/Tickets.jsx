@@ -33,13 +33,13 @@ const Tickets = () => {
   return (
     <div className={s.ticketsPage}>
       <TicketsHeader />
-      {/* <TicketsContent /> */}
-      <PassengerContent />
+      <TicketsContent />
+      {/* <PassengerContent /> */}
 
       {/* <Routes>
         <Route path='*' element={<TicketsContent />} />
-        <Route path='/trains/passenger' element={<PassengerContent />} />
-      </Routes> */}
+        <Route path='/trains/passenger' element={<PassengerContent />} />  
+      </Routes> */} 
     </div>
   )
 }
