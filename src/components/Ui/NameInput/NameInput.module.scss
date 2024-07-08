@@ -1,11 +1,22 @@
 .nameInput {
   display: grid;
+  position: relative;
   row-gap: 8px;
-  
+
   .label {
     font-size: 16px;
     font-weight: 400;
     color: #928F94;
+
+    &.errorStatus {
+      color: #ff3c00c4;
+    }
+  }
+
+  .error {
+    position: absolute;
+    bottom: -20px;
+    color: #ff3c00c4;
   }
 
   .inputContainer{
@@ -15,6 +26,10 @@
     border-radius: 5px;
     width: 280px;
     height: 50px;
+
+    &.errorBorder {
+      border: 3px solid #ff3c00c4;
+    }
 
     .input {
       font-size: 24px;

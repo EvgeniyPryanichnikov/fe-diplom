@@ -1,0 +1,22 @@
+.inputContainer {
+  display: grid;
+  row-gap: 10px;
+
+  .label {
+    font-size: 24px;
+    color: #E5E5E5;
+  }
+
+  .input {
+    background-color: #fff;
+    font-size: 22px;
+    padding: 8px 20px;
+    border-radius: 3px;
+    width: 450px;
+    height: 60px;
+  }
+
+  .error {
+    color: #FFA800;
+  }
+}

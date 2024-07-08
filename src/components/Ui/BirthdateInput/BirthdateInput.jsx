@@ -24,7 +24,7 @@ const BirthdateInput = ({label}) => {
             value={input}
             onChange={onInputChange}
             type="text" 
-            placeholder={'ДД / ММ / ГГГГ'}
+            placeholder={'ДД / ММ / ГГ'}
           />
         </div>
       </div>

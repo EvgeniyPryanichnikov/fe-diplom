@@ -1,22 +1,19 @@
-import {React, useState} from 'react'
+import React from 'react'
 
 import s from './Subscription-form.module.scss'
-import TextInput from '../../../../Ui/TextInput/TextInput'
 import { getSubscription } from "../../../../../api/subscription";
+import EmailInput from '../../../../Ui/EmailInput/EmailInput';
 
 const SubscriptionForm = () => {
-  const [email, setEmail] = useState('');
-
-  function handleTextInput(value) {
-    getSubscription(value).then(res => setEmail(res));
+  function emailHandler(value) {
+    // getSubscription(value).then(res => setEmail(res))
   }
 
   return (
     <form className={s.form}>
-      <TextInput 
-        label='Будьте в курсе событий'
-        placeholder="e-mail"
-        handleTextInput={handleTextInput}
+      <EmailInput
+        emailHandler={emailHandler}
+        label={'Будь в курсе событий'}
       />
 
       <button className={s.button}>Отправить</button>

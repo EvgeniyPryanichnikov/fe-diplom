@@ -3,15 +3,22 @@ import s from "./CitySelect.module.scss"
 import { ReactComponent as IconGeo } from '../../../icons/geolocation.svg'
 
 const CitySelect = ({options = [], handleCitySelect, selectedCity, handleCityInput, placeholder, ...props }) => {
-	const [isOpen, setIsOpen] = useState(false);
-	const [input, setInput] = useState(selectedCity?.name || "");
+	const [isOpen, setIsOpen] = useState(false)
+	const [input, setInput] = useState(selectedCity?.name || "")
+	const [selectDirty, setSelectDirty] = useState(false)
+  const [selectError, setSelectError] = useState('Это обязательное поле')
 
 	const showedOptions = options.filter(el => el.name.toLowerCase().includes(input.toLowerCase()))
+
+	const blurHandler = () => {
+    setSelectDirty(true)
+  }
 
 	function onOptionClick(opt) {
 		handleCitySelect(opt);
 		setInput(opt.name.toUpperCase());
 		setIsOpen(false);
+		setSelectError('')
 	}
 
 	function onInputChange(e) {
@@ -19,6 +26,7 @@ const CitySelect = ({options = [], handleCitySelect, selectedCity, handleCityInp
 
 		if (isOpen && !e.target.value) {
 			setIsOpen(false);
+			setSelectError('* Это поле является обязательным')
 			return;
 		}
 
@@ -36,10 +44,11 @@ const CitySelect = ({options = [], handleCitySelect, selectedCity, handleCityInp
 	return (
 		<>
 			<div className={s.select} {...props}>
-				<div className={s.inputContainer}>
+				<div className={s.inputContainer + ((selectDirty && selectError)  ? ' ' + s.active : '')}>
 					<input
 						className={s.input}
 						value={input}
+						onBlur={() => blurHandler()}
 						onChange={onInputChange}
 						type="text"
 						placeholder={placeholder}
@@ -54,6 +63,8 @@ const CitySelect = ({options = [], handleCitySelect, selectedCity, handleCityInp
 						{opt.name.toUpperCase()}
 					</div>)}
 				</div>}
+
+				{(selectDirty && selectError) && <div className={s.error}>{selectError}</div>} 
 			</div>
 		</>
 	);
