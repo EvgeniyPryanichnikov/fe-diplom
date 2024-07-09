@@ -1,39 +1,34 @@
 import React from 'react'
 import s from './Date-time-block.module.scss'
 import { Timestamp } from '../../common/Timestamp/Timestamp'
-import { ReactComponent as IconLeft } from '../../../icons/left-arrow-yellow.svg'
-import { ReactComponent as IconRight } from '../../../icons/right-arrow-yellow.svg'
 
-const DateTimeBlock = ({direction}) => {
+const DateTimeBlock = ({direction, icon}) => {
   return (
     <div className={s.row}>
       <div className={s.wrapper}>
-        {/* <div className={s.dateTime}><Timestamp timestamp={departure.from.datetime}/></div> */}
         <div className={s.dateTime}>
-          <span className={s.time}>12:15</span>
-          <span className={s.date}>02.07.2024</span>
+          <div className={s.time}><Timestamp className={s.time} timestamp={direction.from.datetime}/></div>
+          <span className={s.date}><Timestamp className={s.time} timestamp={direction.from.datetime} onlyDate={true}/></span>
         </div>
 
-        <div className={s.cityName}>Самара</div>
-        <div className={s.stationName}>Куйбышевский</div>
+        <div className={s.cityName}>{direction.from.city.name.charAt(0).toUpperCase() + direction.from.city.name.slice(1)}</div>
+        <div className={s.stationName}>{direction.from.railway_station_name}</div>
       </div>
 
       <div className={s.drivingTime}>
-        {/* <span><Timestamp timestamp={departure.duration} withoutMeasurement={true}/></span> */}
-        <span>03:15</span>
+        {/* <span><Timestamp timestamp={direction.duration} withoutMeasurement={true}/></span> */}
 
-        <IconLeft className={s.arrow} />
+        {icon}
       </div>
 
       <div className={s.wrapper}>
-        {/* <div className={s.dateTime}><Timestamp timestamp={departure.to.datetime}/></div> */}
         <div className={s.dateTime}>
-          <span className={s.time}>12:15</span>
-          <span className={s.date}>02.07.2024</span>
+          <div className={s.time}><Timestamp className={s.time} timestamp={direction.to.datetime}/></div>
+          <span className={s.date}><Timestamp className={s.time} timestamp={direction.to.datetime} onlyDate={true}/></span>
         </div>
         
-        <div className={s.cityName}>Москва</div>
-        <div className={s.stationName}>Казанский</div>
+        <div className={s.cityName}>{direction.to.city.name.charAt(0).toUpperCase() + direction.to.city.name.slice(1)}</div>
+        <div className={s.stationName}>{direction.to.railway_station_name}</div>
       </div>
     </div>
   )

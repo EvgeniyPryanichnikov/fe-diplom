@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './Seat-map-header.module.scss'
-import {useDispatch, useSelector} from "react-redux";
-import {setCoachName} from "../../../store/slices/ticketsSlice";
+import {useDispatch, useSelector} from "react-redux"
+import {setCoachName} from "../../../store/slices/ticketsSlice"
 
 const SeatMapHeader = ({direction}) => {
   const selectedCoachFrom = useSelector(state => state.tickets.coachsFromInfo.selectedCoachInfo.coach__name);

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Timestamp = ({timestamp, duration, withoutMeasurement}) => {
+export const Timestamp = ({timestamp, duration, withoutMeasurement, onlyDate}) => {
   const hours = Math.floor(timestamp / 3600)
   const minutes = Math.floor((timestamp % 3600) / 60)
 
@@ -17,13 +17,19 @@ export const Timestamp = ({timestamp, duration, withoutMeasurement}) => {
 
   const time = h + ':' + m;
 
+  const res = ("" + (new Date(timestamp * 1000)).toISOString())
+    .replace(/^([^T]+)T(.+)$/,'$1')
+    .replace(/^(\d+)-(\d+)-(\d+)$/,'$3.$2.$1')
+
   return (
     <>
-      {!duration && !withoutMeasurement && time}
+      {!duration && !withoutMeasurement && !onlyDate && time}
 
       {withoutMeasurement && <div>{`${hours}`}:{`${minutes}`}</div>}
 
       {duration && <div>{`${hours} ч.`}<br/>{`${minutes} мин.`}</div>}
+
+      {!duration && !withoutMeasurement && onlyDate && <div>{res}</div>}
     </>
   )
 }

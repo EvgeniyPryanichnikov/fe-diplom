@@ -6,7 +6,7 @@ const CitySelect = ({options = [], handleCitySelect, selectedCity, handleCityInp
 	const [isOpen, setIsOpen] = useState(false)
 	const [input, setInput] = useState(selectedCity?.name || "")
 	const [selectDirty, setSelectDirty] = useState(false)
-  const [selectError, setSelectError] = useState('Это обязательное поле')
+  const [selectError, setSelectError] = useState('* Это поле является обязательным')
 
 	const showedOptions = options.filter(el => el.name.toLowerCase().includes(input.toLowerCase()))
 

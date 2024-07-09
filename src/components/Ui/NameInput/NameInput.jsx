@@ -4,14 +4,14 @@ import s from './NameInput.module.scss'
 const NameInput = ({label, handleNameInput}) => {
   const [input, setInput] = useState('')
   const [inputDirty, setInputDirty] = useState(false)
-  const [inputError, setInputError] = useState('Это обязательное поле')
+  const [inputError, setInputError] = useState('* Это обязательное поле')
 
   const blurHandler = () => {
     if (input) {
       setInputDirty(false)
     } else {
       setInputDirty(true)
-      setInputError('Это обязательное поле')
+      setInputError('* Это обязательное поле')
     }
   }
 
@@ -26,8 +26,6 @@ const NameInput = ({label, handleNameInput}) => {
       setInputDirty(false)
       setInputError('')
     } 
-
-    // setInputDirty(false)
 	}
   return (
     <>

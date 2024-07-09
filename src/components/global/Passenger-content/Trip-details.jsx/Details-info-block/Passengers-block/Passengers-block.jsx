@@ -10,6 +10,7 @@ const PassengersBlock = () => {
 	const handleShowInfoBlock = useCallback(() => {
 		setIsShow(prev => !prev)
   }, [])
+  
   return (
     <div>
       <div className={s.passengersInfoBlock}> 

@@ -1,10 +1,11 @@
 import { React, useState, useCallback } from 'react'
 import s from './Details-info-block.module.scss'
+import { Timestamp } from '../../../../common/Timestamp/Timestamp'
 import { ReactComponent as IconPlus } from '../../../../../icons/plus.svg'
 import { ReactComponent as IconMinus } from '../../../../../icons/minus.svg'
 import DateTimeBlock from '../../../../common/Date-time-block/Date-time-block'
 
-const DetailsInfoBlock = ({icon, title,  labelLeft, labelRight}) => {
+const DetailsInfoBlock = ({direction, icon, iconYellow, title}) => {
   const [isShowInfoBlock, setIsShowInfoBlock] = useState(false)
 	const handleShowInfoBlock = useCallback(() => {
 		setIsShowInfoBlock(prev => !prev)
@@ -17,7 +18,7 @@ const DetailsInfoBlock = ({icon, title,  labelLeft, labelRight}) => {
 
         <p className={s.title}>{title}</p>
 
-        <span className={s.date}>01.07.2024</span>
+        <span className={s.date}><Timestamp className={s.time} timestamp={direction.from.datetime} onlyDate={true}/></span>
 
         <div 
           className={s.iconShow}
@@ -31,15 +32,15 @@ const DetailsInfoBlock = ({icon, title,  labelLeft, labelRight}) => {
         <div className={s.infoBlock}>
           <div className={s.train}>
             <span className={s.name}>№ Поезда</span>
-            <span className={s.number}>116С</span>
+            <span className={s.number}>{direction.train.name}</span>
           </div>
 
           <div className={s.train}>
             <span className={s.name}>Название</span>
-            <span className={s.fromTo}>Самара</span>
+            <span className={s.fromTo}>{direction.from.city.name.charAt(0).toUpperCase() + direction.from.city.name.slice(1)}<br/>{direction.to.city.name.charAt(0).toUpperCase() + direction.to.city.name.slice(1)}</span>
           </div>
          
-          <DateTimeBlock />
+          <DateTimeBlock direction={direction} icon={iconYellow}/>
         </div>
       }
     </div>
