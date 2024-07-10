@@ -6,8 +6,8 @@ import {useNavigate} from "react-router-dom"
 
 const PlaceSelection = () => {
   const navigate = useNavigate()
-  const trainFromInfo = useSelector(state => state.tickets.selectedTrain.departure)
-  const trainToInfo = useSelector(state => state.tickets.selectedTrain.arrival)
+  const departure = useSelector(state => state.tickets.selectedTrain.departure)
+  const arrival = useSelector(state => state.tickets.selectedTrain.arrival)
 
   function onBtnClick() {
     navigate('/trains/passenger')
@@ -16,9 +16,9 @@ const PlaceSelection = () => {
     <div className={s.placeSelection}>
       <h3 className={s.title}>Выбор мест</h3>
 
-      {trainFromInfo && <TrainSeatSelector departure={trainFromInfo}/>}
+      {departure && <TrainSeatSelector departure={departure}/>}
 
-      {trainToInfo && <TrainSeatSelector arrival={trainToInfo}/>}
+      {arrival && <TrainSeatSelector arrival={arrival}/>}
 
       <div className={s.btnBlock}>
         <button className={s.btn} onClick={() => onBtnClick()}>Далее</button>

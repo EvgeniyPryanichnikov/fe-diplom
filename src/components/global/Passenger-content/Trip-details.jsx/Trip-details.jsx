@@ -18,19 +18,19 @@ const TripDetails = () => {
         Детали поездки
       </div>
 
-      <DetailsInfoBlock 
+      {departure && <DetailsInfoBlock 
         direction={departure}
 			  icon={toArrowIcon}
         iconYellow={<IconLeft />}
 				title={'Туда'}
-			/>
+			/>}
 
-      <DetailsInfoBlock
+      {arrival && <DetailsInfoBlock
         direction={arrival}
 				icon={backArrowIcon}
         iconYellow={<IconRight />}
 				title={'Обратно'}
-			/>
+			/>}
 
       <PassengersBlock />
 

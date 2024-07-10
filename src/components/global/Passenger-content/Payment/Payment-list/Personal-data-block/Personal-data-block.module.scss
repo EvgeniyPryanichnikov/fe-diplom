@@ -1,0 +1,32 @@
+.personalData {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 33px;
+  grid-template-areas:
+    "surname firstName patronymic"
+    "email email email"
+    "phone phone phone";
+  padding: 35px;
+  border-bottom: 1px dotted #928F94;
+
+  .surname {
+    grid-area: surname;
+  }
+
+  .firstName {
+    grid-area: firstName;
+  }
+
+  .patronymic {
+    grid-area: patronymic;
+  }
+
+  .email {
+    grid-area: email;
+  }
+
+  .phone {
+    grid-area: phone;
+  }
+}

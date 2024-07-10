@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import s from './CheckboxInput.module.scss'
 
-const CheckboxInput = () => {
+const CheckboxInput = ({label}) => {
   function use(value) {
     console.log(value)
   }
@@ -10,7 +10,7 @@ const CheckboxInput = () => {
       <input type="checkbox" onClick={(e) => use(e)} className={s.input} id='input'/>
 
       <span className={s.text}>
-        ограниченная подвижность
+        {label}
       </span>
     </label>
   )
