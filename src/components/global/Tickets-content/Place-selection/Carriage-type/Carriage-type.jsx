@@ -8,6 +8,8 @@ const CarriageType = ({trainId, direction}) => {
 
   const classNameFrom = useSelector(state => state.tickets.coachsFromInfo.class_type);
   const classNameTo = useSelector(state => state.tickets.coachsToInfo.class_type);
+  const isSelectedCoachFrom = useSelector(state => !!state.tickets.coachsFromInfo.selectedCoachInfo.allSeats.length);
+  const isSelectedCoachTo = useSelector(state => !!state.tickets.coachsToInfo.selectedCoachInfo.allSeats.length);
 
   return (
     <div className={s.carriageType}>
@@ -15,7 +17,7 @@ const CarriageType = ({trainId, direction}) => {
 
       <SelectionButtons trainId={trainId} direction={direction} className={direction === 'departure' ? classNameFrom : classNameTo}/>
 
-      {classNameFrom && <SeatMap  direction={direction}/>}
+      {(direction === 'departure' ? (classNameFrom && isSelectedCoachFrom) : (classNameTo && isSelectedCoachTo)) && <SeatMap  direction={direction}/>}
     </div>
   )
 }

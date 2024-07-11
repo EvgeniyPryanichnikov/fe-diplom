@@ -9,15 +9,15 @@ import { ReactComponent as IconLinens } from '../../../icons/linens.svg'
 import Tooltip from '../Tooltip/Tooltip'
 
 const SeatPriceBlock = ({direction}) => {
-  const from = useSelector(state => state.tickets.coachsFromInfo.selectedCoachInfo.allSeats[0].coach)
-  const to = useSelector(state => state.tickets.coachsToInfo.selectedCoachInfo.allSeats[0].coach)
-  
-  let coachInfo 
+  const fromCoach = useSelector(state => state.tickets.coachsFromInfo.selectedCoachInfo.allSeats[0]?.coach)
+  const toCoach = useSelector(state => state.tickets.coachsToInfo.selectedCoachInfo.allSeats[0]?.coach)
+
+  let coachInfo
 
   if (direction === 'departure') {
-    coachInfo = from
+    coachInfo = fromCoach
   } else {
-    coachInfo = to
+    coachInfo = toCoach
   }
 
   return (
@@ -28,8 +28,8 @@ const SeatPriceBlock = ({direction}) => {
             <span className={s.item}>Места</span>
             <span className={s.count}>{coachInfo.available_seats}</span>
           </div>
-          
-          <span className={s.item}>Стоимость</span> 
+
+          <span className={s.item}>Стоимость</span>
         </div>
 
         {coachInfo.top_price && <div className={s.content}>
@@ -39,10 +39,10 @@ const SeatPriceBlock = ({direction}) => {
 
           <div>
             <span className={s.price}>{coachInfo.top_price}</span>
-            
+
             <IconRub />
-          </div>  
-        </div>} 
+          </div>
+        </div>}
 
         {coachInfo.bottom_price && <div className={s.content}>
           <div className={s.quantity}>
@@ -51,10 +51,10 @@ const SeatPriceBlock = ({direction}) => {
 
           <div>
             <span className={s.price}>{coachInfo.bottom_price}</span>
-            
+
             <IconRub />
-          </div>  
-        </div>} 
+          </div>
+        </div>}
 
         {coachInfo.side_price !== 0 && <div className={s.content}>
           <div className={s.quantity}>
@@ -63,10 +63,10 @@ const SeatPriceBlock = ({direction}) => {
 
           <div>
             <span className={s.price}>{coachInfo.side_price}</span>
-            
+
             <IconRub />
-          </div>  
-        </div>} 
+          </div>
+        </div>}
       </div>
 
       <div className={s.services}>

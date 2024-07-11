@@ -28,7 +28,6 @@ const NumberInput = ({value, label, placeholder, handleInput, max = 4}) => {
             value={value}
             onChange={onInputChange}
             type="number"
-            min={0}
             max={max}
             placeholder={placeholder}
           />

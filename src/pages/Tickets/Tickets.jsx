@@ -37,8 +37,10 @@ const Tickets = () => {
       {/* <PassengerContent /> */}
 
       <Routes>
-        <Route path='passenger' element={<PassengerContent />} /> 
-        <Route path='*' element={<TicketsContent />} /> 
+        <Route path='passenger' element={<PassengerContent />} />
+        <Route path='passenger/*' element={<PassengerContent />} />
+
+        <Route path='*' element={<TicketsContent />} />
       </Routes>
     </div>
   )

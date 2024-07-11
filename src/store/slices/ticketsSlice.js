@@ -14,6 +14,8 @@ const initialState = {
   },
   seatsInfoFrom: null,
   seatsInfoTo: null,
+  selectedSeatsFrom: [],
+  selectedSeatsTo: [],
   filters: {
     have_express: null,
     have_wifi: null,
@@ -121,11 +123,16 @@ export const ticketsSlice = createSlice({
       state.coachsFromInfo.class_type = action.payload;
       const aviableInSelectedClass = state.seatsInfoFrom.filter(el => el.coach.class_type === action.payload);
       const firstCoach = aviableInSelectedClass?.[0];
+      console.log(firstCoach)
       state.coachsFromInfo.availableCoachNames = aviableInSelectedClass?.map(el => el.coach.name);
       if (firstCoach) {
         state.coachsFromInfo.selectedCoachInfo.coach__name = firstCoach.coach.name;
         state.coachsFromInfo.selectedCoachInfo.allSeats = aviableInSelectedClass.filter(el => el.coach.name === firstCoach.coach.name);
+      } else {
+        state.coachsFromInfo.selectedCoachInfo.coach__name = "";
+        state.coachsFromInfo.selectedCoachInfo.allSeats = [];
       }
+
     },
     setClassTypeTo: (state, action) => {
       state.coachsToInfo.class_type = action.payload;
@@ -139,7 +146,13 @@ export const ticketsSlice = createSlice({
     },
     setCoachName: (state, action) => {
       state.selectedCoachInfo.coach__name = action.payload;
-      state.selectedCoachInfo.allSeats = state.seatsInfo.filter(el => el.coach.name === action.payload);
+      state.selectedCoachInfo.allSeats = state.seatsInfo.filter(el => el.coach.name === action.payload); // сделать для from to
+    },
+    setSelectedSeatsFrom: (state, action) => {
+      state.selectedSeatsFrom = action.payload
+    },
+    setSelectedSeatsTo: (state, action) => {
+      state.selectedSeatsTo = action.payload
     }
   }
 })
@@ -166,7 +179,9 @@ export const {
   // setClassType,
   setClassTypeFrom,
   setClassTypeTo,
-  setCoachName
+  setCoachName,
+  setSelectedSeatsFrom,
+  setSelectedSeatsTo
 } = ticketsSlice.actions
 
 export default ticketsSlice.reducer
