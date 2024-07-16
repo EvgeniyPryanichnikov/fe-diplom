@@ -309,15 +309,15 @@ export const ticketsSlice = createSlice({
       }
     },
 
-    setPassengerInfo: (state, action) => {
-      action.payload.option === 'age' ? state.passengerInfo.age = action.payload.value : 
-      action.payload.option === 'firstname' ? state.passengerInfo.firstname = action.payload.value :
-      action.payload.option === 'lastname' ? state.passengerInfo.lastname = action.payload.value :
-      action.payload.option === 'patronymic' ? state.passengerInfo.patronymic = action.payload.value :
-      action.payload.option === 'gender' ? state.passengerInfo.gender = action.payload.value :
-      action.payload.option === 'birthdate' ? state.passengerInfo.birthdate = action.payload.value :
-      action.payload.option === 'limitedMobility' ? state.passengerInfo.limitedMobility = action.payload.value : null
-    }
+    // setPassengerInfo: (state, action) => {
+    //   action.payload.option === 'age' ? state.passengerInfo.age = action.payload.value : 
+    //   action.payload.option === 'firstname' ? state.passengerInfo.firstname = action.payload.value :
+    //   action.payload.option === 'lastname' ? state.passengerInfo.lastname = action.payload.value :
+    //   action.payload.option === 'patronymic' ? state.passengerInfo.patronymic = action.payload.value :
+    //   action.payload.option === 'gender' ? state.passengerInfo.gender = action.payload.value :
+    //   action.payload.option === 'birthdate' ? state.passengerInfo.birthdate = action.payload.value :
+    //   action.payload.option === 'limitedMobility' ? state.passengerInfo.limitedMobility = action.payload.value : null
+    // }
   }
 })
 
