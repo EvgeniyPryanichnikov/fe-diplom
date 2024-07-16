@@ -11,7 +11,8 @@ const SeatMapHeader = ({direction}) => {
   const dispatch = useDispatch();
 
   function onChangeCoach(coachFullName) {
-    dispatch(setCoachName(coachFullName))
+    console.log(direction)
+    dispatch(setCoachName({coachFullName, direction}))
   }
 
   return (
@@ -19,8 +20,8 @@ const SeatMapHeader = ({direction}) => {
       <div className={s.numbers}>
         <span className={s.label}>Вагоны</span>
         {
-          direction === 'departure' ? availableCoachNamesFrom.map(el => <span key={el} className={s.number + " " + (el === selectedCoachFrom ? s.active : "")} onClick={() => onChangeCoach(el)}>{el.split("-")[1]}</span>) 
-          : availableCoachNamesTo.map(el => <span key={el} className={s.number + " " + (el === selectedCoachTo ? s.active : "")} onClick={() => onChangeCoach(el)}>{el.split("-")[1]}</span>) 
+          direction === 'departure' ? availableCoachNamesFrom.map(el => <span key={el} className={s.number + " " + (el === selectedCoachFrom ? s.active : "")} onClick={() => onChangeCoach(el)}>{el.split("-")[1]}</span>)
+          : availableCoachNamesTo.map(el => <span key={el} className={s.number + " " + (el === selectedCoachTo ? s.active : "")} onClick={() => onChangeCoach(el)}>{el.split("-")[1]}</span>)
         }
       </div>
 

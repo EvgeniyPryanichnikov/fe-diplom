@@ -1,9 +1,13 @@
 import React, { useEffect, useState, useCallback } from 'react'
+import { useSelector, useDispatch } from "react-redux"
+import {setPassengerInfo} from "../../../store/slices/ticketsSlice"
 import s from './AgeSelect.module.scss'
 import { ReactComponent as IconDropDown } from '../../../icons/dropdown.svg'
 
 
 const AgeSelect = () => {
+  const dispatch = useDispatch();
+
   const [isOpen, setIsOpen] = useState(false)
   const [input, setInput] = useState('Взрослый')
 
@@ -15,6 +19,7 @@ const AgeSelect = () => {
 
   function onOptionClick(value) {
     setInput(value)
+    dispatch(setPassengerInfo({value: value, option: 'age'}))
   }
   return (
     <div className={s.select} onClick={handleShowOptions}>

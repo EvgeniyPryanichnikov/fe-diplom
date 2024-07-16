@@ -1,71 +1,57 @@
-import React, {useEffect, useState} from "react";
-import Calendar from 'react-calendar';
-import { ReactComponent as IconCalendar } from '../../../icons/calendar.svg'
-import 'react-calendar/dist/Calendar.css';
-import s from "./BirthdateInput.module.scss";
+import React, { useState, useEffect }  from "react";
+import s from './BirthdateInput.module.scss'
 
+const NameInput = ({label, handleNameInput}) => {
+  const [input, setInput] = useState('')
+  const [inputDirty, setInputDirty] = useState(false)
+  const [inputError, setInputError] = useState('* Это обязательное поле')
 
-const BirthdateInput = (props) => {
-  const {handleChangeDate, selectedDate} = props;
-  const label = props.label
-  const [isOpen, setIsOpen] = useState(false);
-  const [date, setDate] = useState(new Date());
-  const [inputDate, setInputDate] = useState(selectedDate);
-
-  const toggleCalendar = () => {
-    setIsOpen(!isOpen);
-  }
-
-  useEffect(() => {
-    if (selectedDate) {
-      setDate(date);
-      setInputDate(selectedDate)
-    }
-  }, [selectedDate]);
-
-  function convertDate(date) {
-    setDate(date);
-    setInputDate(date.toLocaleDateString())
-    handleChangeDate(date.toLocaleDateString())
-  }
-
-  function handleInputDateChange(e){
-    // TODO: добавить валидацию
-
-    setInputDate(e.target.value)
-
-    const dateString = e.target.value
-    const [day, month, year] = dateString.split('.').map(Number);
-    const newDate = new Date(year, month - 1, day);
-
-    if (newDate.getTime() > 0) {
-      setDate(newDate);
+  const blurHandler = () => {
+    if (input) {
+      setInputDirty(false)
+    } else {
+      setInputDirty(true)
+      setInputError('* Это обязательное поле')
     }
   }
 
+  function onInputChange(e) {
+		setInput(e.target.value)
+    const re = /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/i
+
+    if (!re.test(String(e.target.value).toLowerCase())) {
+      setInputDirty(true)
+      setInputError('Не корректный ввод')
+    } else {
+      setInputDirty(false)
+      setInputError('')
+    } 
+	}
   return (
-    <div className={s.select}>
-      <p className={s.label}>
-        Дата рождения
-      </p>
-     
-      <div className={s.inputContainer}>
-        <input
-          className={s.input}
-          type="text"
-          placeholder="ДД.ММ.ГГГГ"
-          value={inputDate}
-          onChange={handleInputDateChange}
-        />
+    <>
+			<div className={s.birthdateInput} >
+        <label 
+          htmlFor="input" 
+          className={s.label + ((inputDirty && inputError)  ? ' ' + s.errorStatus : '')}
+        >
+          {label}
+        </label>
 
-        <button onClick={toggleCalendar}>
-          <IconCalendar />
-        </button>
+        <div className={s.inputContainer + ((inputDirty && inputError)  ? ' ' + s.errorBorder : '')}>
+          <input 
+            className={s.input}
+            onBlur={() => blurHandler()}
+            value={input}
+            placeholder="ДД/ММ/ГГГГ"
+            onChange={e => onInputChange(e)}
+            type="text" 
+          />
+        </div>
+
+        {(inputDirty && inputError) && <div className={s.error}>{inputError}</div>} 
       </div>
-
-      {isOpen && <Calendar className={s.calendar} value={date} onChange={convertDate}/>}
-    </div>
+		</>
   )
 }
 
-export default BirthdateInput
+export default NameInput

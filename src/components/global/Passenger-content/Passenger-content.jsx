@@ -13,8 +13,8 @@ const PassengerContent = () => {
 
     
       <Routes>
-        <Route path='payment' element={<CheckAllInfo />} />
-        {/* <Route path='payment' element={<Payment />} /> */}
+        {/* <Route path='payment' element={<CheckAllInfo />} /> */}
+        <Route path='payment' element={<Payment />} />
         <Route path='*' element={<PassengerList />}/>
       </Routes>
     </div>

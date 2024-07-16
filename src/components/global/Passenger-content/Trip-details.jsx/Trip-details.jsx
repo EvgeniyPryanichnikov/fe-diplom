@@ -12,6 +12,7 @@ import { ReactComponent as IconRub } from '../../../../icons/rub.svg'
 const TripDetails = () => {
   const departure = useSelector(state => state.tickets.selectedTrain.departure)
   const arrival = useSelector(state => state.tickets.selectedTrain.arrival)
+  const totalPrice = useSelector(state => state.tickets.totalPrice)
   return (
     <div className={s.tripDetails}>
       <div className={s.title}>
@@ -38,7 +39,7 @@ const TripDetails = () => {
         <span className={s.total}>Итог</span>
 
         <div>
-          <span className={s.price}>9998</span>
+          <span className={s.price}>{totalPrice}</span>
 
           <IconRub />
         </div>

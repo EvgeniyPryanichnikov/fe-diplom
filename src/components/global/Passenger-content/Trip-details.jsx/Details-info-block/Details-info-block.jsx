@@ -6,7 +6,7 @@ import { ReactComponent as IconMinus } from '../../../../../icons/minus.svg'
 import DateTimeBlock from '../../../../common/Date-time-block/Date-time-block'
 
 const DetailsInfoBlock = ({direction, icon, iconYellow, title}) => {
-  const [isShowInfoBlock, setIsShowInfoBlock] = useState(false)
+  const [isShowInfoBlock, setIsShowInfoBlock] = useState(true)
 	const handleShowInfoBlock = useCallback(() => {
 		setIsShowInfoBlock(prev => !prev)
   }, [])

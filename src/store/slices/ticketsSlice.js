@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
+import {useSelector} from "react-redux";
 
 const initialState = {
   trains: [],
@@ -7,7 +8,6 @@ const initialState = {
     from: null,
     to: null
   },
-  // selectedTrain: null,
   selectedTrain: {
     departure: null,
     arrival: null
@@ -16,6 +16,8 @@ const initialState = {
   seatsInfoTo: null,
   selectedSeatsFrom: [],
   selectedSeatsTo: [],
+  selectedOptionsFrom: [],
+  selectedOptionsTo: [],
   filters: {
     have_express: null,
     have_wifi: null,
@@ -30,10 +32,25 @@ const initialState = {
     date_start: "",
     date_end: "",
   },
-  persons__count: {
+  persons__count_from: {
     adult: 0,
     child: 0,
     withoutPlace: 0
+  },
+  persons__count_to: {
+    adult: 0,
+    child: 0,
+    withoutPlace: 0
+  },
+
+  passengerInfo: {
+    age: 'Взрослый',
+    firstname: '',
+    lastname: '',
+    patronymic: '',
+    gender: '',
+    birthdate: '',
+    limitedMobility: null
   },
 
   coachsFromInfo: {
@@ -52,7 +69,8 @@ const initialState = {
       allSeats: [],
       coach__name: "",
     }
-  }
+  },
+  totalPrice: 0
 }
 
 export const ticketsSlice = createSlice({
@@ -108,16 +126,20 @@ export const ticketsSlice = createSlice({
       state.seatsInfoFrom = action.payload
     },
     setSeatInfoTo: (state, action) => {
-      state.seatsInfoTo= action.payload
+      state.seatsInfoTo = action.payload
     },
     updateTicketsInfo: (state, action) => {
       const {items, total_count} = action.payload
       state.trains = items
       state.totalCount = total_count
     },
-    setPersonsCount: (state, action) => {
+    setPersonsCountFrom: (state, action) => {
       const {type, count} = action.payload
-      state.persons__count[type] = count;
+      state.persons__count_from[type] = +count;
+    },
+    setPersonsCountTo: (state, action) => {
+      const {type, count} = action.payload
+      state.persons__count_to[type] = count;
     },
     setClassTypeFrom: (state, action) => {
       state.coachsFromInfo.class_type = action.payload;
@@ -145,14 +167,156 @@ export const ticketsSlice = createSlice({
       }
     },
     setCoachName: (state, action) => {
-      state.selectedCoachInfo.coach__name = action.payload;
-      state.selectedCoachInfo.allSeats = state.seatsInfo.filter(el => el.coach.name === action.payload); // сделать для from to
+      const {direction, coachFullName} = action.payload;
+      if (direction === 'departure') {
+        state.coachsFromInfo.selectedCoachInfo.coach__name = coachFullName;
+        state.coachsFromInfo.selectedCoachInfo.allSeats = state.seatsInfoFrom.filter(el => el.coach.name === coachFullName);
+        state.selectedSeatsFrom = [];
+      } else {
+        state.coachsToInfo.selectedCoachInfo.coach__name = coachFullName;
+        state.coachsToInfo.selectedCoachInfo.allSeats = state.seatsInfoTo.filter(el => el.coach.name === coachFullName);
+        state.selectedSeatsTo = [];
+      }
+      // state.selectedCoachInfo.coach__name = action.payload;
+      // state.selectedCoachInfo.allSeats = state.seatsInfo.filter(el => el.coach.name === action.payload); // сделать для from to
     },
     setSelectedSeatsFrom: (state, action) => {
-      state.selectedSeatsFrom = action.payload
+      const selectedClass = state.coachsFromInfo.selectedCoachInfo.allSeats[0]?.coach.class_type;
+
+      let price;
+
+      switch (selectedClass) {
+        case 'first':
+          price = state.coachsFromInfo.selectedCoachInfo.allSeats[0]?.coach.price;
+          break;
+          case 'second':
+          price = state.coachsFromInfo.selectedCoachInfo.allSeats[0]?.coach[action.payload % 2 === 0 ? 'top_price' : 'bottom_price'];
+          break;
+          case 'third':
+            const ind = action.payload;
+            if (ind > 32) {
+              price = state.coachsFromInfo.selectedCoachInfo.allSeats[0]?.coach.side_price;
+            } else {
+              price = state.coachsFromInfo.selectedCoachInfo.allSeats[0]?.coach[action.payload % 2 === 0 ? 'top_price' : 'bottom_price'];
+            }
+          break;
+          case 'fourth':
+            price = state.coachsFromInfo.selectedCoachInfo.allSeats[0]?.coach[action.payload % 2 === 0 ? 'top_price' : 'bottom_price'];
+          break;
+      }
+      let seat = {
+        seat: action.payload,
+        price
+      }
+      const isAlreadySelected = !!state.selectedSeatsFrom.find(el => el.seat === action.payload);
+
+      if (isAlreadySelected) {
+        state.selectedSeatsFrom = state.selectedSeatsFrom.filter(el => el.seat !== action.payload)
+      } else {
+        state.selectedSeatsFrom.push(seat);
+      }
+
+      state.totalPrice = state.selectedSeatsFrom.map(el => el.price).reduce((a, b) => a + +b, 0) + state.selectedOptionsFrom.map(el => el.price).reduce((a, b) => a + +b, 0)
+
     },
     setSelectedSeatsTo: (state, action) => {
-      state.selectedSeatsTo = action.payload
+      const selectedClass = state.coachsToInfo.selectedCoachInfo.allSeats[0]?.coach.class_type;
+
+      let price;
+
+      switch (selectedClass) {
+        case 'first':
+          price = state.coachsToInfo.selectedCoachInfo.allSeats[0]?.coach.price;
+          break;
+        case 'second':
+          price = state.coachsToInfo.selectedCoachInfo.allSeats[0]?.coach[action.payload % 2 === 0 ? 'top_price' : 'bottom_price'];
+          break;
+        case 'third':
+          const ind = action.payload;
+          if (ind > 32) {
+            price = state.coachsToInfo.selectedCoachInfo.allSeats[0]?.coach.side_price;
+          } else {
+            price = state.coachsToInfo.selectedCoachInfo.allSeats[0]?.coach[action.payload % 2 === 0 ? 'top_price' : 'bottom_price'];
+          }
+          break;
+        case 'fourth':
+          price = state.coachsToInfo.selectedCoachInfo.allSeats[0]?.coach[action.payload % 2 === 0 ? 'top_price' : 'bottom_price'];
+          break;
+      }
+      let seat = {
+        seat: action.payload,
+        price
+      }
+      const isAlreadySelected = !!state.selectedSeatsTo.find(el => el.seat === action.payload);
+
+      if (isAlreadySelected) {
+        state.selectedSeatsTo = state.selectedSeatsTo.filter(el => el.seat !== action.payload)
+      } else {
+        state.selectedSeatsTo.push(seat);
+      }
+    },
+    toggleOptions: (state, action) => {
+      const {direction, optionName} = action.payload;
+      if (!optionName) return;
+      if (direction === 'departure') {
+        const isAlreadySelected = !!state.selectedOptionsFrom.map(el => el.name).find(el => el === optionName);
+        if (isAlreadySelected) {
+          state.selectedOptionsFrom = state.selectedOptionsFrom.filter(el => el.name !== optionName)
+        } else {
+          let price = 0;
+
+          switch (optionName) {
+            case 'linens':
+              price = state.coachsFromInfo.selectedCoachInfo.allSeats[0]?.coach.linens_price || 0;
+              break;
+            case 'wifi':
+              price = state.coachsFromInfo.selectedCoachInfo.allSeats[0]?.coach.wifi_price || 0;
+              break;
+          }
+
+          const option = {
+            name: optionName,
+            price
+          }
+          state.selectedOptionsFrom = [...state.selectedOptionsFrom, option]
+
+
+          state.totalPrice = state.selectedSeatsFrom.map(el => el.price).reduce((a, b) => a + +b, 0) + state.selectedOptionsFrom.map(el => el.price).reduce((a, b) => a + +b, 0)
+
+        }
+      } else {
+        const isAlreadySelected = !!state.selectedOptionsTo.map(el => el.name).find(el => el === optionName);
+        if (isAlreadySelected) {
+          state.selectedOptionsTo = state.selectedOptionsTo.filter(el => el.name !== optionName)
+        } else {
+          let price = 0;
+
+          switch (optionName) {
+            case 'linens':
+              price = state.coachsToInfo.selectedCoachInfo.allSeats[0]?.coach.linens_price || 0;
+              break;
+            case 'wifi':
+              price = state.coachsToInfo.selectedCoachInfo.allSeats[0]?.coach.wifi_price || 0;
+              break;
+          }
+
+          const option = {
+            name: optionName,
+            price
+          }
+          state.selectedOptionsTo = [...state.selectedOptionsTo, option]
+        }
+      }
+    },
+
+    setPassengerInfo: (state, action) => {
+      action.payload.option === 'age' ? state.passengerInfo.age = action.payload.value : 
+      action.payload.option === 'firstname' ? state.passengerInfo.firstname = action.payload.value :
+      action.payload.option === 'lastname' ? state.passengerInfo.lastname = action.payload.value :
+      action.payload.option === 'patronymic' ? state.passengerInfo.patronymic = action.payload.value :
+      action.payload.option === 'gender' ? state.passengerInfo.gender = action.payload.value :
+      action.payload.option === 'birthdate' ? state.passengerInfo.birthdate = action.payload.value :
+      action.payload.option === 'limitedMobility' ? state.passengerInfo.limitedMobility = action.payload.value : null
     }
   }
 })
@@ -175,13 +339,16 @@ export const {
   setSelectedTrainTo,
   setSeatInfoFrom,
   setSeatInfoTo,
-  setPersonsCount,
   // setClassType,
   setClassTypeFrom,
   setClassTypeTo,
   setCoachName,
   setSelectedSeatsFrom,
-  setSelectedSeatsTo
+  setSelectedSeatsTo,
+  setPersonsCountFrom,
+  setPersonsCountTo,
+  toggleOptions,
+  setPassengerInfo
 } = ticketsSlice.actions
 
 export default ticketsSlice.reducer

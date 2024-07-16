@@ -4,7 +4,7 @@ import calendar from '../../../icons/calendar.svg'
 import { ReactComponent as IconCalendar } from '../../../icons/calendar.svg'
 import 'react-calendar/dist/Calendar.css';
 import s from "./DateSelect.module.scss";
-
+import './DateSelect.scss'
 
 const DateSelect = (props) => {
   const {handleChangeDate, selectedDate} = props;

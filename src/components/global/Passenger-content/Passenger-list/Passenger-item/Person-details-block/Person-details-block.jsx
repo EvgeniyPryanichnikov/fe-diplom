@@ -11,6 +11,8 @@ const PersonDetailsBlock = () => {
       <DocsDataInput label={'Серия'} placeholder={'__ __ __ __'}/>
 
       <DocsDataInput label={'Номер'} placeholder={'__ __ __ __ __ __'}/>
+
+      <DocsDataInput label={'Номер'} placeholder={'_ _ _ _ _ _ _ _ _ _ _ _'}/>
     </div>
   )
 }

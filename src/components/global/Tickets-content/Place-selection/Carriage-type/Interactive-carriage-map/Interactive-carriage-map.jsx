@@ -31,12 +31,16 @@ const Area = ({ area, isActive, isAvailable, handleClick, className }) => (
 );
 export const formatIndex = (index) => (index).toString().padStart(2, '0');
 
-const InteractiveCarriageMap = ({coachNumber, isFrom}) => {
+const InteractiveCarriageMap = ({coachNumber, isFrom, seats, coach, selectedSeats}) => {
 
-  const {coach, seats} = useSelector(state => state.tickets.coachsFromInfo?.selectedCoachInfo?.allSeats[0]); //TODO для обратного поезда не реализовано?
-  
   console.log(coach, seats)
+  const persons__count_from = useSelector(state => state.tickets.persons__count_from)
+  const persons__count_to = useSelector(state => state.tickets.persons__count_to)
 
+
+  const maxPlacesToChoose = Object.values(isFrom ? persons__count_from : persons__count_to).reduce((a, v) => a + +v, 0);
+
+  console.log(maxPlacesToChoose)
   let urlMap = "";
 
   switch (coach.class_type) {
@@ -62,30 +66,29 @@ const InteractiveCarriageMap = ({coachNumber, isFrom}) => {
     ClickableAreasMap[coach.class_type],
   )
 
-  const [activeAreaIndexes, setActiveAreaIndexes] = useState([]);
   const dispatch = useDispatch();
 
   const handleClick = (area, available) => {
+    const isClickOnSelected = selectedSeats.includes(area.index);
+
+    console.log(area, available)
+    if ((selectedSeats.length >= maxPlacesToChoose )&& !isClickOnSelected) {
+      //TODO: show modal
+      return;
+    }
     if (available) return;
 
     if (area.index === 0 || typeof area.index !== 'number') {
       return;
     }
 
-    setActiveAreaIndexes(prevActiveAreaIndexes =>
-      prevActiveAreaIndexes.includes(area.index)
-        ? prevActiveAreaIndexes.filter(activeAreaIndex => activeAreaIndex !== area.index)
-        : [...prevActiveAreaIndexes, area.index],
-    );
-  }
 
-  useEffect(() => {
     if(isFrom) {
-      dispatch(setSelectedSeatsFrom(activeAreaIndexes.map(index => +index)));
+      dispatch(setSelectedSeatsFrom(area.index));
     } else {
-      dispatch(setSelectedSeatsTo(activeAreaIndexes.map(index => +index)));
+      dispatch(setSelectedSeatsTo(area.index));
     }
-  }, [dispatch, activeAreaIndexes]);
+  }
 
   return (
     <div className={'carriage-map'}>
@@ -98,10 +101,10 @@ const InteractiveCarriageMap = ({coachNumber, isFrom}) => {
         }
 
         const areaData = seats.find(seat => seat.index === area.index);
-        const isActive = activeAreaIndexes.includes(area.index);
+        const isActive = selectedSeats.includes(area.index);
         const isAvailable = areaData && areaData.available;
 
-        return <Area area={area} isActive={isActive} isAvailable={!!isAvailable} handleClick={handleClick} key={area.index} />;
+        return <Area area={area} isActive={isActive} isAvailable={!isAvailable} handleClick={handleClick} key={area.index} />;
       })}
     </div>
   );

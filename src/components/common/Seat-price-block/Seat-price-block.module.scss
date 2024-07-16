@@ -20,24 +20,24 @@
       color: #C4C4C4;
     }
 
-    svg {
-      box-sizing: border-box;
-      cursor: pointer;
-      width: 36px;
-      height: 34px;
-      padding: 5px;
-      border-radius: 5px;
-      border: 1px solid #212121;
-
-      &.active {
-        border-color: transparent;
-        background-color: #fcdc9d;;
-      }
-
-      &:hover {
-        background-color: #ffa800;
-      }
-    }
+    //svg {
+    //  box-sizing: border-box;
+    //  cursor: pointer;
+    //  width: 36px;
+    //  height: 34px;
+    //  padding: 5px;
+    //  border-radius: 5px;
+    //  border: 1px solid #212121;
+    //
+    //  &.active {
+    //    border-color: transparent;
+    //    background-color: #fcdc9d;;
+    //  }
+    //
+    //  &:hover {
+    //    background-color: #ffa800;
+    //  }
+    //}
 
     .iconsService {
       display: flex;
@@ -85,9 +85,9 @@
 
     .price {
       margin-right: 8px;
-    } 
+    }
   }
-  
+
   // width: 100%;
   // display: flex;
   // flex-direction: column;
@@ -141,6 +141,6 @@
 
   //   .price {
   //     margin-right: 8px;
-  //   } 
+  //   }
   // }
 }

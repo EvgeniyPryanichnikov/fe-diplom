@@ -34,7 +34,7 @@ const PersonInfoBlock = () => {
       </div>
 
       <div className={s.limitedMobility}>
-        <CheckboxInput/>
+        <CheckboxInput label={'ограниченная подвижность'}/>
       </div>
     </div>
   )

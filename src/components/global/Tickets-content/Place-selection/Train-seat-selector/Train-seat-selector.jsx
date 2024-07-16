@@ -21,7 +21,7 @@ const TrainSeatSelector = ({departure, arrival}) => {
 
         <TrainDetailsBlock trainInfo={departure}/>
 
-        <TicketsCountForm />
+        <TicketsCountForm direction={'departure'}/>
 
         <CarriageType trainId={departure._id} direction={'departure'}/>
       </div>}
@@ -35,7 +35,7 @@ const TrainSeatSelector = ({departure, arrival}) => {
 
         <TrainDetailsBlock trainInfo={arrival} direction={'arrival'}/>
 
-        <TicketsCountForm />
+        <TicketsCountForm direction={'arrival'} />
 
         <CarriageType trainId={arrival._id} direction={'arrival'}/>
       </div>}

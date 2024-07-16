@@ -1,7 +1,38 @@
-.container {  
+.container {
   display: flex;
   position: relative;
+  border-radius: 5px;
+
+  &.disabled {
+    border-color: transparent;
+    background-color: #fcdc9d;;
+  }
+
+  &.active {
+    background-color: #ffa800;
+  }
+
+  svg {
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 36px;
+    height: 34px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #212121;
+
+    &.active {
+      border-color: transparent;
+      background-color: #fcdc9d;;
+    }
+
+    &:hover {
+      background-color: #ffa800;
+    }
+  }
 }
+
+
 
 .tooltip {
   position: absolute;

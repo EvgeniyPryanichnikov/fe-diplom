@@ -26,8 +26,10 @@ import {getCities} from "../../../../../api/cities";
 const TrainForm = () => {
   const {
     date_end,
-    date_start
+    date_start,
+    have_first_class
   } = useSelector(state => state.tickets.filters); // получение данных
+
 
   const dispatch = useDispatch()
 
@@ -113,6 +115,7 @@ const TrainForm = () => {
         <SwitchInput
           icon={starIcon}
           label={'Люкс'}
+          value={have_first_class}
           handleSwitchInput={handleSwitchFirst}
         />
 

@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import {React, useEffect, useState} from 'react'
 import s from './Travel-form.module.scss'
 import { getCities } from "../../../api/cities"
 import CitySelect from '../../Ui/CitySelect/CitySelect'
@@ -37,6 +37,45 @@ const TravelForm = ({isRow}) => {
   const handleChangeDateTo = (date) => {
     dispatch(setDateTo(date))
   }
+
+
+  useEffect(() => {
+    if (cityFrom)
+    localStorage.setItem("cityFrom", JSON.stringify(cityFrom))
+    if (cityTo)
+    localStorage.setItem("cityTo", JSON.stringify(cityTo))
+    if (date_start)
+    localStorage.setItem("date_start", date_start)
+    if (date_end)
+    localStorage.setItem("date_end", date_end)
+  }, [date_start, date_end, cityFrom, cityTo]);
+
+  useEffect(() => {
+    const cityFromLocalStorage = localStorage.getItem("cityFrom");
+
+    if (cityFromLocalStorage) {
+      dispatch(setCityFrom(JSON.parse(cityFromLocalStorage)))
+    }
+
+    const cityToLocalStorage = localStorage.getItem("cityTo");
+
+    if (cityToLocalStorage) {
+      dispatch(setCityTo(JSON.parse(cityToLocalStorage)))
+    }
+
+    const dateStartLocalStorage = localStorage.getItem("date_start");
+
+    if (dateStartLocalStorage) {
+      dispatch(setDateFrom(dateStartLocalStorage))
+    }
+
+    const dateEndLocalStorage = localStorage.getItem("date_end");
+
+    if (dateEndLocalStorage) {
+      dispatch(setDateTo(dateEndLocalStorage))
+    }
+
+  }, []);
 
   return (
     <div className={isRow ? s.isRow : s.travelForm}>
