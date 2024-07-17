@@ -6,7 +6,7 @@ import {
   setThirdClass,
   setFourthClass,
   setWiFi,
-  setCityFrom, setCityTo, setDateFrom, setDateTo
+  setCityFrom, setCityTo, setDateFrom, setDateTo, setExpress
 } from '../../../../../store/slices/ticketsSlice'
 import s from './Train-form.module.scss'
 import DateSelect from '../../../../Ui/DateSelect/DateSelect'
@@ -27,7 +27,12 @@ const TrainForm = () => {
   const {
     date_end,
     date_start,
-    have_first_class
+    have_first_class,
+    have_wifi,
+    have_express,
+    have_fourth_class,
+    have_second_class,
+    have_third_class
   } = useSelector(state => state.tickets.filters); // получение данных
 
 
@@ -54,19 +59,16 @@ const TrainForm = () => {
   }
 
   function handleSwitchExpress(value) {
-    dispatch(setFourthClass(value ? value : null))
+    dispatch(setExpress(value ? value : null))
   }
 
   const [minValue, set_minValue] = useState(25);
   const [maxValue, set_maxValue] = useState(75);
+
   const handleInput = (e) => {
     set_minValue(e.minValue)
     set_maxValue(e.maxValue)
   }
-
-
-
-
 
   const handleChangeDateFrom = (date) => {
     dispatch(setDateFrom(date))
@@ -98,18 +100,21 @@ const TrainForm = () => {
           icon={coupeIcon}
           label={'Купе'}
           handleSwitchInput={handleSwitchSecond}
+          value={have_second_class}
         />
 
         <SwitchInput
           icon={reservedSeatIcon}
           label={'Плацкарт'}
           handleSwitchInput={handleSwitchThird}
+          value={have_third_class}
         />
 
         <SwitchInput
           icon={sedentaryIcon}
           label={'Сидячий'}
           handleSwitchInput={handleSwitchFourth}
+          value={have_fourth_class}
         />
 
         <SwitchInput
@@ -123,16 +128,18 @@ const TrainForm = () => {
           icon={wifiIcon}
           label={'Wi-fi'}
           handleSwitchInput={handleSwitchWiFi}
+          value={have_wifi}
         />
 
         <SwitchInput
           icon={expressIcon}
           label={'Экспресс'}
           handleSwitchInput={handleSwitchExpress}
+          value={have_express}
         />
       </div>
 
-      <div className={s.price}>
+      {/* <div className={s.price}>
         <h3 className={s.title}>Стоимость</h3>
 
         <div className={s.range}>
@@ -161,7 +168,7 @@ const TrainForm = () => {
 				title={'Обратно'}
 				labelLeft={'Время отбытия'}
 				labelRight={'Время прибытия'}
-			/>
+			/> */}
     </div>
   )
 }

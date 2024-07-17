@@ -43,15 +43,17 @@ const initialState = {
     withoutPlace: 0
   },
 
-  passengerInfo: {
-    age: 'Взрослый',
-    firstname: '',
-    lastname: '',
-    patronymic: '',
-    gender: '',
-    birthdate: '',
-    limitedMobility: null
+  passengersInfo: [],
+
+  userInfo: {
+    first_name: "",
+    last_name: "",
+    patronymic: "",
+    phone: "",
+    email: "",
+    payment_method: "", 
   },
+
 
   coachsFromInfo: {
     class_type: "",
@@ -177,8 +179,6 @@ export const ticketsSlice = createSlice({
         state.coachsToInfo.selectedCoachInfo.allSeats = state.seatsInfoTo.filter(el => el.coach.name === coachFullName);
         state.selectedSeatsTo = [];
       }
-      // state.selectedCoachInfo.coach__name = action.payload;
-      // state.selectedCoachInfo.allSeats = state.seatsInfo.filter(el => el.coach.name === action.payload); // сделать для from to
     },
     setSelectedSeatsFrom: (state, action) => {
       const selectedClass = state.coachsFromInfo.selectedCoachInfo.allSeats[0]?.coach.class_type;
@@ -308,16 +308,123 @@ export const ticketsSlice = createSlice({
         }
       }
     },
+    initPassengers: (state) => {
+      if (state.passengersInfo.length) return
 
-    // setPassengerInfo: (state, action) => {
-    //   action.payload.option === 'age' ? state.passengerInfo.age = action.payload.value : 
-    //   action.payload.option === 'firstname' ? state.passengerInfo.firstname = action.payload.value :
-    //   action.payload.option === 'lastname' ? state.passengerInfo.lastname = action.payload.value :
-    //   action.payload.option === 'patronymic' ? state.passengerInfo.patronymic = action.payload.value :
-    //   action.payload.option === 'gender' ? state.passengerInfo.gender = action.payload.value :
-    //   action.payload.option === 'birthdate' ? state.passengerInfo.birthdate = action.payload.value :
-    //   action.payload.option === 'limitedMobility' ? state.passengerInfo.limitedMobility = action.payload.value : null
-    // }
+      const adult = state.persons__count_from.adult
+      const child = state.persons__count_from.child
+
+      const passengersAdult = Array.apply(null, Array(adult)).map((x, i) => (
+        {
+          age: 'Взрослый',
+          firstname: '',
+          lastname: '',
+          patronymic: '',
+          gender: true,
+          birthdate: '',
+          limitedMobility: null,
+          document_type: 'паспорт',
+          document_data: {
+            series: '',
+            number: '',
+          },
+        }
+      ))
+
+      const passengersChild = Array.apply(null, Array(child)).map((x, i) => (
+        {
+          age: 'Детский',
+          firstname: '',
+          lastname: '',
+          patronymic: '',
+          gender: true,
+          birthdate: '',
+          limitedMobility: null,
+          document_type: 'свидетельство о рождении',
+          document_data: {
+            number: '',
+          },
+        }
+      ))
+
+      state.passengersInfo = [...passengersAdult, ...passengersChild]
+    },
+    addNewPassenger(state) {
+      state.passengersInfo.push({
+        age: 'Взрослый',
+        firstname: '',
+        lastname: '',
+        patronymic: '',
+        gender: true,
+        birthdate: '',
+        limitedMobility: null,
+        document_type: 'паспорт',
+        document_data: {
+          series: '',
+          number: '',
+        },
+      })
+    },
+
+    initUser: (state) => {
+      if (state.userInfo.first_name || state.userInfo.last_name || state.userInfo.patronymic) return;
+      const firstPassenger = state.passengersInfo[0];
+
+        state.userInfo.first_name = firstPassenger.firstname;
+        state.userInfo.last_name = firstPassenger.lastname;
+        state.userInfo.patronymic = firstPassenger.patronymic;
+    },
+    setUserInfo(state, action) {
+      const {value, option, id} = action.payload;
+      if (option === 'payment_method') {
+        state.userInfo.payment_method = id
+      } else {
+        state.userInfo[option] = value
+      }
+    },
+
+    setPassengerInfo: (state, action) => {
+      const {value, option, index} = action.payload;
+
+      const passenger = state.passengersInfo[index];
+
+      if (!passenger) return;
+
+      switch (option) {
+        case 'age':
+          state.passengersInfo[index].age = value;
+          break;
+        case 'firstName':
+          state.passengersInfo[index].firstname = value;
+          break;
+        case 'lastName':
+          state.passengersInfo[index].lastname = value;
+          break;
+        case 'patronymic':
+          state.passengersInfo[index].patronymic = value;
+          break;
+        case 'gender':
+          state.passengersInfo[index].gender = value;
+          break;
+        case 'birthdate':
+          state.passengersInfo[index].birthdate = value;
+          break;
+        case 'limitedMobility':
+          state.passengersInfo[index].limitedMobility = value;
+          break;
+        case 'document_type':
+          state.passengersInfo[index].document_type = value;
+          break;
+        case 'number':
+          state.passengersInfo[index].document_data.number = value;
+          break;
+        case 'series':
+          state.passengersInfo[index].document_data.series = value;
+          break;
+        default:
+          break;
+      }
+    }
   }
 })
 
@@ -348,7 +455,11 @@ export const {
   setPersonsCountFrom,
   setPersonsCountTo,
   toggleOptions,
-  setPassengerInfo
+  setPassengerInfo,
+  initPassengers,
+  addNewPassenger,
+  initUser,
+  setUserInfo
 } = ticketsSlice.actions
 
 export default ticketsSlice.reducer

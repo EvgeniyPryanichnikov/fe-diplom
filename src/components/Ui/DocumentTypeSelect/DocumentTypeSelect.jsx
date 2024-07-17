@@ -3,29 +3,34 @@ import { useSelector, useDispatch } from "react-redux"
 import {setPassengerInfo} from "../../../store/slices/ticketsSlice"
 import s from './DocumentTypeSelect.module.scss'
 import { ReactComponent as IconDropDown } from '../../../icons/dropdown.svg'
+import {
+  DocumentType
+} from "../../global/Passenger-content/Passenger-list/Passenger-item/Person-details-block/Person-details-block";
 
 
-const DocumentTypeSelect = () => {
-  const dispatch = useDispatch();
+const DocumentTypeSelect = ({onSelect, value}) => {
 
   const [isOpen, setIsOpen] = useState(false)
-  const [input, setInput] = useState('Паспорт РФ')
 
-  const options = [{id: 1, value: 'Паспорт РФ'}, {id: 2, value: 'Свидетельство о рождении'}] //, {id: 3, value: 'Водительское удостоверение'
+  const options = [{id: 1, name: 'Паспорт РФ', value: DocumentType.PASSPORT}, {id: 2, name: 'Свидетельство о рождении', value: DocumentType.BIRTHDAY_CERTIFICATE}] //, {id: 3, value: 'Водительское удостоверение'
 
   const handleShowOptions = useCallback(() => {
 		setIsOpen(prev => !prev)
   }, [])
 
   function onOptionClick(value) {
-    setInput(value)
+    console.log("select", value)
+    onSelect(value)
   }
+
+  console.log(value)
+
   return (
     <div className={s.select} onClick={handleShowOptions}>
       <div className={s.inputContainer}>
         <input
           className={s.input}
-          value={input}
+          value={value === DocumentType.PASSPORT ? 'Паспорт РФ' : value === DocumentType.BIRTHDAY_CERTIFICATE ? 'Свидетельство о рождении' : ''}
           type="select"
         />
 
@@ -37,7 +42,7 @@ const DocumentTypeSelect = () => {
 
       {isOpen && <div className={s.options}>
         {options.map(opt => <div key={opt.id} className={s.optionItem} onClick={() => onOptionClick(opt.value)}>
-          {opt.value.toUpperCase()}
+          {opt.name.toUpperCase()}
         </div>)}
       </div>}
     </div>

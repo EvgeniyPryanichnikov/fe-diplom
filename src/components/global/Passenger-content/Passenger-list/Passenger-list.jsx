@@ -1,41 +1,39 @@
-import React, { useState } from 'react'
-import { useSelector} from "react-redux"
+import React, {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from "react-redux"
 import s from './Passenger-list.module.scss'
 import PassengerItem from './Passenger-item/Passenger-item'
 import PassengerAddBlock from './Passenger-add-block/Passenger-add-block'
 import { useNavigate } from "react-router-dom"
+import {addNewPassenger, initPassengers} from "../../../../store/slices/ticketsSlice"
 
 const PassengerList = () => {
-  const [addItem, setAddItem] = useState(false)
   const navigate = useNavigate()
 
   function onBtnClick() {
     navigate('payment')
   }
 
+  const dispatch = useDispatch();
+
   function handleAddClick() {
-    setAddItem(true)
-    // setAddItem(false)
+    dispatch(addNewPassenger());
   }
 
-  const adult  = useSelector(state => state.tickets.persons__count_from.adult)
-  const child  = useSelector(state => state.tickets.persons__count_from.child)
+  useEffect(() => {
+    dispatch(initPassengers());
+  }, []);
 
-  let summ = adult + child
+  const passengers = useSelector(state => state.tickets.passengersInfo);
 
-  const passengers = Array.apply(null, Array(summ)).map(function (x, i) { return i; })
   return (
     <div className={s.passengerList}>
 
-      {passengers.map(item => (
-        <PassengerItem />
+      {passengers.map((item, index) => (
+        <PassengerItem key={index} data={item} index={index}/>
       ))}
 
-      {addItem && <PassengerItem />}
-      
-
       <PassengerAddBlock handleClick={handleAddClick}/>
-      
+
       <div className={s.btnBlock}>
         <button onClick={() => onBtnClick()} className={s.btn}>Далее</button>
       </div>

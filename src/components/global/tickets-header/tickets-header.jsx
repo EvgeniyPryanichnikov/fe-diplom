@@ -1,6 +1,5 @@
 import React from 'react'
-
-import s from './Tickets-header.module.scss'
+ import s from './tickets-header.module.scss'
 import Header from '../Header/Header'
 import StepsBlock from './Steps-block/Steps-block'
 import TravelForm from '../../common/Travel-form/Travel-form'
@@ -11,7 +10,7 @@ const TicketsHeader = () => {
       <Header />
 
       <div>
-        <TravelForm 
+        <TravelForm
           isRow={true}
         />
       </div>

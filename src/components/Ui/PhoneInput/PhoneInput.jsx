@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from "react";
 import s from './PhoneInput.module.scss'
 
-const PhoneInput = ({label, handleNameInput}) => {
+const PhoneInput = ({label, handleInputChange, option, value}) => {
   const [input, setInput] = useState('')
   const [inputDirty, setInputDirty] = useState(false)
   const [inputError, setInputError] = useState('* Это обязательное поле')
@@ -25,8 +25,17 @@ const PhoneInput = ({label, handleNameInput}) => {
     } else {
       setInputDirty(false)
       setInputError('')
+      const value = e.target.value
+      handleInputChange(option, value)
     } 
 	}
+
+  useEffect(() => {
+    if (value) {
+      setInput(value)
+    }
+  }, [])
+  
   return (
     <>
 			<div className={s.phoneInput} >

@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from "react";
 import s from './BirthdateInput.module.scss'
 
-const NameInput = ({label, handleNameInput}) => {
+const NameInput = ({label, handleInputChange, option, value}) => {
   const [input, setInput] = useState('')
   const [inputDirty, setInputDirty] = useState(false)
   const [inputError, setInputError] = useState('* Это обязательное поле')
@@ -12,6 +12,7 @@ const NameInput = ({label, handleNameInput}) => {
     } else {
       setInputDirty(true)
       setInputError('* Это обязательное поле')
+
     }
   }
 
@@ -25,30 +26,37 @@ const NameInput = ({label, handleNameInput}) => {
     } else {
       setInputDirty(false)
       setInputError('')
-    } 
+      handleInputChange(option, e.target.value);
+    }
 	}
+
+  useEffect(() => {
+    if (value) {
+      setInput(value)
+    }
+  }, []);
   return (
     <>
 			<div className={s.birthdateInput} >
-        <label 
-          htmlFor="input" 
+        <label
+          htmlFor="input"
           className={s.label + ((inputDirty && inputError)  ? ' ' + s.errorStatus : '')}
         >
           {label}
         </label>
 
         <div className={s.inputContainer + ((inputDirty && inputError)  ? ' ' + s.errorBorder : '')}>
-          <input 
+          <input
             className={s.input}
             onBlur={() => blurHandler()}
             value={input}
             placeholder="ДД/ММ/ГГГГ"
             onChange={e => onInputChange(e)}
-            type="text" 
+            type="text"
           />
         </div>
 
-        {(inputDirty && inputError) && <div className={s.error}>{inputError}</div>} 
+        {(inputDirty && inputError) && <div className={s.error}>{inputError}</div>}
       </div>
 		</>
   )

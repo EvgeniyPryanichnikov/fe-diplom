@@ -1,9 +1,13 @@
 import React from 'react'
+import {useSelector} from "react-redux"
 import s from './PassengerInfo.module.scss'
 import { PassengerItem } from './PassengerItem/PassengerItem'
 import { ReactComponent as IconRub } from '../../../../../icons/rub.svg'
 
 const PassengerInfo = () => {
+  const passengers = useSelector(state => state.tickets.passengersInfo)
+  const totalPrice = useSelector(state => state.tickets.totalPrice)
+
   return (
     <div className={s.passengerInfo}>
       <div className={s.titleBlock}>
@@ -12,7 +16,7 @@ const PassengerInfo = () => {
 
       <div className={s.contentBlock}>
         <div className={s.passengersContainer}>
-          <PassengerItem />
+          {passengers.map( item => (<PassengerItem  key={item.id} item={item}/>)) }
         </div>
 
         <div className={s.totalContainer}>
@@ -20,7 +24,7 @@ const PassengerInfo = () => {
             <span className={s.value}>Всего</span>
 
             <div>
-              <span className={s.price}>7000</span>
+              <span className={s.price}>{totalPrice}</span>
 
               <IconRub />
             </div>

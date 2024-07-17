@@ -6,7 +6,7 @@ import { ReactComponent as IconClose } from '../../../../../icons/close.svg'
 import PersonInfoBlock from './Person-info-block/Person-info-block'
 import PersonDetailsBlock from './Person-details-block/Person-details-block'
 
-const PassengerItem = () => {
+const PassengerItem = ({data, index}) => {
   const [isShow, setIsShow] = useState(false)
   const handleShowBlock = useCallback(() => {
 		setIsShow(prev => !prev)
@@ -19,24 +19,24 @@ const PassengerItem = () => {
           <div onClick={handleShowBlock}>
             {isShow ? <IconMinus /> : <IconPlus  />}
           </div>
-          
-          <span className={s.label}>Пассажир 1</span>
+
+          <span className={s.label}>Пассажир {index + 1}</span>
         </div>
 
         <IconClose className={s.close}/>
       </div>
 
       {isShow && <div>
-        <PersonInfoBlock />
+        <PersonInfoBlock index={index} />
 
-        <PersonDetailsBlock />
+        <PersonDetailsBlock index={index} />
 
         <div className={s.footer}>
           <button className={s.btnNext}>
             Следующий пассажир
           </button>
         </div>
-      </div>} 
+      </div>}
     </div>
   )
 }

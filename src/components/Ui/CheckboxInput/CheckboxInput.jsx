@@ -1,13 +1,15 @@
 import React, {useState} from 'react'
 import s from './CheckboxInput.module.scss'
 
-const CheckboxInput = ({label}) => {
+const CheckboxInput = ({label, id, handleInputChange, option, value}) => {
   function use(value) {
-    console.log(value)
+    console.log(id)
+    handleInputChange(option, value, id);
   }
+
   return (
-    <label htmlFor="input" className={s.label}>
-      <input type="checkbox" onClick={(e) => use(e)} className={s.input} id='input'/>
+    <label htmlFor={id || "input"} className={s.label}>
+      <input type="checkbox" checked={value} onClick={(e) => use(e.target.checked)} className={s.input} id={id || "input"}/>
 
       <span className={s.text}>
         {label}

@@ -5,11 +5,9 @@ import s from './AgeSelect.module.scss'
 import { ReactComponent as IconDropDown } from '../../../icons/dropdown.svg'
 
 
-const AgeSelect = () => {
-  const dispatch = useDispatch();
+const AgeSelect = ({value, handleInputChange, option}) => {
 
   const [isOpen, setIsOpen] = useState(false)
-  const [input, setInput] = useState('Взрослый')
 
   const options = [{id: 1, value: 'Взрослый'}, {id: 2, value: 'Детский'}]
 
@@ -18,15 +16,15 @@ const AgeSelect = () => {
   }, [])
 
   function onOptionClick(value) {
-    setInput(value)
-    dispatch(setPassengerInfo({value: value, option: 'age'}))
+    handleInputChange(option, value)
   }
+
   return (
     <div className={s.select} onClick={handleShowOptions}>
       <div className={s.inputContainer}>
         <input
           className={s.input}
-          value={input}
+          value={value}
           type="select"
         />
 

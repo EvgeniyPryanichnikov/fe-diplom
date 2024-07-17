@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import s from './Tickets.module.scss'
-import TicketsHeader from '../../components/global/Tickets-header/Tickets-header'
 import TicketsContent from '../../components/global/Tickets-content/Tickets-content'
 import PassengerContent from '../../components/global/Passenger-content/Passenger-content'
 import { useDispatch, useSelector } from "react-redux"
 import { searchRoutes } from "../../api/routes"
 import { updateTicketsInfo } from "../../store/slices/ticketsSlice"
+import TicketsHeader from "../../components/global/tickets-header/tickets-header";
 
 
 const Tickets = () => {
@@ -37,6 +37,7 @@ const Tickets = () => {
       {/* <PassengerContent /> */}
 
       <Routes>
+
         <Route path='passenger' element={<PassengerContent />} />
         <Route path='passenger/*' element={<PassengerContent />} />
 
