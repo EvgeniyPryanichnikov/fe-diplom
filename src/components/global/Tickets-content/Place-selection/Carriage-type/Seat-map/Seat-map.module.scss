@@ -1,0 +1,54 @@
+.seatMap {
+  display: flex;
+  flex-direction: column;
+
+  .carriageDetails {
+    display: flex;
+  }
+
+  .numberCarriageBlock {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 57px 30px 32px;
+    background-color: #FFD98F;
+    color: #292929;
+    text-align: center;
+    font-size: 24px;
+
+    .number {
+      font-size: 72px;
+      font-weight: 700;
+    }
+  }
+
+  .occupiedInfo {
+    text-align: center;
+    align-self: flex-end;
+    padding: 16px;
+    max-width: 200px;
+    border-radius: 5px;
+    background: #f3f3f3;
+    color: #292929;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: 81px;
+  }
+
+  .totalPrice {
+    margin-top: 19px;
+    align-self: flex-end;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    padding-right: 77px;
+    color: #FFA800;
+    font-size: 24px;
+    font-weight: 700;
+
+    svg {
+      width: 14px;
+      height: 17px;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.paymentMethod {
+  display: grid;
+
+  .onlineBlock {
+    padding: 52px 36px 64px 36px;
+    display: grid;
+    row-gap: 28px;
+    border-bottom: 1px dotted #928F94;
+
+    .itemsPay {
+      display: flex;
+      gap: 50px;
+
+      .item {
+        width: 192px;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 28.13px;
+        text-align: left;
+      }
+    }
+  }
+
+  .cashBlock {
+    padding: 59px 36px 80px 36px;
+  }
+}

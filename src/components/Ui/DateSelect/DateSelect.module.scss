@@ -1,0 +1,43 @@
+.select {
+  position: relative;
+
+  .label {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 35px;
+    margin-bottom: 12px;
+  }
+
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 8px 20px;
+    border-radius: 3px;
+    width: 325px;
+    height: 60px;
+
+    .input {
+      font-size: 20px;
+      width: 100%;
+
+      &::placeholder {
+        color: #E5E5E5;
+        font-size: 18px;
+      }
+    }
+
+    .icon {
+      width: 25px;
+    }
+
+    .calendar {
+      position: absolute;
+      top: 10px;
+    }
+
+
+  }
+}
+

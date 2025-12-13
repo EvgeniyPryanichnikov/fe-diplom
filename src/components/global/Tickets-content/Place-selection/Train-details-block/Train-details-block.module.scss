@@ -1,0 +1,89 @@
+.trainsDetailBlock {
+  background-color: #F7F6F6;
+  display: grid;
+  grid-template-columns: 240px 1fr 240px;
+
+  .generalInfo {
+    display: flex;
+    gap: 27px;
+    width: max-content;
+    padding: 16px 25px;
+    align-items: center;
+    border-right: 2px solid #fff;
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .info {
+      display: grid;
+      row-gap: 4px;
+
+      svg {
+        width: 13px;
+        height: 8px;
+      }
+
+      .name {
+        font-size: 24px;
+        font-weight: 500;
+      }
+
+      .from {
+        margin-right: 5px;
+      }
+
+      .from,
+      .to {
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .scheduleInfo {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    padding: 16px 25px;
+    align-items: center;
+    border-right: 2px solid #fff;
+
+    svg {
+      width: 30px;
+      height: 20px;
+    }
+
+    .dateTimeFrom,
+    .dateTimeTo {
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .cityNameFrom,
+    .cityNameTo {
+      font-size: 18px;
+    }
+
+    .stationNameFrom,
+    .stationNameTo {
+      font-size: 18px;
+      color: #928F94;
+    }
+  }
+
+  .timestamp {
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    gap: 27px;
+    padding: 16px 45px;
+    align-items: center;
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

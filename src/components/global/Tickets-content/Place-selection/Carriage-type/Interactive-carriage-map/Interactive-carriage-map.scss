@@ -1,0 +1,42 @@
+.carriage-map {
+  width: 807px;
+  height: 127px;
+  margin: 0 auto;
+  position: relative;
+  //width: 100%;
+  //height: auto;
+  display: block;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  &__area {
+    position: absolute;
+    cursor: pointer;
+    background-color: #e5e5e5;
+    color: #292929;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: inherit;
+    border: 1px solid #e5e5e5;
+
+    &.available {
+      cursor: not-allowed;
+      background-color: #d9d9d9;
+      color: #fff;
+    }
+
+    &.active {
+      border: 1px solid #ffa800;
+    }
+  }
+
+  .area-carriage-number {
+    background-color: #292929;
+    color: #fff;
+    cursor:default;
+  }
+}

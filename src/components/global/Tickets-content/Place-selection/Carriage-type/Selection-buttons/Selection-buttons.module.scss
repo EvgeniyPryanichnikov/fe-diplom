@@ -1,0 +1,29 @@
+.selectionButtons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 70px;
+
+  .btn {
+    flex-direction: column;
+    gap: 12px;
+    height: 100px;
+
+    .label {
+      font-size: 24px;
+      color: #928F94;
+    }
+
+
+    &.active {
+      svg {
+        path {
+          fill: #FFA800;
+        }
+      }
+
+      .label {
+        color: #FFA800;
+      }
+    }
+  }
+}

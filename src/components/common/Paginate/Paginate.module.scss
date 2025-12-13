@@ -1,0 +1,46 @@
+.paginate {
+	font-size: 30px;
+	font-weight: 700;
+	line-height: normal;
+	color: #928f94;
+	height: 75px;
+	list-style-type: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+
+	li {
+		border-radius: 5px;
+		border: 2px solid #c4c4c4;
+		padding: 20px 33px;
+
+		&:not(:last-of-type) {
+			margin-right: 35px;
+		}
+
+		&.selected {
+			color: #fff;
+			background-color: #ffa800;
+		}		
+
+		&:not(.selected) {
+			cursor: pointer;
+
+			&:hover {
+				color:  #ffa800;
+				border-color: #ffa800;
+	
+				svg {
+					stroke:  #ffa800;
+				}
+			}
+		}
+
+		&.next {
+			svg {
+				transform: scale(-1, 1);
+			}
+		}
+	}
+}

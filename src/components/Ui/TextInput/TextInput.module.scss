@@ -1,0 +1,22 @@
+.textInput {
+  display: grid;
+  row-gap: 8px;
+  
+  .label {
+    font-size: 24px;
+    color: #E5E5E5;
+  }
+
+  .inputContainer{
+    background-color: #fff;
+    padding: 8px 20px;
+    border-radius: 3px;
+    width: 450px;
+    height: 60px;
+
+    .input {
+      width: 100%;
+      height: 100%;
+    }
+  } 
+}

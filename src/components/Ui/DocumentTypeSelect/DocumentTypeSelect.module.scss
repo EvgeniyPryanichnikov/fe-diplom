@@ -1,0 +1,51 @@
+.select {
+  position: relative;
+  cursor: pointer;
+  
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    width: 397px;
+    background-color: #fff;
+    border: 1px solid #928F94;
+    padding: 8px 20px;
+    border-radius: 5px;
+    height: 50px;
+
+    .input {
+      width: 100%;
+      font-size: 24px;
+  
+      &::placeholder {
+        color: #E5E5E5;
+        font-size: 18px;
+      }
+    }
+
+    .icon {
+      width: 25px;
+    }
+  }
+
+  .options {
+    width: 100%;
+    overflow-y: scroll;
+    max-height: 235px;
+    z-index: 2;
+    top: 55px;
+    border-radius: 3px;
+    background-color: rgba(245, 244, 246, 1);
+    position: absolute;
+
+    .optionItem {
+      padding: 13px 20px;
+
+      &:hover {
+        background-color: #FFCA62;
+        cursor: pointer;
+      }
+    }
+
+    &.options::-webkit-scrollbar { width: 0; }
+  }
+}

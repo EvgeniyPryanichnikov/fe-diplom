@@ -1,0 +1,23 @@
+.about {
+	padding: 80px 180px;
+
+	.title {
+		margin-bottom: 20px;
+		font-size: 36px;
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+
+	.textContainer {
+		padding-left: 18px;
+		border-left: 8px solid #FFA800;
+
+		.text_p {
+			margin-bottom: 12px;
+		}
+	}
+}
+
+.bold {
+	font-weight: 500;
+}

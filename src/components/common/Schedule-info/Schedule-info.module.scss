@@ -1,0 +1,39 @@
+.scheduleInfo {
+  display: grid;
+  gap: 63px;
+  padding: 40px 40px 20px 40px;
+
+  .row {
+    display: grid;
+    grid-template-columns: minmax(min-content, 31fr) 57px minmax(min-content, 37fr);
+    height: max-content;
+    gap: 40px;
+
+    .wrapper {
+      .dateTime {
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .cityName {
+        font-size: 18px;
+      }
+      .stationName {
+        font-size: 16px;
+        color: #928F94;
+      }
+    }
+
+    .drivingTime {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 7px;
+      color: #C4C4C4;
+      font-size: 18px;
+
+      .arrow {
+        width: 30px;
+      }
+    }
+  }
+}

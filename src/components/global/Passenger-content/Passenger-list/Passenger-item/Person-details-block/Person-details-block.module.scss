@@ -1,0 +1,9 @@
+.details {
+  display: grid;
+  align-items: end;
+  border-top: 1px dotted #928F94;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 25px 45px;
+  background-color: #fff;
+  padding: 38px 36px 33px 36px;
+}

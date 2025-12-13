@@ -1,0 +1,54 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #F7F5F9;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+p {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+button, a {
+  all: unset;
+  box-sizing: border-box
+}
+
+input {
+  border: none;
+  height: 100%;
+}
+
+input:enabled {
+  outline: none;
+  height: 100%;
+}
+
+
+button {
+  cursor: pointer;
+  font-size: 24px;
+  height: 60px;
+  border-radius: 3px;
+  display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+input::-webkit-input-placeholder {
+  color: #E5E5E5;
+  font-size: 22px;
+}
+
